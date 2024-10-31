@@ -45,7 +45,7 @@ body {
 
 #produtos {
     background-color: blanchedalmond;
-    padding: 20px;
+    padding: 10px; /* Ajuste o padding para evitar overflow */
 }
 
 /* Estilos para dispositivos móveis */
@@ -60,8 +60,8 @@ body {
     .row {
         display: flex; /* Ativa o flexbox para a row */
         flex-wrap: wrap; /* Permite que os produtos quebrem para a próxima linha */
-        justify-content: space-between; /* Distribui os produtos com espaço entre eles */
-        padding: 0 10px; /* Adiciona padding lateral para evitar overflow */
+        justify-content: center; /* Centraliza os produtos */
+        padding: 0 5px; /* Reduz o padding lateral para evitar overflow */
         box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
     }
 
@@ -69,7 +69,7 @@ body {
         flex: 1 0 100%; /* Cada produto ocupa 100% da largura em dispositivos móveis */
         box-sizing: border-box; /* Garante que o padding e margin sejam incluídos na largura total */
         margin-bottom: 20px; /* Espaçamento entre produtos */
-        padding: 0 10px; /* Adiciona padding lateral nos produtos */
+        padding: 0 5px; /* Adiciona padding lateral para evitar overflow */
     }
 
     .nav-produtos {
@@ -79,12 +79,6 @@ body {
 }
 
 /* Estilos padrão */
-.carousel-item img {
-    max-width: 100%; /* Permite que a imagem preencha o espaço disponível */
-    height: auto; /* Altura ajustável */
-    object-fit: cover; /* Mantém a proporção */
-}
-
 img {
     max-width: 100%; /* Para todas as imagens */
     height: auto; /* Altura ajustável */
@@ -103,6 +97,7 @@ img {
         display: flex;
         flex-wrap: wrap; /* Permite que os produtos quebrem para a próxima linha */
         justify-content: space-between; /* Distribui os produtos com espaço entre eles */
+        padding: 0 10px; /* Adiciona padding lateral */
     }
 
     .row > div {
