@@ -1,0 +1,121 @@
+body {
+    font-family: Roboto, sans-serif;
+    margin: 0; /* Remove margens padrão do body */
+    padding: 0; /* Remove preenchimento padrão do body */
+    overflow-x: hidden; /* Evita que a página tenha overflow horizontal */
+}
+
+.navbar {
+    background-color: orange;
+}
+
+#cabecalho .nav .nav-link.active {
+    background-color: white;
+    color: orange;
+}
+
+#cabecalho .nav .nav-link,
+.navbar-brand,
+.navbar-brand:hover,
+.nav-produtos .nav-link.active:hover {
+    color: white;
+}
+
+.navbar-toggler {
+    background-color: white;
+}
+
+.section-title {
+    font-family: Pacifico, cursive;
+}
+
+#paginainicial {
+    background-color: white;
+}
+
+.text-colored {
+    color: orange;
+}
+
+.nav-produtos .nav-link.active,
+#fale-conosco button {
+    background-color: orange;
+    color: white;
+}
+
+#produtos {
+    background-color: blanchedalmond;
+    padding: 20px;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 767px) {
+    .produto-imagem {
+        width: 100%; /* Ocupa 100% do contêiner */
+        height: auto; /* Altura ajustável */
+        max-height: 200px; /* Limite máximo de altura */
+        object-fit: cover; /* Ajusta a imagem ao espaço */
+    }
+
+    .row {
+        display: flex; /* Ativa o flexbox para a row */
+        flex-wrap: wrap; /* Permite que os produtos quebrem para a próxima linha */
+        justify-content: space-between; /* Distribui os produtos com espaço entre eles */
+        padding: 0 10px; /* Adiciona padding lateral para evitar overflow */
+    }
+
+    .row > div {
+        flex: 1 0 100%; /* Cada produto ocupa 100% da largura em dispositivos móveis */
+        box-sizing: border-box; /* Garante que o padding e margin sejam incluídos na largura total */
+        margin-bottom: 20px; /* Espaçamento entre produtos */
+        padding: 0; /* Remove padding lateral nos produtos */
+    }
+
+    .nav-produtos {
+        flex-direction: column; /* Coloca os links em coluna */
+        text-align: center; /* Centraliza os links */
+    }
+}
+
+/* Estilos padrão */
+.carousel-item img {
+    max-width: 100%; /* Permite que a imagem preencha o espaço disponível */
+    height: auto; /* Altura ajustável */
+    object-fit: cover; /* Mantém a proporção */
+}
+
+img {
+    max-width: 100%; /* Para todas as imagens */
+    height: auto; /* Altura ajustável */
+}
+
+.produto-imagem {
+    width: 100%; /* Imagem ocupa 100% do contêiner */
+    height: auto; /* Altura ajustável */
+    max-height: 300px; /* Limite máximo de altura */
+    object-fit: cover; /* Ajusta a imagem ao espaço */
+}
+
+/* Ajustes para telas maiores */
+@media (min-width: 768px) {
+    #produtos {
+        display: flex;
+        flex-wrap: wrap; /* Permite que os produtos quebrem para a próxima linha */
+        justify-content: space-between; /* Distribui os produtos com espaço entre eles */
+    }
+
+    .row > div {
+        flex: 0 0 calc(50% - 20px); /* Produtos ocupam aproximadamente metade da largura em telas maiores */
+        margin-bottom: 20px; /* Espaçamento entre produtos */
+        box-sizing: border-box; /* Garante que o padding e margin sejam incluídos na largura total */
+    }
+
+    .produto-imagem {
+        max-height: 250px; /* Ajusta a altura máxima para dispositivos maiores */
+    }
+
+    .nav-produtos .nav-link {
+        font-size: 1rem; /* Tamanho de fonte ajustável */
+        padding: 10px; /* Espaçamento interno */
+    }
+}

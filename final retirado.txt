@@ -1,0 +1,148 @@
+<section id="produtos" class="pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <h2 class="section-title text-center mb-5">Categorias de <span class="text-colored">produtos</span></h2>
+            </div>
+            <div class="row">
+                <!-- Menu Produtos -->
+                <aside class="col-md-2">
+                    <nav class="nav nav-pills flex-column nav-produtos">
+                        <button type="button" data-bs-toggle="tab" data-bs-target="#smartphones"
+                            class="fw-bold text-start nav-link text-colored active">Smartphones</button>
+                        <button type="button" data-bs-toggle="tab" data-bs-target="#eletrodomesticos"
+                            class="fw-bold text-start nav-link text-colored">Eletrodomésticos</button>
+                        <button type="button" data-bs-toggle="tab" data-bs-target="#belezaemoda"
+                            class="fw-bold text-start nav-link text-colored">Beleza e Moda</button>
+                        <button type="button" data-bs-toggle="tab" data-bs-target="#calcados"
+                            class="fw-bold text-start nav-link text-colored">Calçados</button>
+                    </nav>
+                </aside>
+    
+                <div class="col-md-10">
+                    <div class="tab-content">
+                        <!-- Seção Smartphones -->
+                        <div id="smartphones" class="tab-pane active">
+                            <div class="row">
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/SMARTPHONES/Galaxy S23/1.jpeg" alt="samsung galaxy s23">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://www.mercadolivre.com.br/social/liveshopbelem?matt_tool=97115687&forceInApp=true&ref=BLtcxU5LDyTAgKDO9%2FQlv1UzPLjamoFAqPe8CP5ytv78YzcPKLdBfFjdAI%2FUpVoVvzftGV11KJcyVE6bJN6dn%2FNnBAywPObWbTehzUgR9scxvDbp%2BPHVXo8aydqJmxIWOAfOUepnwhaHrZKdl%2FzYGEGYJ9VTJWahEB0kvYN5b%2BIaC8t0%2Fjy1QqsjHCUxlslbhWzhtHs%3D">Samsung Galaxy S23 256 GB 5G Preto 8 GB RAM</a>
+                                    </h5>
+                                    <p><strong>R$4.416,55 (53% Off no PIX) ou 18x de R$258,28 sem juros com cartão.</strong></p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/SMARTPHONES/xiaomi redmi note 13/2.jpg" alt="xiaomi redmi 13">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/1PDnW6b">Xiaomi Redmi Note 13 4G Dual SIM 256GB Azul 8GB RAM</a>
+                                    </h5>
+                                    <p><strong>R$1.033 (35% Off) ou 12x de R$99,29 com cartão.</strong></p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/SMARTPHONES/moto g04 s/1.jpg" alt="motorola g04s">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/1e5HaNR">Motorola G04s 128gb Grafite 4 GB RAM</a>
+                                    </h5>
+                                    <p><strong>R$622,55 (30% Off no PIX) ou 18x de R$38,43 sem juros com cartão.</strong></p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/SMARTPHONES/motorola g34/1.jpg" alt="motorola g34">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/2tW1uoN">Motorola Moto G34 5G Dual SIM 128GB Azul 4GB RAM</a>
+                                    </h5>
+                                    <p><strong>R$849 ou 18x de R$47,17 com cartão.</strong></p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Seção Eletrodomésticos -->
+                        <div id="eletrodomesticos" class="tab-pane">
+                            <div class="row">
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/ELETROELETRONICOS/1.JPG" alt="Grill Sanduicheira Cadence">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/17Sf7cR">Grill Sanduicheira Cadence SAN400 Elétrica Chapa Misteira Tostex Tostequeira Hambúrguer Click 127v</a>
+                                    </h5>
+                                    <p><strong>R$112,73 (12% Off) ou 12x de R$11,12 com cartão.</strong></p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/ELETROELETRONICOS/televisao/1.jpg" alt="Smart TV Samsung">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/1748Zvo">Smart Tv 43” Samsung UN43T5300 Full Hd Tizen Hdmi Usb Preto</a>
+                                    </h5>
+                                    <p><strong>R$1.949 ou 12x de R$187,33 no cartão.</strong></p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/ELETROELETRONICOS/ventilador/1.jpg" alt="Ventilador Mondial">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/1eaVjSb">Ventilador de Mesa 30cm Super Power Mondial Preto 60W 6 Pás VSP-30-B</a>
+                                    </h5>
+                                    <p><strong>R$140 ou 6x de R$23,33 no cartão.</strong></p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/vent.jpg" alt="Electrolux Powerspeed STK15">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/2RpCZE4">Electrolux Powerspeed STK15 127v</a>
+                                    </h5>
+                                    <p><strong>R$233,99 (23% Off) ou 12x de R$23,09 com cartão.</strong></p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Seção Beleza e Moda -->
+                        <div id="belezaemoda" class="tab-pane">
+                            <div class="row">
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/BELEZA E MODA/perfume/1.jpg" alt="Malbec Icon Desodorante">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/2svYMA1">Malbec Icon Desodorante Colônia O Boticário 100ml</a>
+                                    </h5>
+                                    <p><strong>R$174,21 (17% Off) ou 12x de R$17,19 sem juros com cartão.</strong></p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/BELEZA E MODA/maquiagem/1.jpg" alt="Batom O Boticário">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/1Xamrn8">O Boticário Make B. Batom Líquido Mate Rosa Deep 5ml Acabamento Cremoso Cor Deep Rose</a>
+                                    </h5>
+                                    <p><strong>R$59,90 ou 12x de R$5,91 no cartão.</strong></p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/BELEZA E MODA/protetor solar/1.jpg" alt="Protetor Anthelios">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/1N5YumL">Protetor Anthelios Airlicium Sem Cor Fps 80 Antioleosidade 40g La Roche-Posay</a>
+                                    </h5>
+                                    <p><strong>R$66,23 (23% Off) ou 12x de R$6,53 com cartão.</strong></p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Seção Calçados -->
+                        <div id="calcados" class="tab-pane">
+                            <div class="row">
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/CALCADOS/nikeairmax.jpg" alt="Nike Air Max">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/2sDe4Fc">Tênis Nike Air Max Sc Masculino</a>
+                                    </h5>
+                                    <p><strong>R$559,99 (2% Off) ou 18x de R$31,11 sem juros com cartão.</strong></p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/CALCADOS/2.jpg" alt="Bota Feminina Couro">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/18KDTye">Bota Feminina Coturno Via Marte Cano Curto Salto Grosso</a>
+                                    </h5>
+                                    <p><strong>R$196,91 ou 8x de R$24,61 no cartão.</strong></p>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <img class="produto-imagem" src="/images/CALCADOS/3.jpg" alt="Tênis Adidas Stan Smith">
+                                    <h5 class="text-colored fw-bold mt-2">
+                                        <a href="https://mercadolivre.com/sec/1eWNtSB">Tênis adidas Stan Smith Masculino - Original</a>
+                                    </h5>
+                                    <p><strong>R$505,40 (27% Off) ou 12x de R$49,52 com cartão.</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
