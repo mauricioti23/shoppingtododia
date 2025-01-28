@@ -29,10 +29,6 @@ body {
     font-family: Pacifico, cursive;
 }
 
-#paginainicial {
-    background-color: white;
-}
-
 .text-colored {
     color: orange;
 }
@@ -44,8 +40,8 @@ body {
 }
 
 #produtos {
-    background-color: rgb(196, 232, 149);
     padding: 10px; /* Ajuste o padding para evitar overflow */
+    background-color: rgb(196, 232, 149);
 }
 
 /* Estilos para dispositivos móveis */
@@ -82,6 +78,7 @@ body {
 img {
     max-width: 100%; /* Para todas as imagens */
     height: auto; /* Altura ajustável */
+    border-radius: 15px;
 }
 
 .produto-imagem {
@@ -89,6 +86,7 @@ img {
     height: auto; /* Altura ajustável */
     max-height: 300px; /* Limite máximo de altura */
     object-fit: cover; /* Ajusta a imagem ao espaço */
+    border-radius: 15px;
 }
 
 /* Ajustes para telas maiores */
@@ -122,6 +120,7 @@ h3 {
 
 iframe {
     padding-top: 20px;
+    border-radius: 15px;
 }
 
 footer {
