@@ -44,7 +44,7 @@ body {
 }
 
 #produtos {
-    background-color: blanchedalmond;
+    background-color: rgb(196, 232, 149);
     padding: 10px; /* Ajuste o padding para evitar overflow */
 }
 
@@ -122,4 +122,8 @@ h3 {
 
 iframe {
     padding-top: 20px;
+}
+
+footer {
+    background-color: rgb(196, 232, 149);
 }
