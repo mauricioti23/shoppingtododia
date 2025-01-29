@@ -119,9 +119,14 @@ h3 {
 }
 
 iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Mantém a proporção do vídeo */
+    max-width: 100%;
     padding-top: 20px;
     border-radius: 15px;
 }
+
 
 footer {
     background-color: rgb(196, 232, 149);
