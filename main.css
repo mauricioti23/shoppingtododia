@@ -6,12 +6,12 @@ body {
 }
 
 .navbar {
-    background-color: orange;
+    background-color: black;
 }
 
 #cabecalho .nav .nav-link.active {
     background-color: white;
-    color: orange;
+    color: black;
 }
 
 #cabecalho .nav .nav-link,
@@ -30,12 +30,12 @@ body {
 }
 
 .text-colored {
-    color: orange;
+    color: black;
 }
 
 .nav-produtos .nav-link.active,
 #fale-conosco button {
-    background-color: orange;
+    background-color: black;
     color: white;
 }
 
@@ -125,4 +125,140 @@ iframe {
 
 footer {
     background-color: rgb(196, 232, 149);
+}
+
+span {
+    color: white;
+    
+}
+
+a {
+    color: white;
+    font-family: lobster;
+    text-decoration: none;
+}
+
+.a-produtos {
+    color: black;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+p {
+    font-family: roboto, sans-serif;
+}
+
+strong {
+    font-family: sans-serif;
+    color: rgb(163, 163, 60);
+    font-size: 20px;
+}
+
+.strong-produtos {
+    font-family: pacifico;
+    color: rgb(85, 20, 85);
+    font-size: 20px;
+}
+
+.lista-pagina-inicial a {
+    color: #605a5a;
+}
+
+span.text-price {
+    color: rgb(85, 20, 85);
+    font-size: 20px;
+}
+
+#paginainicial {
+    background-color: rgb(196, 232, 149);
+}
+
+#top4 {
+    list-style-type: none;
+    /* Remove as bolinhas padrão */
+    padding-left: 0;
+    /* Remove o espaço à esquerda */
+    color: white;
+    background-color: black;
+}
+
+#top4 li {
+    position: relative;
+    /* Permite posicionar o símbolo */
+    padding-left: 25px;
+    /* Espaço para o símbolo */
+    line-height: 1.5;
+    /* Ajusta a altura da linha para melhor alinhamento */
+}
+
+#top4 li:before {
+    /* Usando emoji de dinheiro como marcador */
+    position: absolute;
+    left: 0;
+    /* Alinha o símbolo à esquerda */
+    font-size: 1.3em;
+    /* Tamanho do símbolo */
+    top: 50%;
+    /* Centraliza verticalmente em relação ao texto */
+    transform: translateY(-50%);
+    /* Ajusta para centralização perfeita */
+}
+
+.text-price {
+    font-weight: bold;
+    color: #FF5733;
+    /* Altere para a cor desejada */
+    margin-left: 10px;
+    /* Espaço entre o nome do produto e o preço */
+    font-family: 'Lobster', cursive;
+    /* Aplicando a mesma fonte */
+    font-size: 1.3em;
+    /* Ajustando o tamanho da fonte do preço */
+}
+
+span {
+    font-size: 80px;
+    
+}
+
+span.text-price {
+    font-size: 20px;
+}
+
+div.ofertas-expressas ul {
+    padding-left: 0; /* Remove indentação padrão da UL */
+}
+
+div.ofertas-expressas li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre o ícone e o texto */
+}
+
+div.ofertas-expressas li::before {
+    content: "💰";
+}
+
+
+.melhor-oferta {
+    color: #605a5a !important;
+    font-size: 20px;
+}
+
+.titulo-top4 {
+    font-size: 60px;
+    text-align: center;
+    font-family: pacifico;
+}
+
+.titulo-top4::after {
+    content: " 💰"; /* Adiciona o ícone após o texto */
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+
+#subscribe {
+    background-color: black;
+    color: white;
 }
