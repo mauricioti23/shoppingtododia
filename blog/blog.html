@@ -20,8 +20,8 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <!-- Seu CSS customizado -->
-  <link rel="stylesheet" href="main.css">
+  <!-- CSS customizado específico para o Blog -->
+  <link rel="stylesheet" href="blog.css">
 </head>
 <body>
   <!-- Cabeçalho (pode ser o mesmo utilizado no site principal) -->
@@ -32,19 +32,19 @@
       <nav id="menu-navegacao" class="navbar-collapse collapse justify-content-end">
         <ul class="nav d-block d-md-flex">
           <li class="nav-item fw-bold">
-            <a href="index.html#paginainicial" class="nav-link"><i class="bi bi-house-door me-1"></i>Página Inicial</a>
+            <a href="/index.html#paginainicial" class="nav-link"><i class="bi bi-house-door me-1"></i>Página Inicial</a>
           </li>
           <li class="nav-item fw-bold">
-            <a href="index.html#top4" class="nav-link"><i class="bi bi-calendar-check me-1"></i>Top 4</a>
+            <a href="/index.html#top4" class="nav-link"><i class="bi bi-calendar-check me-1"></i>Top 4</a>
           </li>
           <li class="nav-item fw-bold">
-            <a href="index.html#produtos" class="nav-link"><i class="bi bi-card-text me-1"></i>Produtos</a>
+            <a href="/index.html#produtos" class="nav-link"><i class="bi bi-card-text me-1"></i>Produtos</a>
           </li>
           <li class="nav-item fw-bold">
             <a href="blog.html" class="nav-link active"><i class="bi bi-journal-text me-1"></i>Blog</a>
           </li>
           <li class="nav-item fw-bold">
-            <a href="index.html#subscribe" class="nav-link"><i class="bi bi-card-text me-1"></i>Inscreva-se</a>
+            <a href="/index.html#subscribe" class="nav-link"><i class="bi bi-card-text me-1"></i>Inscreva-se</a>
           </li>
         </ul>
       </nav>
@@ -52,21 +52,25 @@
   </header>
 
   <!-- Conteúdo do Blog -->
+  <!-- O container abaixo receberá os estilos de centralização definidos em blog.css -->
   <section id="blog" class="pt-5 pb-5">
     <div class="container">
       <div class="row mb-5">
-        <h2 class="section-title text-center">Blog</h2>
+        <h2 class="section-title text-center">Últimas postagens</h2>
       </div>
       <!-- Lista de Postagens -->
       <div class="row g-4">
-        <!-- Card Post 1 -->
+        <!-- Card Post 1 - Conteúdo Atualizado para a Review da Fritadeira -->
         <div class="col-md-4">
           <div class="card h-100">
-            <img src="/images/blog/imagem1.jpg" class="card-img-top" alt="Post 1" loading="lazy">
+            <!-- Atualize o caminho da imagem conforme sua pasta de imagens -->
+            <img src="/images/ELETROELETRONICOS/fritadeira.jpg" class="card-img-top" alt="Review: Fritadeira Elétrica Mondial AF-31 s 3,5L" loading="lazy">
             <div class="card-body">
-              <h3 class="card-title">Título do Post 1</h3>
-              <p class="card-text">Resumo do post 1. Uma breve introdução para despertar o interesse do leitor.</p>
-              <a href="blog-post.html?id=1" class="btn btn-primary">Leia mais</a>
+              <h3 class="card-title">Review: Fritadeira Elétrica Mondial AF-31 s 3,5L</h3>
+              <p class="card-text">
+                Confira nossa análise detalhada da Fritadeira Elétrica Mondial AF-31 s 3,5L. Descubra como seu design moderno, performance surpreendente e recursos de segurança podem transformar sua experiência na cozinha.
+              </p>
+              <a href="/blog/posts/review-fritadeira.html" class="btn btn-primary">Leia mais</a>
             </div>
           </div>
         </div>
