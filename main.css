@@ -1,269 +1,290 @@
+/* =========================
+   Estilos Gerais
+=========================== */
 body {
-    font-family: Roboto, sans-serif;
-    margin: 0; /* Remove margens padrão do body */
-    padding: 0; /* Remove preenchimento padrão do body */
-    overflow-x: hidden; /* Evita que a página tenha overflow horizontal */
-}
-
-.navbar {
-    background-color: black;
-}
-
-#cabecalho .nav .nav-link.active {
-    background-color: white;
-    color: black;
-}
-
-#cabecalho .nav .nav-link,
-.navbar-brand,
-.navbar-brand:hover,
-.nav-produtos .nav-link.active:hover {
-    color: white;
-}
-
-.navbar-toggler {
-    background-color: white;
-}
-
-.section-title {
-    font-family: Pacifico, cursive;
-}
-
-.text-colored {
-    color: black;
-}
-
-.nav-produtos .nav-link.active,
-#fale-conosco button {
-    background-color: black;
-    color: white;
-}
-
-#produtos {
-    padding: 10px; /* Ajuste o padding para evitar overflow */
-    background-color: rgb(196, 232, 149);
-}
-
-/* Estilos para dispositivos móveis */
-@media (max-width: 767px) {
-    .produto-imagem {
-        width: 100%; /* Ocupa 100% do contêiner */
-        height: auto; /* Altura ajustável */
-        max-height: 200px; /* Limite máximo de altura */
-        object-fit: cover; /* Ajusta a imagem ao espaço */
-    }
-
-    .row {
-        display: flex; /* Ativa o flexbox para a row */
-        flex-wrap: wrap; /* Permite que os produtos quebrem para a próxima linha */
-        justify-content: center; /* Centraliza os produtos */
-        padding: 0 5px; /* Reduz o padding lateral para evitar overflow */
-        box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
-    }
-
-    .row > div {
-        flex: 1 0 100%; /* Cada produto ocupa 100% da largura em dispositivos móveis */
-        box-sizing: border-box; /* Garante que o padding e margin sejam incluídos na largura total */
-        margin-bottom: 20px; /* Espaçamento entre produtos */
-        padding: 0 5px; /* Adiciona padding lateral para evitar overflow */
-    }
-
-    .nav-produtos {
-        flex-direction: column; /* Coloca os links em coluna */
-        text-align: center; /* Centraliza os links */
-    }
-}
-
-/* Estilos padrão */
-img {
-    max-width: 100%; /* Para todas as imagens */
-    height: auto; /* Altura ajustável */
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Reset de Imagens e Elementos Mídia */
+  img,
+  .produto-imagem {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
     border-radius: 15px;
-}
-
-.produto-imagem {
-    width: 100%; /* Imagem ocupa 100% do contêiner */
-    height: auto; /* Altura ajustável */
-    max-height: 300px; /* Limite máximo de altura */
-    object-fit: cover; /* Ajusta a imagem ao espaço */
-    border-radius: 15px;
-}
-
-/* Ajustes para telas maiores */
-@media (min-width: 768px) {
-    #produtos {
-        display: flex;
-        flex-wrap: wrap; /* Permite que os produtos quebrem para a próxima linha */
-        justify-content: space-between; /* Distribui os produtos com espaço entre eles */
-        padding: 0 10px; /* Adiciona padding lateral */
-    }
-
-    .row > div {
-        flex: 0 0 calc(50% - 20px); /* Produtos ocupam aproximadamente metade da largura em telas maiores */
-        margin-bottom: 20px; /* Espaçamento entre produtos */
-        box-sizing: border-box; /* Garante que o padding e margin sejam incluídos na largura total */
-    }
-
-    .produto-imagem {
-        max-height: 250px; /* Ajusta a altura máxima para dispositivos maiores */
-    }
-
-    .nav-produtos .nav-link {
-        font-size: 1rem; /* Tamanho de fonte ajustável */
-        padding: 10px; /* Espaçamento interno */
-    }
-}
-
-h3 {
-    padding-top: 20px;
-}
-
-iframe {
+  }
+  
+  iframe {
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9; /* Mantém a proporção do vídeo */
-    max-width: 100%;
+    aspect-ratio: 16 / 9;
     padding-top: 20px;
     border-radius: 15px;
-}
-
-
-footer {
-    background-color: rgb(196, 232, 149);
-}
-
-span {
-    color: white;
-    
-}
-
-a {
-    color: white;
-    font-family: lobster;
+  }
+  
+  /* =========================
+     Navbar e Cabeçalho
+  =========================== */
+  .navbar {
+    background-color: #000;
+  }
+  
+  .navbar-toggler {
+    background-color: #fff;
+  }
+  
+  #cabecalho .nav .nav-link.active {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  #cabecalho .nav .nav-link,
+  .navbar-brand,
+  .navbar-brand:hover,
+  .nav-produtos .nav-link.active:hover {
+    color: #fff;
+  }
+  
+  /* =========================
+     Tipografia e Links
+  =========================== */
+  a {
+    color: #fff;
+    font-family: 'Lobster', cursive;
     text-decoration: none;
-}
-
-.a-produtos {
-    color: black;
+  }
+  
+  .a-produtos {
+    color: #000;
     font-family: sans-serif;
     font-size: 20px;
-}
-
-p {
-    font-family: roboto, sans-serif;
-}
-
-strong {
+  }
+  
+  p {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  strong {
     font-family: sans-serif;
     color: rgb(163, 163, 60);
     font-size: 20px;
-}
-
-.strong-produtos {
-    font-family: pacifico;
+  }
+  
+  .strong-produtos {
+    font-family: 'Pacifico', cursive;
     color: rgb(85, 20, 85);
     font-size: 20px;
-}
-
-.lista-pagina-inicial a {
+  }
+  
+  .lista-pagina-inicial a {
     color: #605a5a;
-}
-
-span.text-price {
-    color: rgb(85, 20, 85);
-    font-size: 20px;
-}
-
-#paginainicial {
+  }
+  
+  /* =========================
+     Cores e Seções de Fundo
+  =========================== */
+  .section-title {
+    font-family: 'Pacifico', cursive;
+  }
+  
+  .text-colored {
+    color: #000;
+  }
+  
+  #produtos,
+  #paginainicial {
     background-color: rgb(196, 232, 149);
-}
-
-#top4 {
-    list-style-type: none;
-    /* Remove as bolinhas padrão */
-    padding-left: 0;
-    /* Remove o espaço à esquerda */
-    color: white;
-    background-color: black;
-}
-
-#top4 li {
-    position: relative;
-    /* Permite posicionar o símbolo */
-    padding-left: 25px;
-    /* Espaço para o símbolo */
-    line-height: 1.5;
-    /* Ajusta a altura da linha para melhor alinhamento */
-}
-
-#top4 li:before {
-    /* Usando emoji de dinheiro como marcador */
-    position: absolute;
-    left: 0;
-    /* Alinha o símbolo à esquerda */
-    font-size: 1.3em;
-    /* Tamanho do símbolo */
-    top: 50%;
-    /* Centraliza verticalmente em relação ao texto */
-    transform: translateY(-50%);
-    /* Ajusta para centralização perfeita */
-}
-
-.text-price {
+  }
+  
+  footer {
+    background-color: rgb(196, 232, 149);
+  }
+  
+  #subscribe {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  /* =========================
+     Preço dos Produtos
+  =========================== */
+  .text-price {
     font-weight: bold;
     color: #FF5733;
-    /* Altere para a cor desejada */
     margin-left: 10px;
-    /* Espaço entre o nome do produto e o preço */
     font-family: 'Lobster', cursive;
-    /* Aplicando a mesma fonte */
     font-size: 1.3em;
-    /* Ajustando o tamanho da fonte do preço */
-}
-
-span {
-    font-size: 80px;
-    
-}
-
-span.text-price {
-    font-size: 20px;
-}
-
-div.ofertas-expressas ul {
-    padding-left: 0; /* Remove indentação padrão da UL */
-}
-
-div.ofertas-expressas li {
+  }
+  
+  /* =========================
+     Seção Top 4
+  =========================== */
+  #top4 {
+    list-style: none;
+    padding-left: 0;
+    color: #fff;
+    background-color: #000;
+  }
+  
+  #top4 li {
+    position: relative;
+    padding-left: 25px;
+    line-height: 1.5;
+  }
+  
+  #top4 li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3em;
+  }
+  
+  /* Ofertas Expressas */
+  div.ofertas-expressas ul {
+    padding-left: 0;
+  }
+  
+  div.ofertas-expressas li {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 5px; /* Espaço entre o ícone e o texto */
-}
-
-div.ofertas-expressas li::before {
-    content: "💰";
-}
-
-
-.melhor-oferta {
+    gap: 5px;
+  }
+  
+  div.ofertas-expressas li::before {
+    content: "";
+  }
+  
+  .melhor-oferta {
     color: #605a5a !important;
     font-size: 20px;
-}
-
-.titulo-top4 {
+  }
+  
+  /* Título Top 4 */
+  .titulo-top4 {
     font-size: 60px;
     text-align: center;
-    font-family: pacifico;
-}
-
-.titulo-top4::after {
-    content: " 💰"; /* Adiciona o ícone após o texto */
+    font-family: 'Pacifico', cursive;
+  }
+  
+  .titulo-top4::after {
+    content: " ";
     font-size: 1.2em;
     margin-left: 5px;
-}
-
-#subscribe {
-    background-color: black;
-    color: white;
-}
+  }
+  
+  /* =========================
+     Seção Blog
+  =========================== */
+  #blog {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+  }
+  
+  #blog .card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+  }
+  
+  #blog .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  #blog .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  #blog .card-title {
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  #blog .card-text {
+    color: #6c757d;
+  }
+  
+  #blog .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  #blog .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  
+  /* =========================
+     Responsividade
+  =========================== */
+  
+  /* Dispositivos Móveis */
+  @media (max-width: 767px) {
+    .produto-imagem {
+      max-height: 200px;
+    }
+  
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0 5px;
+      box-sizing: border-box;
+    }
+  
+    .row > div {
+      flex: 1 0 100%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      padding: 0 5px;
+    }
+  
+    .nav-produtos {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    #blog .col-md-4 {
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Telas Maiores */
+  @media (min-width: 768px) {
+    #produtos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+  
+    .row > div {
+      flex: 0 0 calc(50% - 20px);
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+  
+    .produto-imagem {
+      max-height: 250px;
+    }
+  
+    .nav-produtos .nav-link {
+      font-size: 1rem;
+      padding: 10px;
+    }
+  }
+  
+  /* =========================
+     Cabeçalhos
+  =========================== */
+  h3 {
+    padding-top: 20px;
+  }
+  
