@@ -1,9 +1,7 @@
 /* =========================
    Reset Global e Variáveis CSS
 =========================== */
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -14,261 +12,226 @@
   --font-primary: 'Roboto', sans-serif;
   --font-secondary: 'Lobster', cursive;
   --font-tertiary: 'Pacifico', cursive;
-  
+
   /* Cores */
   --color-black: #000;
   --color-white: #fff;
   --color-accent: #FF5733;
-  --color-text-default: #605a5a;
-  
+  --color-text-light: #eaeaea;
+  --color-text-dark: #333;
+  --color-highlight: #f4d03f;
+
   /* Fundos */
-  --bg-green: rgb(196, 232, 149);
+  --bg-light: #fff;
   --bg-dark: #000;
-  --bg-light: #f8f9fa;
 }
 
 /* =========================
-   Estilos Gerais
+   Estilização Geral
 =========================== */
 body {
   font-family: var(--font-primary);
   line-height: 1.6;
   overflow-x: hidden;
-  background: var(--color-white);
+  background: var(--bg-light);
+  color: var(--color-text-dark);
 }
 
-img,
-.produto-imagem {
+img {
   display: block;
   max-width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
 iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
-  padding-top: 20px;
   border-radius: 15px;
 }
 
 /* =========================
-   Navbar e Cabeçalho
+   Cabeçalho e Navbar
 =========================== */
 .navbar {
-  background-color: var(--color-black);
+  background-color: var(--bg-dark);
 }
 
 .navbar-toggler {
-  background-color: var(--color-white);
+  background-color: var(--color-accent);
+  border: none;
 }
 
-#cabecalho .nav .nav-link.active {
-  background-color: var(--color-white);
-  color: var(--color-black);
+.navbar-toggler-icon {
+  filter: invert(1);
 }
 
-#cabecalho .nav .nav-link,
-.navbar-brand,
-.navbar-brand:hover,
-.nav-produtos .nav-link.active:hover {
-  color: var(--color-white);
-}
-
-/* =========================
-   Tipografia e Links
-=========================== */
-a {
-  color: var(--color-white);
-  font-family: var(--font-secondary);
-  text-decoration: none;
-}
-
-.a-produtos {
-  color: var(--color-black);
-  font-family: sans-serif;
-  font-size: 1.25rem;
-}
-
-p {
-  font-family: var(--font-primary);
-}
-
-strong {
-  font-family: sans-serif;
-  color: rgb(163, 163, 60);
-  font-size: 1.25rem;
-}
-
-.strong-produtos {
+#cabecalho .nav-link {
   font-family: var(--font-tertiary);
-  color: rgb(85, 20, 85);
-  font-size: 1.25rem;
+  color: var(--color-white);
+  font-weight: bold;
 }
 
-.lista-pagina-inicial a {
-  color: var(--color-text-default);
+#cabecalho .nav-link.active {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: 5px;
+}
+
+#cabecalho h1 {
+  font-family: var(--font-tertiary);
+  color: var(--color-white);
+}
+
+/* Estilo para menu mobile */
+@media (max-width: 767px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* =========================
-   Cores e Seções de Fundo
+   Tipografia e Seções
 =========================== */
-.section-title {
+h1 {
   font-family: var(--font-tertiary);
+  color: var(--color-accent);
 }
 
-.text-colored {
-  color: var(--color-black);
+h2.section-title {
+  font-family: var(--font-tertiary);
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-#produtos,
-#paginainicial {
-  background-color: var(--bg-green);
+.section-description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
-footer {
-  background-color: var(--bg-green);
+/* =========================
+   Menu de Categorias
+=========================== */
+.nav-produtos {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-#subscribe {
-  background-color: var(--color-black);
+.nav-produtos .nav-link {
+  font-weight: bold;
+  padding: 12px;
+  color: var(--color-text-dark);
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-produtos .nav-link.active,
+.nav-produtos .nav-link:hover {
+  background-color: var(--color-accent);
   color: var(--color-white);
 }
 
 /* =========================
-   Preço dos Produtos
+   Cards de Produtos
 =========================== */
-.text-price {
+.produto-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-white);
+  transition: transform 0.3s ease;
+}
+
+.produto-card:hover {
+  transform: translateY(-8px);
+}
+
+.produto-imagem {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.card-price {
   font-weight: bold;
   color: var(--color-accent);
-  margin-left: 10px;
-  font-family: var(--font-secondary);
-  font-size: 1.3em;
-}
-
-/* =========================
-   Seção Top 4
-=========================== */
-#top4 {
-  list-style: none;
-  padding-left: 0;
-  color: var(--color-white);
-  background-color: var(--color-black);
-}
-
-#top4 li {
-  position: relative;
-  padding-left: 25px;
-  line-height: 1.5;
-}
-
-#top4 li:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.3em;
-}
-
-/* =========================
-   Ofertas Expressas
-=========================== */
-.ofertas-expressas ul {
-  padding-left: 0;
-}
-
-.ofertas-expressas li {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.ofertas-expressas li::before {
-  content: "";
-}
-
-.melhor-oferta {
-  color: var(--color-text-default) !important;
-  font-size: 1.25rem;
-}
-
-/* =========================
-   Título Top 4
-=========================== */
-.titulo-top4 {
-  font-size: 3.75rem; /* Aproximadamente 60px */
+  margin-bottom: 1rem;
   text-align: center;
-  font-family: var(--font-tertiary);
 }
 
-.titulo-top4::after {
-  content: " ";
-  font-size: 1.2em;
-  margin-left: 5px;
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: 80%;
+  margin-top: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: #cc4629;
 }
 
 /* =========================
    Responsividade
 =========================== */
-
-/* Para dispositivos móveis (até 767px) */
 @media (max-width: 767px) {
+  .produto-card {
+    margin-bottom: 2rem;
+  }
+
   .produto-imagem {
-    max-height: 200px;
+    height: 150px;
   }
-  
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0 5px;
-  }
-  
-  .row > div {
-    flex: 1 0 100%;
-    margin-bottom: 20px;
-    padding: 0 5px;
-  }
-  
+
   .nav-produtos {
-    flex-direction: column;
     text-align: center;
   }
-  
-  /* Caso o index.html possua seções com cards do Blog, ajuste conforme necessário */
-  #blog .col-md-4 {
-    margin-bottom: 20px;
-  }
 }
 
-/* Para telas maiores (768px ou mais) */
 @media (min-width: 768px) {
-  #produtos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 10px;
-  }
-  
-  .row > div {
-    flex: 0 0 calc(50% - 20px);
-    margin-bottom: 20px;
-  }
-  
   .produto-imagem {
-    max-height: 250px;
+    height: 250px;
   }
-  
-  .nav-produtos .nav-link {
-    font-size: 1rem;
-    padding: 10px;
+
+  .nav-produtos {
+    flex-direction: row;
+    justify-content: space-around;
   }
 }
 
-/* Cabeçalhos */
-h3 {
-  padding-top: 20px;
+h2.section-title {
+ padding-top: 90px;
 }
