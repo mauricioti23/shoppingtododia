@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="blog.css">
 </head>
 <body>
+
   <!-- Cabeçalho (pode ser o mesmo utilizado no site principal) -->
   <header class="navbar navbar-expand-lg sticky-top p-4" id="cabecalho">
     <div class="container d-flex align-items-center">
@@ -110,10 +111,39 @@
       </p>
       <p>*Os preços podem variar conforme a política de comércio.</p>
       <p>&copy; 2025 Todos os direitos reservados.</p>
+      <a href="/politica-de-privacidade.html">Política de Privacidade</a>
+      <a href="/termos_condicoes.html">Termos e Condições</a>
     </div>
   </footer>
 
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Cookie Popup -->
+<div id="cookie-popup" class="cookie-popup">
+  <p>Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="/politica-de-privacidade.html">Política de Privacidade</a>.</p>
+  <button id="cookie-accept" class="btn btn-primary">Aceitar</button>
+</div>
+
+<!-- Script de controle do pop-up -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const popup = document.getElementById('cookie-popup');
+    const acceptButton = document.getElementById('cookie-accept');
+
+    // Exibir o pop-up se o usuário ainda não aceitou os cookies
+    if (!localStorage.getItem('cookiesAccepted')) {
+      popup.style.display = 'block';
+    }
+
+    // Evento de clique no botão "Aceitar"
+    acceptButton.addEventListener('click', function () {
+      localStorage.setItem('cookiesAccepted', 'true');
+      popup.style.display = 'none';
+    });
+  });
+</script>
+
+
 </body>
 </html>

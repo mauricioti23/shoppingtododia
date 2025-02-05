@@ -65,6 +65,15 @@
   </script>
 </head>
 <body>
+  <!-- Banner de Cookies -->
+<div id="cookie-banner" class="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999;">
+  <p style="margin: 0; font-size: 16px;">
+    Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa 
+    <a href="/politica-de-privacidade.html" target="_blank" style="color: #f4d03f; text-decoration: underline;">Política de Privacidade</a>.
+  </p>
+  <button id="accept-cookies" class="btn btn-primary" style="margin-top: 10px;">Aceitar</button>
+</div>
+
   <!-- Cabeçalho -->
   <header class="navbar navbar-expand-lg sticky-top p-4" id="cabecalho">
     <div class="container d-flex align-items-center">
@@ -329,9 +338,8 @@
                       <img src="/images/SMARTPHONES/Galaxy%20S23/1.jpeg" class="card-img-top produto-imagem" alt="Samsung Galaxy S23">
                       <div class="card-body">
                         <h5 class="card-title">Samsung Galaxy S23</h5>
-                        <p class="card-text">256 GB, Preto, 8 GB RAM</p>
-                        <p class="card-price">R$ 3.305,13 ou 24x de R$ 247,92</p>
-                        <a href="https://mercadolivre.com/sec/1g92U4v" target="_blank" class="btn btn-primary">Ver oferta</a>
+                        <a href="https://mercadolivre.com/sec/1g92U4v" target="_blank" class="btn btn-primary">Ver oferta no Mercado Livre</a>
+                        <a href="https://mercadolivre.com/sec/1g92U4v" target="_blank" class="btn btn-primary">Ver oferta na Amazon</a>
                       </div>
                     </div>
                   </div>
@@ -435,12 +443,30 @@
         <i class="bi bi-envelope-fill"></i> <a href="mailto:shoppingtododiacontato@gmail.com">shoppingtododiacontato@gmail.com</a>
         <a href="mailto:shoppingtododiacontato@gmail.com" class="btn btn-primary ms-2" style="background-color: black;">Enviar E-mail</a>
       </p>
-      <p>*Os preços podem variar conforme a economia do mercado nacional e internacional.</p>
+      <p>*Os preços podem variar conforme o mercado nacional e internacional.</p>
       <p>&copy; 2025 Todos os direitos reservados.</p>
+      <a href="/politica-de-privacidade.html">Política de Privacidade</a>
+      <a href="/termos_condicoes.html">Termos e Condições</a>
     </div>
   </footer>
 
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Exibir o banner apenas se o consentimento ainda não foi dado
+      if (!localStorage.getItem('cookieConsent')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+  
+      // Evento de clique no botão de aceitar cookies
+      document.getElementById('accept-cookies').addEventListener('click', function () {
+        localStorage.setItem('cookieConsent', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+      });
+    });
+  </script>
+  
 </body>
 </html>
