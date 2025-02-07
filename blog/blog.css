@@ -2,17 +2,21 @@
    Estilo do Cabeçalho
 =========================== */
 #cabecalho {
-  background-color: #000; /* Fundo preto */
-  color: #fff; /* Texto em branco */
+  background-color: #000;
+  /* Fundo preto */
+  color: #fff;
+  /* Texto em branco */
 }
 
-#cabecalho .navbar-brand, 
+#cabecalho .navbar-brand,
 #cabecalho .nav-link {
-  color: #fff !important; /* Letras do menu em branco */
+  color: #fff !important;
+  /* Letras do menu em branco */
 }
 
 #cabecalho .nav-link:hover {
-  color: #d3d3d3 !important; /* Cor cinza claro ao passar o mouse */
+  color: #d3d3d3 !important;
+  /* Cor cinza claro ao passar o mouse */
 }
 
 /* =========================
@@ -53,8 +57,10 @@
 #blog .card-img-top {
   width: 100%;
   height: auto;
-  max-height: 200px; /* Altura máxima desejada */
-  object-fit: contain; /* Exibe a imagem inteira dentro do container */
+  max-height: 200px;
+  /* Altura máxima desejada */
+  object-fit: contain;
+  /* Exibe a imagem inteira dentro do container */
 }
 
 #blog .card-title {
@@ -89,7 +95,8 @@
  Centralização do Conteúdo da Postagem
 =========================== */
 .post-container {
-  max-width: 800px; /* Ajuste este valor conforme o layout desejado */
+  max-width: 800px;
+  /* Ajuste este valor conforme o layout desejado */
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -105,7 +112,8 @@
   padding: 1rem;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  display: none; /* Inicialmente oculto */
+  display: none;
+  /* Inicialmente oculto */
 }
 
 .cookie-popup a {
@@ -123,4 +131,3 @@
     padding: 1.5rem;
   }
 }
-

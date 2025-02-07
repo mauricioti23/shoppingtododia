@@ -283,14 +283,17 @@ h2.section-title {
   text-align: justify;
 }
 
-.privacy-policy-content h1, .privacy-policy-content h2, .privacy-policy-content h3 {
+.privacy-policy-content h1,
+.privacy-policy-content h2,
+.privacy-policy-content h3 {
   font-family: var(--font-secondary);
   color: var(--color-accent);
   margin-bottom: 1rem;
   text-align: center;
 }
 
-.privacy-policy-content p, .privacy-policy-content li {
+.privacy-policy-content p,
+.privacy-policy-content li {
   margin-bottom: 1rem;
 }
 
@@ -344,7 +347,9 @@ h2.section-title {
   text-align: justify;
 }
 
-.terms-content h1, .terms-content h2, .terms-content h3 {
+.terms-content h1,
+.terms-content h2,
+.terms-content h3 {
   font-family: var(--font-secondary);
   color: var(--color-accent);
   margin-bottom: 1rem;
@@ -364,5 +369,3 @@ h2.section-title {
 .terms-content a:hover {
   color: var(--color-highlight);
 }
-
-

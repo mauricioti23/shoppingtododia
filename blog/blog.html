@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+  <!-- Meta tags básicas -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Blog do Shopping Todo Dia - Notícias, dicas e novidades sobre nossos produtos e promoções.">
+  <meta name="description"
+    content="Blog do Shopping Todo Dia - Notícias, dicas e novidades sobre nossos produtos e promoções.">
+  <meta name="robots" content="index, follow">
   <title>Blog - Shopping Todo Dia</title>
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(), event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KPV93XS7'); <!-- Substitua pelo seu ID GTM -->
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8P86T4KSW"></script>
+  <!-- Substitua pelo seu ID GA4 -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-C8P86T4KSW');
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" href="/images/logo/Shopping (3).png" type="image/x-icon">
@@ -15,30 +47,68 @@
   <!-- Pré-conexão e Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- CSS customizado específico para o Blog -->
   <link rel="stylesheet" href="blog.css">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="Blog - Shopping Todo Dia">
+  <meta property="og:description" content="Notícias, dicas e novidades sobre nossos produtos e promoções.">
+  <meta property="og:image" content="https://shoppingtododia.com.br/images/banner_blog.png">
+  <!-- Atualize a URL da imagem -->
+  <meta property="og:url" content="https://shoppingtododia.com.br/blog">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog - Shopping Todo Dia">
+  <meta name="twitter:description" content="Notícias, dicas e novidades sobre nossos produtos e promoções.">
+  <meta name="twitter:image" content="https://shoppingtododia.com.br/images/banner_blog.png">
+  <!-- Atualize a URL da imagem -->
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blog - Shopping Todo Dia",
+      "description": "Notícias, dicas e novidades sobre nossos produtos e promoções.",
+      "url": "https://shoppingtododia.com.br/blog",
+      "image": "https://shoppingtododia.com.br/images/banner_blog.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Shopping Todo Dia",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://shoppingtododia.com.br/images/logo/Shopping.png"
+        }
+      }
+    }
+  </script>
 </head>
+
 <body>
 
   <!-- Google Tag Manager (noscript) -->
   <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPV93XS7"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPV93XS7" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- Cookie Banner -->
   <div id="cookie-banner" class="cookie-banner"
-       style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999;">
+    style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999;">
     <p style="margin: 0; font-size: 16px;">
       Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa
       <a href="/politica-de-privacidade.html" target="_blank"
-         style="color: #f4d03f; text-decoration: underline;">Política de Privacidade</a>.
+        style="color: #f4d03f; text-decoration: underline;">Política de Privacidade</a>.
     </p>
     <button id="accept-cookies" class="btn btn-primary" style="margin-top: 10px;">Aceitar</button>
   </div>
@@ -47,7 +117,8 @@
   <header class="navbar navbar-expand-lg sticky-top p-4" id="cabecalho">
     <div class="container d-flex align-items-center">
       <img src="/images/logo/Shopping (3).png" alt="Logo Shopping Todo Dia" class="me-2" style="height: 80px;">
-      <h1 class="navbar-brand m-0 section-title" style="font-family: 'Lobster', cursive; font-size: 28px;">Blog Shopping Todo Dia</h1>
+      <h1 class="navbar-brand m-0 section-title" style="font-family: 'Lobster', cursive; font-size: 28px;">Blog Shopping
+        Todo Dia</h1>
       <nav id="menu-navegacao" class="navbar-collapse collapse justify-content-end">
         <ul class="nav d-block d-md-flex">
           <li class="nav-item fw-bold">
@@ -80,7 +151,8 @@
         <!-- Card Post 1 -->
         <div class="col-md-4">
           <div class="card h-100">
-            <img src="/images/ELETROELETRONICOS/fritadeira.jpg" class="card-img-top" alt="Review: Fritadeira Elétrica Mondial" loading="lazy">
+            <img src="/images/ELETROELETRONICOS/fritadeira.jpg" class="card-img-top"
+              alt="Review: Fritadeira Elétrica Mondial" loading="lazy">
             <div class="card-body">
               <h3 class="card-title">Review: Fritadeira Elétrica Mondial AF-31 s 3,5L</h3>
               <p class="card-text">Confira nossa análise detalhada...</p>
@@ -91,7 +163,8 @@
         <!-- Card Post 2 -->
         <div class="col-md-4">
           <div class="card h-100">
-            <img src="/images/ELETROELETRONICOS/luminaria astronauta/4.jpg" class="card-img-top" alt="Luminaria Astronauta" loading="lazy">
+            <img src="/images/ELETROELETRONICOS/luminaria astronauta/4.jpg" class="card-img-top"
+              alt="Luminaria Astronauta" loading="lazy">
             <div class="card-body">
               <h3 class="card-title">Review: Luminária Projetor Astronauta USB</h3>
               <p class="card-text">A Luminária Projetor Astronauta...</p>
@@ -102,7 +175,8 @@
         <!-- Card Post 3 -->
         <div class="col-md-4">
           <div class="card h-100">
-            <img src="/images/ELETROELETRONICOS/jbl go 4/1.jpg" class="card-img-top" alt="Caixa JBL GO 4" loading="lazy">
+            <img src="/images/ELETROELETRONICOS/jbl go 4/1.jpg" class="card-img-top" alt="Caixa JBL GO 4"
+              loading="lazy">
             <div class="card-body">
               <h3 class="card-title">Review: Caixinha de som JBL GO 4</h3>
               <p class="card-text">A Caixa de Som JBL GO 4 é a combinação...</p>
@@ -119,7 +193,8 @@
     <div class="container">
       <p>
         <i class="bi bi-envelope-fill"></i> shoppingtododiacontato@gmail.com
-        <a href="mailto:shoppingtododiacontato@gmail.com" class="btn btn-primary ms-2" style="background-color: black;">Enviar E-mail</a>
+        <a href="mailto:shoppingtododiacontato@gmail.com" class="btn btn-primary ms-2"
+          style="background-color: black;">Enviar E-mail</a>
       </p>
       <p>*Os preços podem variar conforme a política de comércio.</p>
       <p>&copy; 2025 Todos os direitos reservados.</p>
@@ -146,4 +221,5 @@
   </script>
 
 </body>
+
 </html>
