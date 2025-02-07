@@ -25,6 +25,24 @@
 </head>
 <body>
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPV93XS7"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner"
+       style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999;">
+    <p style="margin: 0; font-size: 16px;">
+      Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa
+      <a href="/politica-de-privacidade.html" target="_blank"
+         style="color: #f4d03f; text-decoration: underline;">Política de Privacidade</a>.
+    </p>
+    <button id="accept-cookies" class="btn btn-primary" style="margin-top: 10px;">Aceitar</button>
+  </div>
+
   <!-- Cabeçalho (pode ser o mesmo utilizado no site principal) -->
   <header class="navbar navbar-expand-lg sticky-top p-4" id="cabecalho">
     <div class="container d-flex align-items-center">
@@ -53,24 +71,19 @@
   </header>
 
   <!-- Conteúdo do Blog -->
-  <!-- O container abaixo receberá os estilos de centralização definidos em blog.css -->
   <section id="blog" class="pt-5 pb-5">
     <div class="container">
       <div class="row mb-5">
         <h2 class="section-title text-center">Últimas postagens</h2>
       </div>
-      <!-- Lista de Postagens -->
       <div class="row g-4">
-        <!-- Card Post 1 - Conteúdo Atualizado para a Review da Fritadeira -->
+        <!-- Card Post 1 -->
         <div class="col-md-4">
           <div class="card h-100">
-            <!-- Atualize o caminho da imagem conforme sua pasta de imagens -->
-            <img src="/images/ELETROELETRONICOS/fritadeira.jpg" class="card-img-top" alt="Review: Fritadeira Elétrica Mondial AF-31 s 3,5L" loading="lazy">
+            <img src="/images/ELETROELETRONICOS/fritadeira.jpg" class="card-img-top" alt="Review: Fritadeira Elétrica Mondial" loading="lazy">
             <div class="card-body">
               <h3 class="card-title">Review: Fritadeira Elétrica Mondial AF-31 s 3,5L</h3>
-              <p class="card-text">
-                Confira nossa análise detalhada da Fritadeira Elétrica Mondial AF-31 s 3,5L. Descubra como seu design moderno, performance surpreendente e recursos de segurança podem transformar sua experiência na cozinha.
-              </p>
+              <p class="card-text">Confira nossa análise detalhada...</p>
               <a href="/blog/posts/review-fritadeira.html" class="btn btn-primary">Leia mais</a>
             </div>
           </div>
@@ -78,10 +91,10 @@
         <!-- Card Post 2 -->
         <div class="col-md-4">
           <div class="card h-100">
-            <img src="/images/ELETROELETRONICOS/luminaria astronauta/4.jpg" class="card-img-top" alt="Luminaria Projetor Astronauta" loading="lazy">
+            <img src="/images/ELETROELETRONICOS/luminaria astronauta/4.jpg" class="card-img-top" alt="Luminaria Astronauta" loading="lazy">
             <div class="card-body">
-              <h3 class="card-title">Review: Luminária Projetor Astronauta USB Branco 110V/220V</h3>
-              <p class="card-text"><p>A Luminária Projetor Astronauta USB é uma solução perfeita para quem deseja criar uma atmosfera mágica e relaxante em qualquer ambiente. Com seu design criativo e funcionalidade de projeção estelar, ela se tornou um dos itens mais desejados para decoração e bem-estar.</p>
+              <h3 class="card-title">Review: Luminária Projetor Astronauta USB</h3>
+              <p class="card-text">A Luminária Projetor Astronauta...</p>
               <a href="/blog/posts/review-luminaria.html" class="btn btn-primary">Leia mais</a>
             </div>
           </div>
@@ -92,12 +105,11 @@
             <img src="/images/ELETROELETRONICOS/jbl go 4/1.jpg" class="card-img-top" alt="Caixa JBL GO 4" loading="lazy">
             <div class="card-body">
               <h3 class="card-title">Review: Caixinha de som JBL GO 4</h3>
-              <p class="card-text">A Caixa de Som JBL GO 4 é a combinação perfeita de design, resistência e qualidade sonora. Se você busca uma experiência de áudio portátil e potente, essa caixa de som é a escolha ideal para qualquer ocasião.</p>
+              <p class="card-text">A Caixa de Som JBL GO 4 é a combinação...</p>
               <a href="/blog/posts/review-jblgo4.html" class="btn btn-primary">Leia mais</a>
             </div>
           </div>
         </div>
-        <!-- Adicione quantos cards desejar -->
       </div>
     </div>
   </section>
@@ -119,31 +131,19 @@
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Cookie Popup -->
-<div id="cookie-popup" class="cookie-popup">
-  <p>Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="/politica-de-privacidade.html">Política de Privacidade</a>.</p>
-  <button id="cookie-accept" class="btn btn-primary">Aceitar</button>
-</div>
+  <!-- Script do banner de cookies -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!localStorage.getItem('cookieConsent')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
 
-<!-- Script de controle do pop-up -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const popup = document.getElementById('cookie-popup');
-    const acceptButton = document.getElementById('cookie-accept');
-
-    // Exibir o pop-up se o usuário ainda não aceitou os cookies
-    if (!localStorage.getItem('cookiesAccepted')) {
-      popup.style.display = 'block';
-    }
-
-    // Evento de clique no botão "Aceitar"
-    acceptButton.addEventListener('click', function () {
-      localStorage.setItem('cookiesAccepted', 'true');
-      popup.style.display = 'none';
+      document.getElementById('accept-cookies').addEventListener('click', function () {
+        localStorage.setItem('cookieConsent', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+      });
     });
-  });
-</script>
-
+  </script>
 
 </body>
 </html>
