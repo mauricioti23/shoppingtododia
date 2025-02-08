@@ -37,15 +37,6 @@
         gtag('config', 'AW-16842660301');
     </script>
 
-    <!-- Evento de conversão do Google Ads -->
-    <script>
-        gtag('event', 'conversion', {
-            'send_to': 'AW-16842660301/c7-_CIrIoZYaEM2zmt8-',
-            'value': 1.0,
-            'currency': 'BRL'
-        });
-    </script>
-
     <!-- Favicon -->
     <link rel="icon" href="/images/logo/Shopping (3).png" type="image/x-icon">
 
@@ -187,23 +178,11 @@
                     </div>
                 </div>
 
-                <!-- Vídeo de Destaque -->
-                <div class="row mb-4">
-                    <div class="col">
-                        <div class="ratio ratio-16x9">
-                            <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/z6AzW_cov3U?si=cCTxp72nPPJqB5Lr"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Botão de Compra -->
+                <!-- Botões de Compra com Eventos de Conversão -->
                 <div class="row mb-4">
                     <div class="col text-center">
-                        <a href="https://mercadolivre.com/sec/1f252zi" target="_blank" class="btn btn-success">
+                        <a href="https://mercadolivre.com/sec/1f252zi" target="_blank" class="btn btn-success"
+                            onclick="gtag('event', 'conversion', {'send_to': 'AW-16842660301/c7-_CIrIoZYaEM2zmt8-'});">
                             <i class="bi bi-cart-fill me-1"></i> Câmera de Segurança TP-Link Tapo no Mercado Livre
                         </a>
                     </div>
@@ -212,9 +191,24 @@
                 <div class="row mb-4">
                     <div class="col text-center">
                         <a href="https://amzn.to/3Q9Gdh0" target="_blank" class="btn btn-success"
-                            style="background-color: black; border-color: black;">
+                            style="background-color: black; border-color: black;"
+                            onclick="gtag('event', 'conversion', {'send_to': 'AW-16842660301/c7-_CIrIoZYaEM2zmt8-'});">
                             <i class="bi bi-cart-fill me-1"></i> Câmera de Segurança TP-Link Tapo na Amazon
                         </a>
+                    </div>
+                </div>
+
+                <!-- Vídeo de Destaque -->
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="ratio ratio-16x9">
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/z6AzW_cov3U?si=cCTxp72nPPJqB5Lr"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
                 </div>
 
@@ -360,12 +354,11 @@
                     </div>
                 </section>
 
-
-
                 <!-- Botão de Compra (final do post) -->
                 <div class="row mb-4">
                     <div class="col text-center">
-                        <a href="https://mercadolivre.com/sec/1f252zi" target="_blank" class="btn btn-success">
+                        <a href="https://mercadolivre.com/sec/1f252zi" target="_blank" class="btn btn-success"
+                            onclick="gtag('event', 'conversion', {'send_to': 'AW-16842660301/c7-_CIrIoZYaEM2zmt8-'});">
                             <i class="bi bi-cart-fill me-1"></i> Câmera de Segurança TP-Link Tapo C200 no Mercado Livre
                         </a>
                     </div>
@@ -374,7 +367,8 @@
                 <div class="row mb-4">
                     <div class="col text-center">
                         <a href="https://amzn.to/3Eud3qx" target="_blank" class="btn btn-success"
-                            style="background-color: black; border-color: black;">
+                            style="background-color: black; border-color: black;"
+                            onclick="gtag('event', 'conversion', {'send_to': 'AW-16842660301/c7-_CIrIoZYaEM2zmt8-'});">
                             <i class="bi bi-cart-fill me-1"></i> Câmera de Segurança TP-Link Tapo C200 na Amazon
                         </a>
                     </div>
@@ -384,10 +378,10 @@
                 <div class="row mt-5">
                     <div class="col text-center">
                         <a href="/blog/blog.html" class="btn btn-secondary"><i class="bi bi-arrow-left me-1"></i> Voltar
-                            para o
-                            Blog</a>
+                            para o Blog</a>
                     </div>
                 </div>
+
             </div>
         </article>
     </main>
@@ -402,8 +396,9 @@
             </p>
             <p>*Os preços podem variar conforme a política de comércio.</p>
             <p>&copy; 2025 Todos os direitos reservados.</p>
-            <a href="/politica-de-privacidade.html">Política de Privacidade</a>
-            <a href="/termos_condicoes.html">Termos e Condições</a>
+            <a href="/politica-de-privacidade.html" target="_blank">Política de Privacidade</a>
+            <a href="/termos_condicoes.html" target="_blank">Termos e Condições</a>
+
         </div>
     </footer>
 
