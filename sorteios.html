@@ -144,41 +144,43 @@
     <button id="accept-cookies" class="btn btn-primary" style="margin-top: 10px;">Aceitar</button>
   </div>
 
-  <!-- Cabeçalho -->
-  <header>
-    <nav class="navbar navbar-expand-lg sticky-top p-4" id="cabecalho">
-      <div class="container d-flex align-items-center">
-        <a href="../index.html" class="d-flex align-items-center text-decoration-none">
-          <img src="/images/logo/Shopping (3).png" alt="Logo Shopping Todo Dia" class="me-2 img-fluid"
-            style="max-height: 80px;">
-          <h1 class="navbar-brand m-0 section-title" style="font-family: 'Lobster', cursive; font-size: 28px;">Blog
-            Shopping Todo Dia</h1>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-navegacao"
-          aria-controls="menu-navegacao" aria-expanded="false" aria-label="Alternar navegação">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="menu-navegacao" class="collapse navbar-collapse justify-content-end">
-          <ul class="nav d-block d-md-flex">
-            <li class="nav-item fw-bold">
-              <a href="/index.html" class="nav-link"><i class="bi bi-house-door me-1"></i>Página Inicial</a>
-            </li>
-            <li class="nav-item fw-bold">
-              <a href="/index.html#top4" class="nav-link"><i class="bi bi-calendar-check me-1"></i>Top 4</a>
-            </li>
-            <li class="nav-item fw-bold">
-              <a href="/index.html#produtos" class="nav-link"><i class="bi bi-card-text me-1"></i>Produtos</a>
-            </li>
-            <li class="nav-item fw-bold">
-              <a href="/blog/blog.html" class="nav-link"><i class="bi bi-journal-text me-1"></i>Blog</a>
-            </li>
-            <li class="nav-item fw-bold">
-              <a href="/sorteios.html" class="nav-link"><i class="bi bi-card-text me-1"></i>Sorteios e Promoções</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <!-- Cabeçalho fixo -->
+  <header class="navbar navbar-expand-lg p-4 text-center" id="cabecalho">
+    <div class="container flex-column align-items-center">
+      <!-- Logo centralizada -->
+      <img src="/images/logo/Shopping (3).png" alt="Logo Shopping Todo Dia" class="mb-2 logo-img">
+
+      <!-- Título centralizado -->
+      <h1 class="navbar-brand m-0 section-title">Blog Shopping Todo Dia</h1>
+
+      <!-- Botão de menu no mobile -->
+      <button class="navbar-toggler mx-auto mt-3" type="button" data-bs-toggle="collapse"
+        data-bs-target="#menu-navegacao" aria-controls="menu-navegacao" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu de navegação centralizado -->
+      <nav id="menu-navegacao" class="navbar-collapse collapse justify-content-center mt-3">
+        <ul class="nav flex-column flex-md-row text-center">
+          <li class="nav-item fw-bold">
+            <a href="/index.html#paginainicial" class="nav-link"><i class="bi bi-house-door me-1"></i>Site</a>
+          </li>
+          <li class="nav-item fw-bold">
+            <a href="/index.html#produtos" class="nav-link"><i class="bi bi-calendar-check me-1"></i>Ofertas</a>
+          </li>
+          <li class="nav-item fw-bold">
+            <a href="/blog/blog.html#blog" class="nav-link"><i class="bi bi-card-text me-1"></i>Últimos Reviews</a>
+          </li>
+          <li class="nav-item fw-bold">
+            <a href="/blog/blog.html" class="nav-link active"><i class="bi bi-journal-text me-1"></i>Blog</a>
+          </li>
+          <li class="nav-item fw-bold">
+            <a href="/sorteios.html" class="nav-link"><i class="bi bi-card-text me-1"></i>Sorteios e Promoções</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <!-- Conteúdo Principal -->
@@ -333,6 +335,91 @@
       document.getElementById('accept-cookies').addEventListener('click', function () {
         localStorage.setItem('cookieConsent', 'true');
         document.getElementById('cookie-banner').style.display = 'none';
+      });
+    });
+  </script>
+  <!-- Scripts adicionais -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggler = document.querySelector('.navbar-toggler');
+      const collapse = document.querySelector('.navbar-collapse');
+
+      document.addEventListener('click', (event) => {
+        const isMenu = collapse.contains(event.target);
+        const isToggler = toggler.contains(event.target);
+
+        // Fecha o menu ao clicar fora
+        if (!isMenu && !isToggler && collapse.classList.contains('show')) {
+          collapse.classList.remove('show'); // Fecha o menu
+          toggler.setAttribute('aria-expanded', 'false'); // Atualiza o estado do botão
+        }
+      });
+    });
+  </script>
+
+  <!-- Botão Flutuante -->
+  <button id="btnTop" class="btn-top" aria-label="Voltar ao Topo">⬆️</button>
+
+  <!-- CSS do Botão -->
+  <style>
+    .btn-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--color-accent);
+      color: var(--color-white);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      z-index: 1000;
+    }
+
+    .btn-top:hover {
+      transform: translateY(-5px);
+      background-color: #cc4629;
+    }
+
+    /* Esconde o botão quando não é necessário */
+    .btn-top.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(100px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .btn-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <!-- JavaScript para funcionalidade -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnTop = document.getElementById('btnTop');
+
+      // Mostra/oculta o botão conforme o scroll
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          btnTop.classList.add('visible');
+          btnTop.classList.remove('hidden');
+        } else {
+          btnTop.classList.add('hidden');
+          btnTop.classList.remove('visible');
+        }
+      });
+
+      // Rola suavemente para o topo ao clicar no botão
+      btnTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       });
     });
   </script>

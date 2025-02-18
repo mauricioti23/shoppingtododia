@@ -29,23 +29,34 @@
 /* =========================
    Estilização Geral
 =========================== */
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-primary);
   line-height: 1.6;
-  overflow-x: hidden;
   background: var(--bg-light);
   color: var(--color-text-dark);
+  width: 100%;
+  overflow-x: hidden;
 }
 
+/* Centraliza todas as imagens */
 img {
   display: block;
+  margin: 0 auto;
   max-width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 12px;
 }
 
+/* Centraliza os iframes também */
 iframe {
+  display: block;
+  margin: 0 auto;
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 12px;
@@ -175,6 +186,8 @@ h2.section-title {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
 
 .card-body {
@@ -250,7 +263,9 @@ h2.section-title {
   }
 
   .produto-imagem {
-    height: 150px;
+    height: auto; /* Permite que a imagem mantenha sua proporção */
+    max-height: 200px; /* Define uma altura máxima para manter o layout organizado */
+    object-fit: contain; /* Garante que a imagem não será cortada */
   }
 
   .nav-produtos {
@@ -273,7 +288,12 @@ h2.section-title {
     padding-left: 2%;
     padding-right: 2%;
   }
+
+  body {
+    overflow-x: hidden;
+  }
 }
+
 
 @media (min-width: 768px) {
   .produto-imagem {
@@ -322,4 +342,143 @@ h2.section-title {
   padding: 10px 16px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+/* =========================
+   Botões Personalizados
+=========================== */
+
+/* Botão Mercado Livre */
+.btn-mercado-livre {
+  background-color: #ffe600; /* Amarelo padrão Mercado Livre */
+  color: var(--color-black);
+  font-weight: bold;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: 80%;
+  margin-top: 1rem;
+}
+
+.btn-mercado-livre:hover {
+  background-color: #d4c000; /* Amarelo escurecido para hover */
+}
+
+/* Botão Amazon */
+.btn-amazon {
+  background-color: #000; /* Preto padrão Amazon */
+  color: var(--color-white);
+  font-weight: bold;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: 80%;
+  margin-top: 1rem;
+}
+
+.btn-amazon:hover {
+  background-color: #333; /* Preto mais claro para hover */
+}
+
+/* =========================
+   Media Container
+=========================== */
+.media-container {
+  max-width: 600px;  /* Tamanho máximo para imagens e vídeos */
+  width: 100%;
+  margin: 0 auto;  /* Centraliza o container */
+}
+
+.media-container img, 
+.media-container iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Mantém a proporção 16:9 de forma responsiva */
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Ajuste da logo e título no cabeçalho */
+#cabecalho {
+  background-color: var(--bg-dark);
+  text-align: center;
+}
+
+.logo-img {
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+}
+
+#cabecalho .section-title {
+  font-family: 'Lobster', cursive;
+  font-size: 28px;
+  color: var(--color-accent);
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Centraliza o menu no mobile */
+.navbar-collapse {
+  text-align: center;
+}
+
+.navbar-toggler {
+  border: none;
+  background-color: var(--color-accent);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* Ajusta o menu no mobile */
+@media (max-width: 767px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-link {
+    padding: 10px;
+  }
+
+  .logo-img {
+    height: 60px;
+  }
+
+  #cabecalho .section-title {
+    font-size: 22px;
+  }
+}
+
+/* Ajuste de espaçamento para evitar sobreposição */
+.container.flex-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Menu mobile */
+@media (max-width: 767px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: auto; /* Alterado de 100vh para auto */
+    max-height: 100vh; /* Evita que ultrapasse a altura da tela */
+    background-color: var(--bg-dark);
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto; /* Adiciona rolagem se necessário */
+    z-index: 1050; /* Aumentado para aparecer acima de outros elementos */
+  }
+}
+
+#produtos {
+  scroll-margin-top: 100px; /* Ajuste para a altura exata do cabeçalho */
 }

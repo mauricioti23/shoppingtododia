@@ -102,21 +102,23 @@
     }
   </script>
   <!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '601667795997750');
-  fbq('track', 'PageView');
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '601667795997750');
+    fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=601667795997750&ev=PageView&noscript=1"
-  /></noscript>
+      src="https://www.facebook.com/tr?id=601667795997750&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
 </head>
 
@@ -141,41 +143,43 @@
     <button id="accept-cookies" class="btn btn-primary" style="margin-top: 10px;">Aceitar</button>
   </div>
 
-  <!-- Cabeçalho -->
-  <header>
-    <nav class="navbar navbar-expand-lg sticky-top p-4" id="cabecalho">
-      <div class="container d-flex align-items-center">
-        <a href="/index.html" class="d-flex align-items-center text-decoration-none">
-          <img src="/images/logo/Shopping (3).png" alt="Logo Shopping Todo Dia" class="me-2 img-fluid"
-            style="max-height: 80px;">
-          <h1 class="navbar-brand m-0 section-title" style="font-family: 'Lobster', cursive; font-size: 28px;">Blog
-            Shopping Todo Dia</h1>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-navegacao"
-          aria-controls="menu-navegacao" aria-expanded="false" aria-label="Alternar navegação">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="menu-navegacao" class="collapse navbar-collapse justify-content-end">
-          <ul class="nav d-block d-md-flex">
-            <li class="nav-item fw-bold">
-              <a href="/index.html" class="nav-link"><i class="bi bi-house-door me-1"></i>Página Inicial</a>
-            </li>
-            <li class="nav-item fw-bold">
-              <a href="/index.html#top4" class="nav-link"><i class="bi bi-calendar-check me-1"></i>Top 4</a>
-            </li>
-            <li class="nav-item fw-bold">
-              <a href="/index.html#produtos" class="nav-link"><i class="bi bi-card-text me-1"></i>Produtos</a>
-            </li>
-            <li class="nav-item fw-bold">
-              <a href="/blog/blog.html" class="nav-link"><i class="bi bi-journal-text me-1"></i>Blog</a>
-            </li>
-            <li class="nav-item fw-bold">
-              <a href="/sorteios.html" class="nav-link"><i class="bi bi-card-text me-1"></i>Sorteios e Promoções</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <!-- Cabeçalho fixo -->
+  <header class="navbar navbar-expand-lg p-4 text-center" id="cabecalho">
+    <div class="container flex-column align-items-center">
+      <!-- Logo centralizada -->
+      <img src="/images/logo/Shopping (3).png" alt="Logo Shopping Todo Dia" class="mb-2 logo-img">
+
+      <!-- Título centralizado -->
+      <h1 class="navbar-brand m-0 section-title">Blog Shopping Todo Dia</h1>
+
+      <!-- Botão de menu no mobile -->
+      <button class="navbar-toggler mx-auto mt-3" type="button" data-bs-toggle="collapse"
+        data-bs-target="#menu-navegacao" aria-controls="menu-navegacao" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu de navegação centralizado -->
+      <nav id="menu-navegacao" class="navbar-collapse collapse justify-content-center mt-3">
+        <ul class="nav flex-column flex-md-row text-center">
+          <li class="nav-item fw-bold">
+            <a href="/index.html#paginainicial" class="nav-link"><i class="bi bi-house-door me-1"></i>Site</a>
+          </li>
+          <li class="nav-item fw-bold">
+            <a href="/index.html#produtos" class="nav-link"><i class="bi bi-calendar-check me-1"></i>Ofertas</a>
+          </li>
+          <li class="nav-item fw-bold">
+            <a href="/blog/blog.html#blog" class="nav-link"><i class="bi bi-card-text me-1"></i>Últimos Reviews</a>
+          </li>
+          <li class="nav-item fw-bold">
+            <a href="/blog/blog.html" class="nav-link active"><i class="bi bi-journal-text me-1"></i>Blog</a>
+          </li>
+          <li class="nav-item fw-bold">
+            <a href="/sorteios.html" class="nav-link"><i class="bi bi-card-text me-1"></i>Sorteios e Promoções</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <!-- Conteúdo Principal -->
@@ -192,8 +196,8 @@
         <!-- Imagem de Destaque -->
         <div class="row mb-4">
           <div class="col text-center">
-            <img src="/images/ELETROELETRONICOS/televisao/1.jpg" alt="Smart TV Samsung 43 Full HD Preço e Especificações"
-              class="img-fluid">
+            <img src="/images/ELETROELETRONICOS/televisao/1.jpg"
+              alt="Smart TV Samsung 43 Full HD Preço e Especificações" class="img-fluid">
           </div>
         </div>
 
@@ -229,132 +233,159 @@
 
         <!-- Conteúdo do Post -->
         <div class="row">
-            <div class="col">
-              <article>
-                <p>A <strong>Smart TV Samsung UN43T5300 43" Full HD</strong> é uma excelente escolha para transformar seu ambiente em um verdadeiro centro de entretenimento. Com recursos avançados, design elegante e tecnologia de ponta, esta TV se destaca tanto em desempenho quanto em custo-benefício. Se você deseja elevar sua experiência de entretenimento, a Samsung UN43T5300 é a opção ideal.</p>
-  
-                <h2>Design Moderno e Sofisticado</h2>
-                <p>Com bordas finas e acabamento elegante, a Samsung UN43T5300 é projetada para se integrar perfeitamente a qualquer ambiente. Seu design minimalista oferece um toque de sofisticação, enquanto o suporte robusto garante segurança e estabilidade. As entradas de conexão foram estrategicamente posicionadas para facilitar a organização dos cabos, mantendo o visual sempre limpo e moderno.</p>
-  
-                <h2>Qualidade de Imagem Impressionante</h2>
-                <p>Experimente imagens incrivelmente nítidas e cores vibrantes com a tela de <strong>43 polegadas</strong> em <strong>Full HD</strong>. A tecnologia <strong>PurColor</strong> ajusta automaticamente as tonalidades para garantir uma experiência visual mais realista. Além disso, o recurso <strong>Ultra Clean View</strong> utiliza algoritmos avançados para reduzir ruídos e aprimorar detalhes, proporcionando imagens mais definidas mesmo em cenas de ação rápida.</p>
-  
-                <h2>Recursos Smart Avançados</h2>
-                <p>Com o sistema operacional <strong>Tizen</strong>, esta TV transforma o modo como você consome conteúdo. Navegue rapidamente por aplicativos populares como Netflix, Disney+, YouTube e Amazon Prime Video. A interface intuitiva permite acessar suas plataformas favoritas em poucos cliques, e o controle remoto inteligente facilita a busca de conteúdo por voz.</p>
-  
-                <h2>Conectividade e Integração</h2>
-                <p>A Samsung UN43T5300 é equipada com <strong>Wi-Fi integrado</strong>, <strong>duas entradas HDMI</strong> e <strong>uma porta USB</strong>, permitindo a conexão rápida de dispositivos como consoles de videogame, notebooks e aparelhos de som. A compatibilidade com o recurso <strong>SmartThings</strong> possibilita o controle de outros dispositivos inteligentes da sua casa, criando um ecossistema conectado e eficiente.</p>
-  
-                <h2>Qualidade de Som Imersiva</h2>
-                <p>Com <strong>20W de potência</strong> e a tecnologia <strong>Dolby Digital Plus</strong>, o áudio é claro, profundo e envolvente. Seja assistindo filmes de ação ou curtindo suas músicas favoritas, a experiência sonora é otimizada para imersão total. Se desejar ainda mais intensidade, a TV pode ser conectada facilmente a soundbars ou outros sistemas de áudio.</p>
-  
-                <h2>Recursos Adicionais que Fazem a Diferença</h2>
-                <p>Além dos recursos de imagem e som, esta TV oferece diversas funcionalidades extras, como o <strong>Modo Ambiente</strong>, que permite exibir fotos, informações ou mesmo obras de arte na tela quando a TV não está em uso. Também é possível espelhar a tela do seu smartphone ou tablet para assistir a conteúdos diretamente na TV.</p>
-  
-                <h2>Por Que Escolher a Samsung UN43T5300?</h2>
-                <p>A <strong>Smart TV Samsung UN43T5300</strong> se destaca por oferecer um conjunto completo de recursos que atende a diferentes perfis de usuários. Seja para maratonar séries, assistir às suas transmissões esportivas favoritas ou curtir jogos eletrônicos, esta TV entrega alta performance em todos os aspectos. Além disso, seu design elegante e funcionalidades smart tornam o seu dia a dia muito mais prático e prazeroso.</p>
-  
-                <p>Adquira já a sua <strong>Samsung UN43T5300</strong> e transforme sua sala em um verdadeiro cinema!</p>
-              </article>
-            </div>
+          <div class="col">
+            <article>
+              <p>A <strong>Smart TV Samsung UN43T5300 43" Full HD</strong> é uma excelente escolha para transformar seu
+                ambiente em um verdadeiro centro de entretenimento. Com recursos avançados, design elegante e tecnologia
+                de ponta, esta TV se destaca tanto em desempenho quanto em custo-benefício. Se você deseja elevar sua
+                experiência de entretenimento, a Samsung UN43T5300 é a opção ideal.</p>
+
+              <h2>Design Moderno e Sofisticado</h2>
+              <p>Com bordas finas e acabamento elegante, a Samsung UN43T5300 é projetada para se integrar perfeitamente
+                a qualquer ambiente. Seu design minimalista oferece um toque de sofisticação, enquanto o suporte robusto
+                garante segurança e estabilidade. As entradas de conexão foram estrategicamente posicionadas para
+                facilitar a organização dos cabos, mantendo o visual sempre limpo e moderno.</p>
+
+              <h2>Qualidade de Imagem Impressionante</h2>
+              <p>Experimente imagens incrivelmente nítidas e cores vibrantes com a tela de <strong>43 polegadas</strong>
+                em <strong>Full HD</strong>. A tecnologia <strong>PurColor</strong> ajusta automaticamente as
+                tonalidades para garantir uma experiência visual mais realista. Além disso, o recurso <strong>Ultra
+                  Clean View</strong> utiliza algoritmos avançados para reduzir ruídos e aprimorar detalhes,
+                proporcionando imagens mais definidas mesmo em cenas de ação rápida.</p>
+
+              <h2>Recursos Smart Avançados</h2>
+              <p>Com o sistema operacional <strong>Tizen</strong>, esta TV transforma o modo como você consome conteúdo.
+                Navegue rapidamente por aplicativos populares como Netflix, Disney+, YouTube e Amazon Prime Video. A
+                interface intuitiva permite acessar suas plataformas favoritas em poucos cliques, e o controle remoto
+                inteligente facilita a busca de conteúdo por voz.</p>
+
+              <h2>Conectividade e Integração</h2>
+              <p>A Samsung UN43T5300 é equipada com <strong>Wi-Fi integrado</strong>, <strong>duas entradas
+                  HDMI</strong> e <strong>uma porta USB</strong>, permitindo a conexão rápida de dispositivos como
+                consoles de videogame, notebooks e aparelhos de som. A compatibilidade com o recurso
+                <strong>SmartThings</strong> possibilita o controle de outros dispositivos inteligentes da sua casa,
+                criando um ecossistema conectado e eficiente.</p>
+
+              <h2>Qualidade de Som Imersiva</h2>
+              <p>Com <strong>20W de potência</strong> e a tecnologia <strong>Dolby Digital Plus</strong>, o áudio é
+                claro, profundo e envolvente. Seja assistindo filmes de ação ou curtindo suas músicas favoritas, a
+                experiência sonora é otimizada para imersão total. Se desejar ainda mais intensidade, a TV pode ser
+                conectada facilmente a soundbars ou outros sistemas de áudio.</p>
+
+              <h2>Recursos Adicionais que Fazem a Diferença</h2>
+              <p>Além dos recursos de imagem e som, esta TV oferece diversas funcionalidades extras, como o <strong>Modo
+                  Ambiente</strong>, que permite exibir fotos, informações ou mesmo obras de arte na tela quando a TV
+                não está em uso. Também é possível espelhar a tela do seu smartphone ou tablet para assistir a conteúdos
+                diretamente na TV.</p>
+
+              <h2>Por Que Escolher a Samsung UN43T5300?</h2>
+              <p>A <strong>Smart TV Samsung UN43T5300</strong> se destaca por oferecer um conjunto completo de recursos
+                que atende a diferentes perfis de usuários. Seja para maratonar séries, assistir às suas transmissões
+                esportivas favoritas ou curtir jogos eletrônicos, esta TV entrega alta performance em todos os aspectos.
+                Além disso, seu design elegante e funcionalidades smart tornam o seu dia a dia muito mais prático e
+                prazeroso.</p>
+
+              <p>Adquira já a sua <strong>Samsung UN43T5300</strong> e transforme sua sala em um verdadeiro cinema!</p>
+            </article>
           </div>
-  
+        </div>
+
 
         <!-- Seção de Ficha Técnica -->
-<section class="mt-5">
-    <h2 class="section-title text-center mb-4">Ficha Técnica da Smart TV Samsung UN43T5300</h2>
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered text-center">
-        <thead class="table-dark">
-          <tr>
-            <th>Especificação</th>
-            <th>Detalhes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Modelo</td>
-            <td>UN43T5300</td>
-          </tr>
-          <tr>
-            <td>Resolução</td>
-            <td>Full HD (1920 x 1080)</td>
-          </tr>
-          <tr>
-            <td>Tamanho da Tela</td>
-            <td>43 polegadas</td>
-          </tr>
-          <tr>
-            <td>Tecnologia de Imagem</td>
-            <td>PurColor, Ultra Clean View</td>
-          </tr>
-          <tr>
-            <td>Sistema Operacional</td>
-            <td>Tizen</td>
-          </tr>
-          <tr>
-            <td>Conectividade</td>
-            <td>Wi-Fi, Ethernet</td>
-          </tr>
-          <tr>
-            <td>Entradas</td>
-            <td>2x HDMI, 1x USB</td>
-          </tr>
-          <tr>
-            <td>Potência de Som</td>
-            <td>20W (2 canais)</td>
-          </tr>
-          <tr>
-            <td>Tecnologia de Som</td>
-            <td>Dolby Digital Plus</td>
-          </tr>
-          <tr>
-            <td>Recursos Smart</td>
-            <td>SmartThings, espelhamento de tela</td>
-          </tr>
-          <tr>
-            <td>Dimensões (com suporte)</td>
-            <td>97,0 x 63,0 x 18,0 cm</td>
-          </tr>
-          <tr>
-            <td>Dimensões (sem suporte)</td>
-            <td>97,0 x 57,1 x 7,4 cm</td>
-          </tr>
-          <tr>
-            <td>Peso</td>
-            <td>8,2 kg</td>
-          </tr>
-          <tr>
-            <td>Energia</td>
-            <td>Bivolt (110V/220V)</td>
-          </tr>
-          <tr>
-            <td>Garantia</td>
-            <td>12 meses</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  
+        <section class="mt-5">
+          <h2 class="section-title text-center mb-4">Ficha Técnica da Smart TV Samsung UN43T5300</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered text-center">
+              <thead class="table-dark">
+                <tr>
+                  <th>Especificação</th>
+                  <th>Detalhes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Modelo</td>
+                  <td>UN43T5300</td>
+                </tr>
+                <tr>
+                  <td>Resolução</td>
+                  <td>Full HD (1920 x 1080)</td>
+                </tr>
+                <tr>
+                  <td>Tamanho da Tela</td>
+                  <td>43 polegadas</td>
+                </tr>
+                <tr>
+                  <td>Tecnologia de Imagem</td>
+                  <td>PurColor, Ultra Clean View</td>
+                </tr>
+                <tr>
+                  <td>Sistema Operacional</td>
+                  <td>Tizen</td>
+                </tr>
+                <tr>
+                  <td>Conectividade</td>
+                  <td>Wi-Fi, Ethernet</td>
+                </tr>
+                <tr>
+                  <td>Entradas</td>
+                  <td>2x HDMI, 1x USB</td>
+                </tr>
+                <tr>
+                  <td>Potência de Som</td>
+                  <td>20W (2 canais)</td>
+                </tr>
+                <tr>
+                  <td>Tecnologia de Som</td>
+                  <td>Dolby Digital Plus</td>
+                </tr>
+                <tr>
+                  <td>Recursos Smart</td>
+                  <td>SmartThings, espelhamento de tela</td>
+                </tr>
+                <tr>
+                  <td>Dimensões (com suporte)</td>
+                  <td>97,0 x 63,0 x 18,0 cm</td>
+                </tr>
+                <tr>
+                  <td>Dimensões (sem suporte)</td>
+                  <td>97,0 x 57,1 x 7,4 cm</td>
+                </tr>
+                <tr>
+                  <td>Peso</td>
+                  <td>8,2 kg</td>
+                </tr>
+                <tr>
+                  <td>Energia</td>
+                  <td>Bivolt (110V/220V)</td>
+                </tr>
+                <tr>
+                  <td>Garantia</td>
+                  <td>12 meses</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
 
         <!-- Botão de Compra (final do post) -->
         <div class="row mb-4">
-            <div class="col text-center">
-              <a href="https://mercadolivre.com/sec/2jazAz8" target="_blank" class="btn btn-success">
-                <i class="bi bi-cart-fill me-1"></i> Smart TV Samsung 43 Full HD no Mercado Livre
-              </a>
-            </div>
+          <div class="col text-center">
+            <a href="https://mercadolivre.com/sec/2jazAz8" target="_blank" class="btn btn-success">
+              <i class="bi bi-cart-fill me-1"></i> Smart TV Samsung 43 Full HD no Mercado Livre
+            </a>
           </div>
-  
-          <div class="row mb-4">
-            <div class="col text-center">
-              <a href="https://amzn.to/4gv3xRi" target="_blank" class="btn btn-success"
-                style="background-color: black; border-color: black;">
-                <i class="bi bi-cart-fill me-1"></i> Smart TV Samsung 43 Full HD na Amazon
-              </a>
-            </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col text-center">
+            <a href="https://amzn.to/4gv3xRi" target="_blank" class="btn btn-success"
+              style="background-color: black; border-color: black;">
+              <i class="bi bi-cart-fill me-1"></i> Smart TV Samsung 43 Full HD na Amazon
+            </a>
           </div>
+        </div>
 
         <!-- Botão para Voltar ao Blog -->
         <div class="row mt-5">
@@ -398,6 +429,93 @@
       });
     });
   </script>
+
+  <!-- Scripts adicionais -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggler = document.querySelector('.navbar-toggler');
+      const collapse = document.querySelector('.navbar-collapse');
+
+      document.addEventListener('click', (event) => {
+        const isMenu = collapse.contains(event.target);
+        const isToggler = toggler.contains(event.target);
+
+        // Fecha o menu ao clicar fora
+        if (!isMenu && !isToggler && collapse.classList.contains('show')) {
+          collapse.classList.remove('show'); // Fecha o menu
+          toggler.setAttribute('aria-expanded', 'false'); // Atualiza o estado do botão
+        }
+      });
+    });
+  </script>
+
+  <!-- Botão Flutuante -->
+  <button id="btnTop" class="btn-top" aria-label="Voltar ao Topo">⬆️</button>
+
+  <!-- CSS do Botão -->
+  <style>
+    .btn-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--color-accent);
+      color: var(--color-white);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      z-index: 1000;
+    }
+
+    .btn-top:hover {
+      transform: translateY(-5px);
+      background-color: #cc4629;
+    }
+
+    /* Esconde o botão quando não é necessário */
+    .btn-top.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(100px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .btn-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <!-- JavaScript para funcionalidade -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnTop = document.getElementById('btnTop');
+
+      // Mostra/oculta o botão conforme o scroll
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          btnTop.classList.add('visible');
+          btnTop.classList.remove('hidden');
+        } else {
+          btnTop.classList.add('hidden');
+          btnTop.classList.remove('visible');
+        }
+      });
+
+      // Rola suavemente para o topo ao clicar no botão
+      btnTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
 
 </body>
 
