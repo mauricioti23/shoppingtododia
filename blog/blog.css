@@ -263,7 +263,9 @@ h2.section-title {
   }
 
   .produto-imagem {
-    height: 150px;
+    height: auto; /* Permite que a imagem mantenha sua proporção */
+    max-height: 200px; /* Define uma altura máxima para manter o layout organizado */
+    object-fit: contain; /* Garante que a imagem não será cortada */
   }
 
   .nav-produtos {
@@ -291,6 +293,7 @@ h2.section-title {
     overflow-x: hidden;
   }
 }
+
 
 @media (min-width: 768px) {
   .produto-imagem {
@@ -396,4 +399,82 @@ h2.section-title {
   aspect-ratio: 16 / 9; /* Mantém a proporção 16:9 de forma responsiva */
   object-fit: cover;
   border-radius: 12px;
+}
+
+/* Ajuste da logo e título no cabeçalho */
+#cabecalho {
+  background-color: var(--bg-dark);
+  text-align: center;
+}
+
+.logo-img {
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+}
+
+#cabecalho .section-title {
+  font-family: 'Lobster', cursive;
+  font-size: 28px;
+  color: var(--color-accent);
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Centraliza o menu no mobile */
+.navbar-collapse {
+  text-align: center;
+}
+
+.navbar-toggler {
+  border: none;
+  background-color: var(--color-accent);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* Ajusta o menu no mobile */
+@media (max-width: 767px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-link {
+    padding: 10px;
+  }
+
+  .logo-img {
+    height: 60px;
+  }
+
+  #cabecalho .section-title {
+    font-size: 22px;
+  }
+}
+
+/* Ajuste de espaçamento para evitar sobreposição */
+.container.flex-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Menu mobile */
+@media (max-width: 767px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: auto; /* Alterado de 100vh para auto */
+    max-height: 100vh; /* Evita que ultrapasse a altura da tela */
+    background-color: var(--bg-dark);
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto; /* Adiciona rolagem se necessário */
+    z-index: 1050; /* Aumentado para aparecer acima de outros elementos */
+  }
 }
