@@ -9,14 +9,14 @@
 
 :root {
   /* Fontes */
-  --font-primary: 'Roboto', sans-serif;
-  --font-secondary: 'Lobster', cursive;
-  --font-tertiary: 'Pacifico', cursive;
+  --font-primary: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+  --font-secondary: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+  --font-tertiary: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
 
   /* Cores */
   --color-black: #000;
   --color-white: #fff;
-  --color-accent: #FF5733;
+  --color-accent: #4A90E2; /* Azul TecMundo */
   --color-text-light: #eaeaea;
   --color-text-dark: #333;
   --color-highlight: #f4d03f;
@@ -190,14 +190,6 @@ h2.section-title {
   margin: 0 auto;
 }
 
-.card-body {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .card-title {
   font-size: 1.25rem;
   color: var(--color-accent);
@@ -218,130 +210,7 @@ h2.section-title {
 }
 
 .btn-primary:hover {
-  background-color: #cc4629;
-}
-
-/* =========================
-   Blog e Inscrição (Tela cheia)
-=========================== */
-#blog-section, #subscribe-section {
-  width: 100%;
-  padding: 60px 0;
-  background-size: cover;
-  background-position: center;
-  margin: 0;
-}
-
-.row.mx-0 {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.px-lg-5 {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-#blog-section .card, #subscribe-section .card {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-}
-
-#subscribe-section .col-lg-7, 
-#subscribe-section .col-lg-5 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* =========================
-   Responsividade
-=========================== */
-@media (max-width: 767px) {
-  .produto-card {
-    margin-bottom: 2rem;
-  }
-
-  .produto-imagem {
-    height: auto; /* Permite que a imagem mantenha sua proporção */
-    max-height: 200px; /* Define uma altura máxima para manter o layout organizado */
-    object-fit: contain; /* Garante que a imagem não será cortada */
-  }
-
-  .nav-produtos {
-    text-align: center;
-  }
-
-  .section-title {
-    font-size: 1.8rem;
-  }
-
-  #subscribe-section img {
-    max-width: 100%;
-  }
-
-  #subscribe-section iframe {
-    height: 450px;
-  }
-
-  .px-lg-5 {
-    padding-left: 2%;
-    padding-right: 2%;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
-}
-
-
-@media (min-width: 768px) {
-  .produto-imagem {
-    height: 250px;
-  }
-
-  .nav-produtos {
-    flex-direction: row;
-    justify-content: space-around;
-  }
-}
-
-@media (min-width: 1200px) {
-  .section-full-width {
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-}
-
-/* =========================
-   Cookie Banner
-=========================== */
-.cookie-banner {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--color-black);
-  color: var(--color-white);
-  padding: 15px;
-  text-align: center;
-  z-index: 9999;
-}
-
-.cookie-banner a {
-  color: var(--color-highlight);
-  text-decoration: underline;
-}
-
-.cookie-banner button {
-  margin-top: 10px;
-  background-color: var(--color-accent);
-  color: var(--color-white);
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
+  background-color: #357ABD;
 }
 
 /* =========================
@@ -350,7 +219,7 @@ h2.section-title {
 
 /* Botão Mercado Livre */
 .btn-mercado-livre {
-  background-color: #ffe600; /* Amarelo padrão Mercado Livre */
+  background-color: #ffe600;
   color: var(--color-black);
   font-weight: bold;
   padding: 10px 16px;
@@ -363,12 +232,12 @@ h2.section-title {
 }
 
 .btn-mercado-livre:hover {
-  background-color: #d4c000; /* Amarelo escurecido para hover */
+  background-color: #d4c000;
 }
 
 /* Botão Amazon */
 .btn-amazon {
-  background-color: #000; /* Preto padrão Amazon */
+  background-color: #000;
   color: var(--color-white);
   font-weight: bold;
   padding: 10px 16px;
@@ -381,32 +250,12 @@ h2.section-title {
 }
 
 .btn-amazon:hover {
-  background-color: #333; /* Preto mais claro para hover */
+  background-color: #333;
 }
 
 /* =========================
-   Media Container
+   Ajuste da Logo e Cabeçalho
 =========================== */
-.media-container {
-  max-width: 600px;  /* Tamanho máximo para imagens e vídeos */
-  width: 100%;
-  margin: 0 auto;  /* Centraliza o container */
-}
-
-.media-container img, 
-.media-container iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9; /* Mantém a proporção 16:9 de forma responsiva */
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-/* Ajuste da logo e título no cabeçalho */
-#cabecalho {
-  background-color: var(--bg-dark);
-  text-align: center;
-}
-
 .logo-img {
   height: 80px;
   display: block;
@@ -421,60 +270,18 @@ h2.section-title {
   margin-top: 10px;
 }
 
-/* Centraliza o menu no mobile */
-.navbar-collapse {
-  text-align: center;
-}
-
-.navbar-toggler {
-  border: none;
-  background-color: var(--color-accent);
-}
-
-.navbar-toggler-icon {
-  filter: invert(1);
-}
-
-/* Ajusta o menu no mobile */
-@media (max-width: 767px) {
-  .nav {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-link {
-    padding: 10px;
-  }
-
-  .logo-img {
-    height: 160px;
-  }
-
-  #cabecalho .section-title {
-    font-size: 22px;
-  }
-}
-
-/* Ajuste de espaçamento para evitar sobreposição */
-.container.flex-column {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Menu mobile */
 @media (max-width: 767px) {
   .navbar-collapse {
     position: absolute;
     top: 0;
     right: 0;
     width: 70%;
-    height: auto; /* Alterado de 100vh para auto */
-    max-height: 100vh; /* Evita que ultrapasse a altura da tela */
+    height: auto;
+    max-height: 100vh;
     background-color: var(--bg-dark);
     padding: 2rem;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-    overflow-y: auto; /* Adiciona rolagem se necessário */
-    z-index: 1050; /* Aumentado para aparecer acima de outros elementos */
+    overflow-y: auto;
+    z-index: 1050;
   }
 }
