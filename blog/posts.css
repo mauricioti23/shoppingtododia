@@ -1,0 +1,149 @@
+/* ===============================
+   Estilização Exclusiva para Posts
+   Baseado no padrão do site e do blog
+   Responsividade aprimorada
+=============================== */
+:root {
+    --color-accent: #4A90E2;
+    --color-dark: #333;
+    --color-white: #fff;
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Oswald', sans-serif;
+  }
+  
+  /* Container do post */
+  .post-container {
+    font-family: var(--font-primary);
+    max-width: 800px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.8;
+    color: var(--color-dark);
+  }
+  
+  /* Cabeçalho da Postagem */
+  .post-container header h1.section-title {
+    font-family: var(--font-secondary);
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Parágrafos e textos */
+  .post-container p {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+  }
+  
+  /* Títulos internos */
+  .post-container h2,
+  .post-container h3,
+  .post-container h4 {
+    margin: 1.5rem 0 1rem;
+    font-family: var(--font-secondary);
+    color: var(--color-accent);
+  }
+  
+  /* Imagens */
+  .post-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Tabelas (envolva as tabelas com uma div.table-responsive no HTML) */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .post-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  .post-container table th,
+  .post-container table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .post-container table th {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    font-weight: bold;
+  }
+  
+  /* Blockquotes */
+  .post-container blockquote {
+    border-left: 4px solid var(--color-accent);
+    padding-left: 15px;
+    font-style: italic;
+    margin: 1.5rem 0;
+    color: var(--color-dark);
+  }
+  
+  /* Listas */
+  .post-container ul,
+  .post-container ol {
+    margin: 1rem 0 1rem 2rem;
+    line-height: 1.6;
+  }
+  
+  /* Links internos */
+  .post-container a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+  .post-container a:hover {
+    color: #357ABD;
+  }
+  
+  /* ===============================
+     Media Queries para Responsividade
+  =============================== */
+  
+  /* Para telas até 768px */
+  @media (max-width: 768px) {
+    .post-container {
+      padding: 15px;
+    }
+    .post-container header h1.section-title {
+      font-size: 2rem;
+    }
+    .post-container p {
+      font-size: 0.95rem;
+    }
+    .post-container h2,
+    .post-container h3,
+    .post-container h4 {
+      font-size: 1.5rem;
+    }
+    .post-container table th,
+    .post-container table td {
+      padding: 8px 10px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Para telas até 480px */
+  @media (max-width: 480px) {
+    .post-container {
+      padding: 10px;
+    }
+    .post-container header h1.section-title {
+      font-size: 1.8rem;
+    }
+    .post-container p {
+      font-size: 0.9rem;
+    }
+    .post-container h2,
+    .post-container h3,
+    .post-container h4 {
+      font-size: 1.3rem;
+    }
+  }
+  

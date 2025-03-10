@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Meta tags básicas -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Todo Dia - Notícias, Reviews, Ofertas e Mais!</title>
+  <meta name="description" content="Shopping Todo Dia traz os melhores reviews, promoções e anúncios. Confira análises, ofertas e muito mais.">
+  <meta name="keywords" content="shopping, promoções, reviews, anúncios, instagram reels">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://shoppingtododia.com.br/">
+
+  <!-- Open Graph / Twitter / Structured Data -->
+  <meta property="og:title" content="Shopping Todo Dia - Reviews e Promoções">
+  <meta property="og:description" content="Confira os melhores reviews e promoções do dia.">
+  <meta property="og:image" content="https://shoppingtododia.com.br/images/hero-bg.jpg">
+  <meta property="og:url" content="https://shoppingtododia.com.br/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/images/logo.png" type="image/png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Principal -->
+  <link rel="stylesheet" href="main.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+  <!-- Scripts de Monitoramento (ex.: Google Tag Manager, Analytics) -->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KPV93XS7');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8P86T4KSW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-C8P86T4KSW');
+  </script>
+</head>
+
+<body>
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#333; color:#fff; padding:15px; text-align:center; z-index:9999;">
+    <p style="margin:0; font-size:16px;">
+      Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa 
+      <a href="/politica-de-privacidade.html" target="_blank" style="color:#f4d03f; text-decoration:underline;">Política de Privacidade</a>.
+    </p>
+    <button id="accept-cookies" class="btn btn-primary" style="margin-top:10px;">Aceitar</button>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header class="site-header">
+    <div class="container header-container">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="/"><img src="/images/logo/Shopping (3).png" alt="Logo Shopping Todo Dia" class="logo-img"></a>
+      </div>
+      <!-- Menu -->
+      <nav class="main-nav">
+        <ul class="menu">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#reviews">Análises / Reviews</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#promocoes">Promoções</a></li>
+          <li><a href="#instagram">Redes Sociais</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <!-- Campo de Pesquisa -->
+      <div class="search-bar">
+        <form action="/" method="get" role="search">
+          <input type="text" name="s" placeholder="Pesquisar..." aria-label="Pesquisar">
+          <button type="submit"><span class="icon-search">🔍</span></button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <!-- Título para o Carousel de Notícias Rápidas -->
+    <h2 class="section-title">Últimas Notícias</h2>
+
+    <!-- Carousel de Notícias Rápidas com Imagens de Prévia -->
+    <!-- Renomeamos as classes para evitar conflito com Bootstrap -->
+    <div class="noticias-carousel">
+      <div class="noticias-carousel-inner">
+        <div class="noticias-carousel-item">
+          <img src="/site/noticias/noticia 1/1.jpg"
+            alt="TikTok para navegador no PC ganha interface moderna, mais dinâmica e completa">
+          <a target="_blank" rel="noopener noreferrer" class="news-title"
+            href="https://www.tecmundo.com.br/internet/403061-tiktok-para-navegador-no-pc-ganha-interface-moderna-mais-dinamica-e-completa.htm">
+            TikTok para navegador no PC ganha interface moderna, mais dinâmica e completa
+          </a>
+          <p class="news-description">TikTok para navegador ganha melhorias para versão PC.</p>
+        </div>
+        <div class="noticias-carousel-item">
+          <img src="/site/noticias/noticia 2/1.jpg" alt="X, ex-Twitter, tem instabilidade global nesta segunda">
+          <a class="news-title"
+            href="https://g1.globo.com/tecnologia/noticia/2025/03/10/x-ex-twitter-apresenta-instabilidade-nesta-segunda-feira.ghtml">
+            X, ex-Twitter, tem instabilidade global nesta segunda
+          </a>
+          <p class="news-description">Relatos de instabilidade são registrados no Brasil, Estados Unidos e outros lugares do mundo, segundo o site Downdetector, desde o início da manhã.</p>
+        </div>
+        <div class="noticias-carousel-item">
+          <img src="/site/noticias/noticia 3/3.jpg" alt="Novo celular da Xiaomi terá botão copiado do iPhone; entenda">
+          <a class="news-title"
+            href="https://canaltech.com.br/smartphone/novo-celular-da-xiaomi-tera-botao-copiado-do-iphone-entenda/">
+            Novo celular da Xiaomi terá botão copiado do iPhone; entenda
+          </a>
+          <p class="news-description">O Xiaomi 16 Pro deve trazer um botão de ação semelhante ao visto na linha iPhone 16.</p>
+        </div>
+        <div class="noticias-carousel-item">
+          <img src="/site/noticias/noticia 4/5.jpg"
+            alt="Ofertas Semana do Consumidor: Samsung, Apple, Xiaomi e mais smartphone em promoção!">
+          <a class="news-title"
+            href="https://olhardigital.com.br/2025/03/10/reviews/ofertas-semana-do-consumidor-samsung-apple-xiaomi-e-mais-smartphone-em-promocao/">
+            Ofertas Semana do Consumidor: Samsung, Apple, Xiaomi e mais smartphone em promoção!
+          </a>
+          <p class="news-description">Confira uma seleção de smartphones em oferta durante a Semana do Consumidor e aproveite os descontos para economizar na sua compra!</p>
+        </div>
+      </div>
+      <button class="noticias-carousel-control prev">‹</button>
+      <button class="noticias-carousel-control next">›</button>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <!-- Seção de Reviews -->
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <h2>Reviews / Análise de Produtos</h2>
+        <div class="grid reviews-grid">
+          <article class="card review-card">
+            <img src="/images/ELETROELETRONICOS/jbl go 4/1.jpg" alt="Review da Caixa de Som JBL Go 4" loading="lazy">
+            <div class="card-content">
+              <h3>Caixa de Som JBL GO 4 – Análise Completa e Promoções</h3>
+              <p>BL GO 4 – Som Potente e Portabilidade em um Só Produto
+                Se você busca qualidade sonora, resistência e conectividade em um design compacto, a JBL GO 4 é a escolha ideal. Com um som potente para seu tamanho, essa caixa de som oferece uma experiência de áudio envolvente em qualquer ambiente.
+              </p>
+              <a href="https://shoppingtododia.com.br/blog/posts/review-jblgo4.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
+            </div>
+          </article>
+          <article class="card review-card">
+            <img src="/images/BELEZA E MODA/neutrogena hydro boost/3.jpg" alt="Hidratante Facial Neutrogena Hydro Boost Water Gel 50g" loading="lazy">
+            <div class="card-content">
+              <h3>Hidratante Facial Neutrogena Hydro Boost Water Gel 50g – Análise Completa e Promoções</h3>
+              <p>O Neutrogena Hidratante Facial Hydro Boost Water Gel 50g é o aliado perfeito para quem busca uma pele hidratada, saudável e com um toque de frescor ao longo do dia. Sua fórmula inovadora, com ácido hialurônico e textura em gel, oferece uma hidratação intensa sem deixar a pele oleosa, atendendo às necessidades de todos os tipos de pele, especialmente as mistas e oleosas.
+              </p>
+              <a href="https://shoppingtododia.com.br/blog/posts/review-neutrogena-hydroboost.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
+            </div>
+          </article>
+          <article class="card review-card">
+            <img src="/images/ELETROELETRONICOS/cameratplinktapo/2.jpg" alt="Câmera de Segurança Wi-Fi TP-Link Tapo C200" loading="lazy">
+            <div class="card-content">
+              <h3>Câmera de Segurança Wi-Fi TP-Link Tapo C200 – Análise Completa e Promoções</h3>
+              <p>A Câmera de Segurança Wi-Fi TP-Link Tapo C200 é uma solução completa para quem busca segurança e monitoramento eficiente em residências ou escritórios. Com funcionalidades avançadas, como rotação panorâmica, detecção de movimento e visão noturna, esta câmera se destaca pelo excelente custo-benefício e facilidade de uso.
+              </p>
+              <a href="https://shoppingtododia.com.br/blog/posts/review-cameratplinktapo.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
+            </div>
+          </article>
+          <article class="card review-card">
+            <img src="/images/ELETROELETRONICOS/air fryer mondial f31/1.jpg" alt="Fritadeira Elétrica Mondial AF-31 s 3,5L – Análise Completa" loading="lazy">
+            <div class="card-content">
+              <h3>Fritadeira Elétrica Mondial AF-31 s 3,5L</h3>
+              <p>Design Moderno e Compacto para a Fritadeira Mondial AF-31.
+                Com um visual elegante em preto, a Mondial AF-31 possui dimensões ideais que se adaptam a qualquer ambiente. Seu design moderno não só realça o estilo do seu lar, mas também facilita o armazenamento, otimizando seu espaço. O painel intuitivo e os detalhes cromados conferem um toque de sofisticação ao eletrodoméstico.
+              </p>
+              <a href="https://shoppingtododia.com.br/blog/posts/review-fritadeira.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção do Blog -->
+    <section class="section blog-section" id="blog">
+      <div class="container">
+        <h2>Blog</h2>
+        <div class="grid blog-grid">
+          <article class="card blog-card">
+            <img src="/images/SMARTPHONES/2025/comparativoapplegalaxyfoto.jpg" alt="iPhone 16 Pro Max Vs. Samsung Galaxy S25 Ultra - Qual é o melhor para você?" loading="lazy">
+            <div class="card-content">
+              <h3>iPhone 16 Pro Max Vs. Samsung Galaxy S25 Ultra - Qual é o melhor para você?</h3>
+              <p>Eles estão entre os lançamentos mais esperados de 2025, quem irá vencer? A marca ou a tecnologia?</p>
+              <a href="https://shoppingtododia.com.br/blog/posts/comparativosamsungxapple.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
+            </div>
+          </article>
+          <article class="card blog-card">
+            <img src="/images/ELETROELETRONICOS/aspiradorropoglass3.jpg" alt="Robô Aspirador Ropo Glass 3" loading="lazy">
+            <div class="card-content">
+              <h3>Robô Aspirador Ropo Glass 3 – Análise Completa</h3>
+              <p>O Aspirador Robô Inteligente Ropo Glass 3 é uma solução moderna para quem deseja manter a casa sempre limpa com o mínimo de esforço. Equipado com tecnologia avançada de navegação, potência de sucção eficiente e integração com assistentes virtuais, ele garante uma limpeza prática e eficiente para o dia a dia.
+              </p>
+              <a href="https://shoppingtododia.com.br/blog/posts/review-aspiradoropoglass3.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
+            </div>
+          </article>
+          <article class="card blog-card">
+            <img src="/images/SMARTPHONES/xiaomi redmi note 13/1.jpg" alt="Xiaomi Redmi Note 13 – Análise Completa" loading="lazy">
+            <div class="card-content">
+              <h3>Xiaomi Redmi Note 13 – Análise Completa</h3>
+              <p>O Xiaomi Redmi Note 13 é um dos mais recentes lançamentos da Xiaomi no segmento intermediário, trazendo melhorias significativas em tela, desempenho e câmeras. Com um design moderno, hardware atualizado e uma bateria de longa duração, ele se destaca como uma excelente opção para quem busca um smartphone equilibrado e acessível.
+              </p>
+              <a href="https://shoppingtododia.com.br/blog/posts/comparativosamsungxapple.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Promoções -->
+    <section class="section promo-section" id="promocoes">
+      <div class="container">
+        <h2>Promoções do Dia</h2>
+        <div class="grid promo-grid">
+          <article class="card promo-card">
+            <img src="/images/ELETROELETRONICOS/robo aspirador wap w1000/1.jpg" alt="Robô Aspirador Com Mapeamento Wap Robot W1000" loading="lazy">
+            <div class="card-content">
+              <h3>Robô Aspirador Com Mapeamento Wap Robot W1000</h3>
+              <p>R$ 1.330,30 – 33% OFF em 18x de R$73,91 sem juros com seu cartão de crédito Mercado Pago ou em até 24x sem cartão.
+              </p>
+              <a href="https://mercadolivre.com/sec/2nccghQ" target="_blank" rel="noopener noreferrer">Ver Oferta</a>
+            </div>
+          </article>
+          <article class="card promo-card">
+            <img src="/images/OFERTAS DO DIA/tvphilips43.jpg" alt="Smart TV Philips 43&quot; Full HD" loading="lazy">
+            <div class="card-content">
+              <h3>Smart TV Philips 43&quot; Full HD</h3>
+              <p>Oferta R$1.599,00 com 15% de desconto – De: R$1.899,00.</p>
+              <a href="https://amzn.to/3QYJDUe" target="_blank" rel="noopener noreferrer">Ver Oferta</a>
+            </div>
+          </article>
+        </div>
+        <div class="ad-banner">
+          <p>Anúncio</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Instagram Reels -->
+    <section class="section instagram-section" id="instagram">
+      <div class="container">
+        <h2>Instagram Reels</h2>
+        <div class="instagram-grid">
+          <!-- Reel 1 -->
+          <div class="instagram-reel">
+            <div class="iframe-container">
+              <iframe src="https://www.instagram.com/reel/DGLyXdpPjCU/embed" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <a href="https://amzn.to/4iEIDAq" class="btn-compre-agora" target="_blank" rel="noopener noreferrer">Compre agora</a>
+          </div>
+          <!-- Reel 2 -->
+          <div class="instagram-reel">
+            <div class="iframe-container">
+              <iframe src="https://www.instagram.com/reel/DGLw5jsPZCY/embed" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <a href="https://amzn.to/3XG167A" class="btn-compre-agora" target="_blank" rel="noopener noreferrer">Compre agora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção TikTok Vídeos -->
+    <section class="section tiktok-section" id="tiktok">
+      <div class="container">
+        <h2>TikTok Vídeos</h2>
+        <div class="tiktok-grid">
+          <div class="tiktok-video">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@betechers/video/7394887520674270470" data-video-id="7394887520674270470" style="max-width: 605px;min-width: 325px;">
+              <section>
+                <a target="_blank" title="@betechers" href="https://www.tiktok.com/@betechers?refer=embed">@betechers</a>
+                Eai, o que acharam da JBL GO 4?! Comenta aí!!
+                <a title="betech" target="_blank" href="https://www.tiktok.com/tag/betech?refer=embed">#BeTech</a>
+                <a title="unboxing" target="_blank" href="https://www.tiktok.com/tag/unboxing?refer=embed">#Unboxing</a>
+                <a title="review" target="_blank" href="https://www.tiktok.com/tag/review?refer=embed">#Review</a>
+                <a title="jbl" target="_blank" href="https://www.tiktok.com/tag/jbl?refer=embed">#JBL</a>
+                <a title="jblgo4" target="_blank" href="https://www.tiktok.com/tag/jblgo4?refer=embed">#JBLGO4</a>
+                <a target="_blank" title="♬ som original  - Be!Tech" href="https://www.tiktok.com/music/som-original-BeTech-7394888132858514181?refer=embed">
+                  ♬ som original - Be!Tech
+                </a>
+              </section>
+            </blockquote>
+            <script async src="https://www.tiktok.com/embed.js"></script>
+            <section>
+              <a target="_blank" title="@scout2015" href="https://www.tiktok.com/@scout2015?refer=embed"></a>
+            </section>
+            <a href="https://amzn.to/4iEIDAq" class="btn-compre-agora" target="_blank" rel="noopener noreferrer">Compre agora</a>
+          </div>
+          <div class="tiktok-video">
+            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@melhorcompra.com.br/video/7393077547673586950" data-video-id="7393077547673586950" style="max-width: 605px;min-width: 325px;">
+              <section>
+                <a target="_blank" title="@melhorcompra.com.br" href="https://www.tiktok.com/@melhorcompra.com.br?refer=embed">
+                  @melhorcompra.com.br
+                </a>
+                Nem sempre é preciso desembolsar uma grande quantia para garantir mais segurança de forma eficaz para sua casa!
+                Testamos a Câmera De Segurança Tapo C200 360º Wi-Fi Interna 1080p Full HD TP-Link, um produto com um ótimo custo-benefício.
+                Quer saber mais sobre o dispositivo? Assista o novo vídeo do nosso canal!
+                <a title="melhorcompra" target="_blank" href="https://www.tiktok.com/tag/melhorcompra?refer=embed">#MelhorCompra</a>
+                <a title="cameradeseguranca" target="_blank" href="https://www.tiktok.com/tag/cameradeseguranca?refer=embed">#cameradeseguranca</a>
+                <a title="segurancaresidencial" target="_blank" href="https://www.tiktok.com/tag/segurancaresidencial?refer=embed">#segurancaresidencial</a>
+                <a title="seguranca" target="_blank" href="https://www.tiktok.com/tag/seguranca?refer=embed">#seguranca</a>
+                <a title="tplink" target="_blank" href="https://www.tiktok.com/tag/tplink?refer=embed">#tplink</a>
+                <a title="tecnologia" target="_blank" href="https://www.tiktok.com/tag/tecnologia?refer=embed">#tecnologia</a>
+                <a title="compraonline" target="_blank" href="https://www.tiktok.com/tag/compraonline?refer=embed">#compraonline</a>
+                <a title="comprasegura" target="_blank" href="https://www.tiktok.com/tag/comprasegura?refer=embed">#comprasegura</a>
+                <a title="resenhadeprodutos" target="_blank" href="https://www.tiktok.com/tag/resenhadeprodutos?refer=embed">#resenhadeprodutos</a>
+                <a title="unboxing" target="_blank" href="https://www.tiktok.com/tag/unboxing?refer=embed">#unboxing</a>
+                <a title="comprainteligente" target="_blank" href="https://www.tiktok.com/tag/comprainteligente?refer=embed">#comprainteligente</a>
+                <a title="tecnologiaeinovacao" target="_blank" href="https://www.tiktok.com/tag/tecnologiaeinovacao?refer=embed">#tecnologiaeinovacao</a>
+                <a title="tecnologiadeponta" target="_blank" href="https://www.tiktok.com/tag/tecnologiadeponta?refer=embed">#tecnologiadeponta</a>
+                <a title="automacaoresidencial" target="_blank" href="https://www.tiktok.com/tag/automacaoresidencial?refer=embed">#automacaoresidencial</a>
+                <a title="casainteligente" target="_blank" href="https://www.tiktok.com/tag/casainteligente?refer=embed">#casainteligente</a>
+                <a target="_blank" title="♬ som original - melhorcompra.com.br" href="https://www.tiktok.com/music/som-original-7393077623856401158?refer=embed">
+                  ♬ som original - melhorcompra.com.br
+                </a>
+              </section>
+            </blockquote>
+            <script async src="https://www.tiktok.com/embed.js"></script>
+            <a href="https://amzn.to/3XG167A" class="btn-compre-agora" target="_blank" rel="noopener noreferrer">Compre agora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <p>&copy; 2025 Shopping Todo Dia. Todos os direitos reservados.</p>
+      <p><a href="mailto:shoppingtododiacontato@gmail.com">shoppingtododiacontato@gmail.com</a></p>
+      <nav class="footer-nav">
+        <ul>
+          <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+          <li><a href="termos_condicoes.html">Termos de Uso</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante para Voltar ao Topo -->
+  <button id="btnTop" class="btn-top" aria-label="Voltar ao Topo">⬆️</button>
+  
+  <!-- Estilos Inline do Botão (opcional, pode ser movido para o main.css) -->
+  <style>
+    .btn-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--color-accent, #4A90E2);
+      color: var(--color-white, #fff);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      z-index: 1000;
+    }
+    .btn-top:hover {
+      transform: translateY(-5px);
+      background-color: #cc4629;
+    }
+    .btn-top.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(100px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .btn-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <!-- Bootstrap JS Bundle (única inclusão) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script Carousel Notícias Rápidas (Renomeado) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const carouselInner = document.querySelector('.noticias-carousel-inner');
+      const items = document.querySelectorAll('.noticias-carousel-item');
+      const totalItems = items.length;
+      let currentIndex = 0;
+
+      // Define a largura do "inner" e dos itens
+      carouselInner.style.width = (totalItems * 100) + '%';
+      items.forEach(item => {
+        item.style.width = (100 / totalItems) + '%';
+      });
+
+      document.querySelector('.noticias-carousel-control.next').addEventListener('click', function () {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+      });
+
+      document.querySelector('.noticias-carousel-control.prev').addEventListener('click', function () {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+      });
+
+      function updateCarousel() {
+        const translateX = - (currentIndex * (100 / totalItems));
+        carouselInner.style.transform = 'translateX(' + translateX + '%)';
+      }
+    });
+  </script>
+
+  <!-- Script do Cookie Banner -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!localStorage.getItem('cookieConsent')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+      document.getElementById('accept-cookies').addEventListener('click', function() {
+        localStorage.setItem('cookieConsent', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+      });
+    });
+  </script>
+
+  <!-- Script para o Botão Flutuante -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnTop = document.getElementById('btnTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          btnTop.classList.add('visible');
+          btnTop.classList.remove('hidden');
+        } else {
+          btnTop.classList.add('hidden');
+          btnTop.classList.remove('visible');
+        }
+      });
+      btnTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+    
+  <!-- Script para Pesquisa (novo) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchForm = document.querySelector('.search-bar form');
+
+      searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const query = this.querySelector('input[name="s"]').value.trim();
+
+        if (query) {
+          if (!window.find(query)) {
+            alert('Nenhuma ocorrência encontrada para: ' + query);
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

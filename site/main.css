@@ -1,0 +1,455 @@
+/* Reset e Configuração Básica */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container Centralizado */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Cabeçalho */
+.site-header {
+  background: #333;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Desktop: Ajuste da Logo */
+.logo img.logo-img {
+  height: 80px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+/* Navegação Principal */
+.main-nav ul.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.main-nav ul.menu li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+.main-nav ul.menu li a:hover,
+.main-nav ul.menu li a.active {
+  color: #4A90E2;
+}
+
+/* Barra de Pesquisa */
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.search-bar button {
+  padding: 5px 10px;
+  border: none;
+  background: #4A90E2;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-bar button:hover {
+  background: #357ABD;
+}
+
+/* Seção Hero */
+.hero {
+  background: url('/images/hero-bg.jpg') no-repeat center center/cover;
+  color: #fff;
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+}
+
+.hero-container h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-container p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.ad-banner {
+  background: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+}
+
+/* Seções Comuns */
+.section {
+  padding: 60px 0;
+}
+
+.section h2,
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  color: #4A90E2;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Grades e Cards */
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.reviews-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.blog-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.promo-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-content h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card-content a {
+  text-decoration: none;
+  color: #4A90E2;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+.card-content a:hover {
+  color: #357ABD;
+}
+
+/* Instagram Section */
+.instagram-section .instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.instagram-reel {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Container responsivo para iframes (Aspect Ratio 9:16) */
+.iframe-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 177.78%;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Rodapé */
+.site-footer {
+  background: #333;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.site-footer p {
+  margin-bottom: 10px;
+}
+
+.site-footer a {
+  color: #4A90E2;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.site-footer a:hover {
+  color: #357ABD;
+}
+
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+}
+
+.footer-nav ul li a {
+  font-weight: 700;
+}
+
+/* Responsividade para Mobile */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo img.logo-img {
+    height: 70px;
+    border-radius: 10px;
+  }
+
+  .main-nav {
+    width: 100%;
+  }
+
+  .main-nav ul.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 0;
+  }
+
+  .main-nav ul.menu li {
+    flex: 0 0 33.33%;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .search-bar {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .search-bar form {
+    display: flex;
+    width: 100%;
+  }
+
+  .search-bar input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .search-bar button {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-left: none;
+    background: #4A90E2;
+    color: #fff;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  }
+
+  .search-bar button:hover {
+    background: #357ABD;
+  }
+
+  .hero-container h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-container p {
+    font-size: 1rem;
+  }
+
+  .iframe-container {
+    padding-top: 177.78%;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Carousel de Notícias Rápidas (Renomeado) */
+.noticias-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+}
+
+.noticias-carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.noticias-carousel-item {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 20px;
+}
+
+.noticias-carousel-item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Estilos para o título clicável e descrição das notícias */
+.news-title {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: #4A90E2;
+  text-decoration: none;
+  text-align: center;
+}
+
+.news-title:hover {
+  text-decoration: underline;
+}
+
+.news-description {
+  margin-top: 5px;
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+}
+
+/* Botões de controle do Carousel */
+.noticias-carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  outline: none;
+  z-index: 10;
+}
+
+.noticias-carousel-control.prev {
+  left: 10px;
+}
+
+.noticias-carousel-control.next {
+  right: 10px;
+}
+
+/* TikTok Section */
+.tiktok-section .tiktok-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  gap: 20px;
+}
+
+.tiktok-video {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Botão "Compre agora" */
+.btn-compre-agora {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #4A90E2;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.btn-compre-agora:hover {
+  background-color: #357ABD;
+}
