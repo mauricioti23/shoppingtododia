@@ -481,5 +481,17 @@
       });
     });
   </script>
+
+<!-- Código JavaScript para evitar a propagação do clique -->
+<script>
+  document.querySelectorAll('.noticias-carousel .news-title').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  });
+</script>
+</body>
+</html>
+
 </body>
 </html>
