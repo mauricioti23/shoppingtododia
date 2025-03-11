@@ -197,25 +197,30 @@ h2.section-title {
   text-align: center;
 }
 
+/* =========================
+   Botões - Centralizados para Responsividade
+=========================== */
+.btn-primary,
+.btn-mercado-livre,
+.btn-amazon {
+  display: block;              /* Garante que o elemento seja tratado como bloco */
+  width: 80%;
+  margin: 1rem auto;           /* Centraliza horizontalmente */
+  text-align: center;
+}
+
 .btn-primary {
   background-color: var(--color-accent);
   color: var(--color-white);
   border: none;
   padding: 10px 16px;
   border-radius: 6px;
-  text-align: center;
   transition: background-color 0.3s ease;
-  width: 80%;
-  margin-top: 1rem;
 }
 
 .btn-primary:hover {
   background-color: #357ABD;
 }
-
-/* =========================
-   Botões Personalizados
-=========================== */
 
 /* Botão Mercado Livre */
 .btn-mercado-livre {
@@ -225,10 +230,7 @@ h2.section-title {
   padding: 10px 16px;
   border: none;
   border-radius: 6px;
-  text-align: center;
   transition: background-color 0.3s ease;
-  width: 80%;
-  margin-top: 1rem;
 }
 
 .btn-mercado-livre:hover {
@@ -243,10 +245,7 @@ h2.section-title {
   padding: 10px 16px;
   border: none;
   border-radius: 6px;
-  text-align: center;
   transition: background-color 0.3s ease;
-  width: 80%;
-  margin-top: 1rem;
 }
 
 .btn-amazon:hover {
@@ -284,4 +283,10 @@ h2.section-title {
     overflow-y: auto;
     z-index: 1050;
   }
+}
+
+footer .btn-primary {
+  display: block !important;
+  width: fit-content;
+  margin: 1rem auto !important;
 }
