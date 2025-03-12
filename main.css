@@ -40,7 +40,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* Desktop: Ajuste da Logo */
 .logo img.logo-img {
   height: 80px;
   border-radius: 10px;
@@ -153,6 +152,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
+/* Cards Gerais */
 .card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -198,6 +198,15 @@ body {
   color: #357ABD;
 }
 
+/* Produtos Recomendados: Ajuste de imagem */
+/* Agora as imagens terão um tamanho fixo e serão ajustadas via object-fit: contain para evitar cortes */
+.promo-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  display: block;
+}
+
 /* Instagram Section */
 .instagram-section .instagram-grid {
   display: grid;
@@ -240,6 +249,7 @@ body {
 
 .site-footer p {
   margin-bottom: 10px;
+  font-size: 1rem;
 }
 
 .site-footer a {
@@ -247,106 +257,36 @@ body {
   text-decoration: none;
   margin: 0 10px;
   transition: color 0.3s;
+  font-size: 1rem;
 }
 
 .site-footer a:hover {
   color: #357ABD;
 }
 
-.footer-nav ul {
-  list-style: none;
+.footer-nav {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+}
+
+.footer-nav ul {
+  list-style: none;
   padding: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.footer-nav ul li {
+  display: inline;
 }
 
 .footer-nav ul li a {
   font-weight: 700;
 }
 
-/* Responsividade para Mobile */
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .logo img.logo-img {
-    height: 70px;
-    border-radius: 10px;
-  }
-
-  .main-nav {
-    width: 100%;
-  }
-
-  .main-nav ul.menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px 0;
-    gap: 0;
-  }
-
-  .main-nav ul.menu li {
-    flex: 0 0 33.33%;
-    text-align: center;
-    margin-bottom: 5px;
-  }
-
-  .search-bar {
-    width: 100%;
-    padding: 10px 0;
-  }
-
-  .search-bar form {
-    display: flex;
-    width: 100%;
-  }
-
-  .search-bar input {
-    flex: 1;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-  }
-
-  .search-bar button {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-left: none;
-    background: #4A90E2;
-    color: #fff;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-  }
-
-  .search-bar button:hover {
-    background: #357ABD;
-  }
-
-  .hero-container h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-container p {
-    font-size: 1rem;
-  }
-
-  .iframe-container {
-    padding-top: 177.78%;
-  }
-
-  .carousel-item img {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-/* Carousel de Notícias Rápidas (Renomeado) */
+/* Carousel de Notícias Rápidas */
 .noticias-carousel {
   position: relative;
   width: 100%;
@@ -377,7 +317,7 @@ body {
   margin: 0 auto;
 }
 
-/* Estilos para o título clicável e descrição das notícias */
+/* Título e Descrição das Notícias */
 .news-title {
   display: block;
   margin-top: 10px;
@@ -452,4 +392,202 @@ body {
 
 .btn-compre-agora:hover {
   background-color: #357ABD;
+}
+
+/* Seção de Tutoriais */
+.tutorial-section {
+  background-color: #f9f9f9;
+  padding: 60px 0;
+}
+
+.tutorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.tutorial-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s;
+}
+
+.tutorial-card:hover {
+  transform: translateY(-5px);
+}
+
+.tutorial-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.tutorial-card .card-content {
+  padding: 15px;
+}
+
+.tutorial-card .card-content h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.tutorial-card .card-content p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.tutorial-card .card-content a {
+  text-decoration: none;
+  color: #4A90E2;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+.tutorial-card .card-content a:hover {
+  color: #357ABD;
+}
+
+/* Página de Tutorial */
+.tutorial-content {
+  padding: 60px 0;
+}
+
+.tutorial-content h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  color: #4A90E2;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tutorial-image {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+.tutorial-content p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.tutorial-content h2 {
+  font-size: 1.8rem;
+  margin-top: 30px;
+  color: #333;
+}
+
+.tutorial-content ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.tutorial-content ul li {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.tutorial-content a {
+  color: #4A90E2;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tutorial-content a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade para Mobile */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo img.logo-img {
+    height: 70px;
+  }
+  
+  .main-nav {
+    width: 100%;
+  }
+  
+  .main-nav ul.menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 0;
+  }
+  
+  .main-nav ul.menu li {
+    flex: 0 0 33.33%;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  
+  .search-bar {
+    width: 100%;
+    padding: 10px 0;
+  }
+  
+  .search-bar form {
+    display: flex;
+    width: 100%;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .search-bar button {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-left: none;
+    background: #4A90E2;
+    color: #fff;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  }
+  
+  .search-bar button:hover {
+    background: #357ABD;
+  }
+  
+  .hero-container h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-container p {
+    font-size: 1rem;
+  }
+  
+  .iframe-container {
+    padding-top: 177.78%;
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .footer-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 }
