@@ -102,9 +102,50 @@
       text-decoration: underline;
     }
   </style>
+
+   <!-- Scripts de Monitoramento (ex.: Google Tag Manager, Analytics) -->
+   <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KPV93XS7');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8P86T4KSW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-C8P86T4KSW');
+  </script>
+
+  <!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '996639415210296');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=996639415210296&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
 </head>
 
 <body>
+  
   <!-- Cabeçalho -->
   <header class="site-header">
     <div class="container header-container">
@@ -113,13 +154,13 @@
       </div>
       <nav class="main-nav">
         <ul class="menu">
-          <li><a href="/">Home</a></li>
-          <li><a href="/#reviews">Análises / Reviews</a></li>
-          <li><a href="#tutoriais">Tutoriais</a></li>
-          <li><a href="/blog/blog.html">Blog</a></li>
-          <li><a href="/#promocoes">Promoções</a></li>
-          <li><a href="/#instagram">Redes Sociais</a></li>
-          <li><a href="/#contato">Contato</a></li>
+          <li><a href="/" target="_blank" rel="noopener noreferrer">Home</a></li>
+          <li><a href="/#reviews" target="_blank" rel="noopener noreferrer">Análises / Reviews</a></li>
+          <li><a href="/#tutoriais" target="_blank" rel="noopener noreferrer">Tutoriais</a></li>
+          <li><a href="/blog/blog.html" target="_blank" rel="noopener noreferrer">Blog</a></li>
+          <li><a href="/#promocoes" target="_blank" rel="noopener noreferrer">Promoções</a></li>
+          <li><a href="/#instagram" target="_blank" rel="noopener noreferrer">Redes Sociais</a></li>
+          <li><a href="/#contato" target="_blank" rel="noopener noreferrer">Contato</a></li>
         </ul>
       </nav>
     </div>
