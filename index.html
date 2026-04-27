@@ -123,57 +123,12 @@
     <h2 class="section-title">Últimas Notícias</h2>
 
      <!-- CAROUSEL DE NOTÍCIAS -->
-    <div class="noticias-carousel">
-      <div class="noticias-carousel-inner">
-        <!-- NOTICIA 1 -->
-        <div class="noticias-carousel-item">
-          <img src="/site/noticias/noticia 1/1.jpg"
-            alt="Virais de beleza: testamos 7 produtos que bombaram na web">
-          <a class="news-title"
-            href="https://revistaquem.globo.com/moda-e-beleza/noticia/2025/03/virais-de-beleza-testamos-7-produtos-que-bombaram-na-web.ghtml?utm_source=chatgpt.com"
-            target="_blank" rel="noopener noreferrer">
-            Virais de beleza: testamos 7 produtos que bombaram na web
-          </a>
-          <p class="news-description">De aplicador de hidratante a sérum para olheiras, veja o que está viralizando no universo da beleza.</p>
-        </div>
-        <!-- NOTICIA 2 -->
-        <div class="noticias-carousel-item">
-          <img src="/site/noticias/noticia 2/2.jpg"
-            alt="Samsung lança no Brasil celular com apenas meio centímetro de espessura. Veja preços.">
-          <a class="news-title"
-            href="https://oglobo.globo.com/economia/tecnologia/noticia/2025/05/21/samsung-lanca-no-brasil-celular-com-apenas-meio-centimetro-de-espessura-veja-precos.ghtml?utm_source=chatgpt.com"
-            target="_blank" rel="noopener noreferrer">
-            Samsung lança no Brasil celular com apenas meio centímetro de espessura. Veja preços.
-          </a>
-          <p class="news-description">Galaxy S25 Edge com nova tecnologia de vidro e tela de 6,7 polegadas.</p>
-        </div>
-        <!-- NOTICIA 3 -->
-        <div class="noticias-carousel-item">
-          <img src="/site/noticias/noticia 3/3.jpg"
-            alt="10 produtos que viralizaram nas redes sociais e custam até R$100">
-          <a class="news-title"
-            href="https://es360.com.br/dinheiro/noticia/produtos-que-viralizaram-nas-redes-sociais-e-custam-ate-r100/?utm_source=chatgpt.com"
-            target="_blank" rel="noopener noreferrer">
-            10 produtos que viralizaram nas redes sociais e custam até R$100
-          </a>
-          <p class="news-description">Dinheiro10 produtos que viralizaram nas redes sociais e custam até R$100
-É possível encontrar muitos produtos que se tornaram desejo de consumo por preços acessíveis</p>
-        </div>
-        <!-- NOTICIA 4 -->
-        <div class="noticias-carousel-item">
-          <img src="/site/noticias/noticia 4/4.jpg"
-            alt="Tagima Rio Negro: Sonoridade Forte E Custo-Benefício Elevado">
-          <a class="news-title"
-            href="https://blog.supersonora.com.br/2024/11/06/tagima-rio-negro-sonoridade-forte-e-custo-beneficio-elevado/?utm_source=chatgpt.com"
-            target="_blank" rel="noopener noreferrer">
-            Tagima Rio Negro: Sonoridade Forte E Custo-Benefício Elevado
-          </a>
-          <p class="news-description">Planejado nos mínimos detalhes pela Tagima e parte da renomada linha LatinAmerica, o Rio Negro é um violão desenvolvido para músicos e aspirantes que buscam um instrumento que oferece conforto ao tocar.</p>
-        </div>
-      </div>
-      <button class="noticias-carousel-control prev">‹</button>
-      <button class="noticias-carousel-control next">›</button>
-    </div>
+<div class="noticias-carousel">
+  <div id="carousel-news"></div>
+
+  <button class="noticias-carousel-control prev">‹</button>
+  <button class="noticias-carousel-control next">›</button>
+</div>
 
     <!-- Conteúdo Principal -->
     <!-- Seção de Reviews -->
@@ -584,36 +539,93 @@
   <!-- Bootstrap JS Bundle (única inclusão) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Script Carousel Notícias Rápidas (Renomeado) -->
+  <!-- Script Carousel Notícias Rápidas (Atualizado em 27.04.2026 -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const carouselInner = document.querySelector('.noticias-carousel-inner');
-      const items = document.querySelectorAll('.noticias-carousel-item');
-      const totalItems = items.length;
-      let currentIndex = 0;
+const API_URL = "https://api.shoppingtododia.com.br/news";
 
-      // Define a largura do "inner" e dos itens
-      carouselInner.style.width = (totalItems * 100) + '%';
-      items.forEach(item => {
-        item.style.width = (100 / totalItems) + '%';
-      });
+let index = 0;
+let items = [];
+let interval;
 
-      document.querySelector('.noticias-carousel-control.next').addEventListener('click', function () {
-        currentIndex = (currentIndex + 1) % totalItems;
-        updateCarousel();
-      });
+/* CARREGA NOTÍCIAS */
+async function carregarNoticias() {
+  try {
+    const res = await fetch(API_URL);
+    const json = await res.json();
 
-      document.querySelector('.noticias-carousel-control.prev').addEventListener('click', function () {
-        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-        updateCarousel();
-      });
+    const container = document.getElementById("carousel-news");
+    container.innerHTML = "";
 
-      function updateCarousel() {
-        const translateX = - (currentIndex * (100 / totalItems));
-        carouselInner.style.transform = 'translateX(' + translateX + '%)';
-      }
+    json.data.forEach((noticia) => {  
+      const item = document.createElement("div");
+      item.className = "noticias-carousel-item";
+
+      item.innerHTML = `
+        <img src="${noticia.image || 'https://via.placeholder.com/800x400'}" alt="${noticia.title}">
+        <div class="content">
+          <a class="news-title" href="${noticia.url}" target="_blank">
+            ${noticia.title}
+          </a>
+          <p class="news-description">
+            ${noticia.description || ""}
+          </p>
+        </div>
+      `;
+
+      container.appendChild(item);
     });
-  </script>
+
+    items = document.querySelectorAll(".noticias-carousel-item");
+
+    if (items.length > 0) {
+      items[0].classList.add("active");
+    }
+
+    iniciarCarousel();
+
+  } catch (err) {
+    console.error("Erro ao carregar notícias:", err);
+  }
+}
+
+/* MOSTRAR SLIDE */
+function mostrar(i) {
+  items.forEach(el => el.classList.remove("active"));
+  items[i].classList.add("active");
+}
+
+/* CONTROLES */
+function proximo() {
+  index = (index + 1) % items.length;
+  mostrar(index);
+}
+
+function anterior() {
+  index = (index - 1 + items.length) % items.length;
+  mostrar(index);
+}
+
+/* INICIAR */
+function iniciarCarousel() {
+  const nextBtn = document.querySelector(".next");
+  const prevBtn = document.querySelector(".prev");
+
+  nextBtn.onclick = proximo;
+  prevBtn.onclick = anterior;
+
+  // autoplay
+  interval = setInterval(proximo, 5000);
+
+  const carousel = document.querySelector(".noticias-carousel");
+
+  carousel.addEventListener("mouseenter", () => clearInterval(interval));
+  carousel.addEventListener("mouseleave", () => {
+    interval = setInterval(proximo, 5000);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", carregarNoticias);
+</script>
 
   <!-- Script do Cookie Banner -->
   <script>
@@ -665,14 +677,7 @@
     });
   </script>
 
-  <!-- Código JavaScript para evitar a propagação do clique -->
-  <script>
-    document.querySelectorAll('.noticias-carousel .news-title').forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.stopPropagation();
-      });
-    });
-  </script>
+ 
 </body>
 
 </html>

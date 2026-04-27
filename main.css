@@ -591,3 +591,94 @@ body {
     gap: 10px;
   }
 }
+
+/* ========================= */
+/* CAROUSEL ÚLTIMAS NOTÍCIAS */
+/* ========================= */
+
+.noticias-carousel {
+  position: relative;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+/* Container */
+#carousel-news {
+  position: relative;
+}
+
+/* CARD */
+.noticias-carousel-item {
+  display: none;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+/* ATIVO */
+.noticias-carousel-item.active {
+  display: block;
+}
+
+/* IMAGEM */
+.noticias-carousel-item img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover; /* mantém qualidade e padrão */
+  background: #eee;
+}
+
+/* CONTEÚDO */
+.noticias-carousel-item .content {
+  padding: 20px;
+  text-align: left;
+}
+
+.news-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.news-title:hover {
+  color: #4A90E2;
+}
+
+.news-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* BOTÕES - AJUSTE FINAL */
+.noticias-carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.7);
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* AGORA DENTRO DO CONTAINER (não corta mais) */
+.noticias-carousel-control.prev {
+  left: 10px;
+}
+
+.noticias-carousel-control.next {
+  right: 10px;
+}
