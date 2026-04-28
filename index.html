@@ -540,7 +540,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Script Carousel Notícias Rápidas (Atualizado em 28.04.2026 -->
-   
+
   <script>
 const API_URL = "https://api.shoppingtododia.com.br/news";
 
@@ -555,14 +555,12 @@ function registrarView(id) {
   }).catch(err => console.log("view error:", err));
 }
 
-/* CARREGA NOTÍCIAS */
+/* 🔄 CARREGA NOTÍCIAS */
 async function carregarNoticias() {
   try {
-    const res = await fetch(API_URL);
+    const res = await fetch(API_URL, { cache: "no-store" });
 
-    if (!res.ok) {
-      throw new Error("Erro HTTP: " + res.status);
-    }
+    if (!res.ok) throw new Error("HTTP " + res.status);
 
     const json = await res.json();
 
@@ -578,7 +576,7 @@ async function carregarNoticias() {
       item.className = "noticias-carousel-item";
 
       item.innerHTML = `
-        <img src="${noticia.image || 'https://via.placeholder.com/800x400'}" alt="${noticia.title}">
+        <img src="${noticia.image || 'https://via.placeholder.com/800x400'}">
         <div class="content">
           <a class="news-title" href="${noticia.url}" target="_blank"
              onclick="registrarView(${noticia.id})">
@@ -605,6 +603,14 @@ async function carregarNoticias() {
   } catch (err) {
     console.error("❌ Erro ao carregar notícias:", err);
   }
+}
+
+/* 🔁 ATUALIZA AUTOMÁTICA DO FEED (30 min) */
+function iniciarAutoRefresh() {
+  setInterval(() => {
+    console.log("🔄 Atualizando feed do backend...");
+    carregarNoticias();
+  }, 30 * 60 * 1000); // 30 minutos
 }
 
 /* SLIDE ATIVO */
@@ -650,7 +656,10 @@ function iniciarCarousel() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", carregarNoticias);
+document.addEventListener("DOMContentLoaded", () => {
+  carregarNoticias();
+  iniciarAutoRefresh();
+});
 </script>
 
   <!-- Script do Cookie Banner -->
