@@ -539,92 +539,142 @@
   <!-- Bootstrap JS Bundle (única inclusão) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Script Carousel Notícias Rápidas (Atualizado em 27.04.2026 -->
+  <!-- Script Carousel Notícias Rápidas (Atualizado em 28.04.2026 -->
   <script>
-const API_URL = "https://api.shoppingtododia.com.br/news";
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
 
-let index = 0;
-let items = [];
-let interval;
+const { Pool } = require("pg");
 
-/* CARREGA NOTÍCIAS */
-async function carregarNoticias() {
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// ===============================
+// 🔌 POSTGRES CONNECTION
+// ===============================
+const pool = new Pool({
+  user: "newsuser",
+  host: "localhost",
+  database: "newsdb",
+  password: "news123",
+  port: 5432,
+});
+
+// ===============================
+// 🔒 CORS
+// ===============================
+app.use(cors({
+  origin: [
+    "https://shoppingtododia.com.br",
+    "https://www.shoppingtododia.com.br",
+    "http://localhost:5500",
+    "http://127.0.0.1:5500"
+  ],
+  methods: ["GET", "POST"]
+}));
+
+app.use(express.json());
+
+// ===============================
+// 🩺 HEALTH CHECK
+// ===============================
+app.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    service: "news-api",
+    timestamp: new Date().toISOString()
+  });
+});
+
+// ===============================
+// 📰 GET NEWS (BASE FEED)
+// ===============================
+app.get("/news", async (req, res) => {
   try {
-    const res = await fetch(API_URL);
-    const json = await res.json();
+    const { category, limit = 10 } = req.query;
 
-    const container = document.getElementById("carousel-news");
-    container.innerHTML = "";
+    let query = `
+      SELECT * FROM news
+      ORDER BY published_at DESC
+      LIMIT $1
+    `;
 
-    json.data.forEach((noticia) => {  
-      const item = document.createElement("div");
-      item.className = "noticias-carousel-item";
+    let values = [limit];
 
-      item.innerHTML = `
-        <img src="${noticia.image || 'https://via.placeholder.com/800x400'}" alt="${noticia.title}">
-        <div class="content">
-          <a class="news-title" href="${noticia.url}" target="_blank">
-            ${noticia.title}
-          </a>
-          <p class="news-description">
-            ${noticia.description || ""}
-          </p>
-        </div>
+    if (category) {
+      query = `
+        SELECT * FROM news
+        WHERE category = $1
+        ORDER BY published_at DESC
+        LIMIT $2
       `;
-
-      container.appendChild(item);
-    });
-
-    items = document.querySelectorAll(".noticias-carousel-item");
-
-    if (items.length > 0) {
-      items[0].classList.add("active");
+      values = [category, limit];
     }
 
-    iniciarCarousel();
+    const result = await pool.query(query, values);
+
+    res.json({
+      source: "postgres",
+      total: result.rows.length,
+      data: result.rows
+    });
 
   } catch (err) {
-    console.error("Erro ao carregar notícias:", err);
+    console.error("❌ DB ERROR:", err.message);
+    res.status(500).json({ error: "Database error" });
   }
-}
+});
 
-/* MOSTRAR SLIDE */
-function mostrar(i) {
-  items.forEach(el => el.classList.remove("active"));
-  items[i].classList.add("active");
-}
+// ===============================
+// 🔥 TRENDING (POR VIEWS)
+// ===============================
+app.get("/news/trending", async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT * FROM news
+      ORDER BY views DESC, published_at DESC
+      LIMIT 10
+    `);
 
-/* CONTROLES */
-function proximo() {
-  index = (index + 1) % items.length;
-  mostrar(index);
-}
+    res.json({
+      source: "trending",
+      data: result.rows
+    });
 
-function anterior() {
-  index = (index - 1 + items.length) % items.length;
-  mostrar(index);
-}
+  } catch (err) {
+    console.error("❌ TRENDING ERROR:", err.message);
+    res.status(500).json({ error: "Trending error" });
+  }
+});
 
-/* INICIAR */
-function iniciarCarousel() {
-  const nextBtn = document.querySelector(".next");
-  const prevBtn = document.querySelector(".prev");
+// ===============================
+// 📊 INCREMENT VIEW (TRACK CLICK)
+// ===============================
+app.post("/news/:id/view", async (req, res) => {
+  try {
+    const { id } = req.params;
 
-  nextBtn.onclick = proximo;
-  prevBtn.onclick = anterior;
+    await pool.query(`
+      UPDATE news
+      SET views = views + 1
+      WHERE id = $1
+    `, [id]);
 
-  // autoplay
-  interval = setInterval(proximo, 5000);
+    res.json({ success: true });
 
-  const carousel = document.querySelector(".noticias-carousel");
+  } catch (err) {
+    console.error("❌ VIEW ERROR:", err.message);
+    res.status(500).json({ error: "View tracking error" });
+  }
+});
 
-  carousel.addEventListener("mouseenter", () => clearInterval(interval));
-  carousel.addEventListener("mouseleave", () => {
-    interval = setInterval(proximo, 5000);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", carregarNoticias);
+// ===============================
+// 🚀 START SERVER
+// ===============================
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 API rodando em http://0.0.0.0:${PORT}`);
+});
 </script>
 
   <!-- Script do Cookie Banner -->
