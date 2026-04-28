@@ -540,141 +540,117 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Script Carousel Notícias Rápidas (Atualizado em 28.04.2026 -->
+   
   <script>
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
+const API_URL = "https://api.shoppingtododia.com.br/news";
 
-const { Pool } = require("pg");
+let index = 0;
+let items = [];
+let interval;
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+/* 📊 REGISTRAR VIEW */
+function registrarView(id) {
+  fetch(`${API_URL}/${id}/view`, {
+    method: "POST"
+  }).catch(err => console.log("view error:", err));
+}
 
-// ===============================
-// 🔌 POSTGRES CONNECTION
-// ===============================
-const pool = new Pool({
-  user: "newsuser",
-  host: "localhost",
-  database: "newsdb",
-  password: "news123",
-  port: 5432,
-});
-
-// ===============================
-// 🔒 CORS
-// ===============================
-app.use(cors({
-  origin: [
-    "https://shoppingtododia.com.br",
-    "https://www.shoppingtododia.com.br",
-    "http://localhost:5500",
-    "http://127.0.0.1:5500"
-  ],
-  methods: ["GET", "POST"]
-}));
-
-app.use(express.json());
-
-// ===============================
-// 🩺 HEALTH CHECK
-// ===============================
-app.get("/", (req, res) => {
-  res.json({
-    status: "ok",
-    service: "news-api",
-    timestamp: new Date().toISOString()
-  });
-});
-
-// ===============================
-// 📰 GET NEWS (BASE FEED)
-// ===============================
-app.get("/news", async (req, res) => {
+/* CARREGA NOTÍCIAS */
+async function carregarNoticias() {
   try {
-    const { category, limit = 10 } = req.query;
+    const res = await fetch(API_URL);
 
-    let query = `
-      SELECT * FROM news
-      ORDER BY published_at DESC
-      LIMIT $1
-    `;
-
-    let values = [limit];
-
-    if (category) {
-      query = `
-        SELECT * FROM news
-        WHERE category = $1
-        ORDER BY published_at DESC
-        LIMIT $2
-      `;
-      values = [category, limit];
+    if (!res.ok) {
+      throw new Error("Erro HTTP: " + res.status);
     }
 
-    const result = await pool.query(query, values);
+    const json = await res.json();
 
-    res.json({
-      source: "postgres",
-      total: result.rows.length,
-      data: result.rows
+    if (!json || !Array.isArray(json.data)) {
+      throw new Error("Formato inválido da API");
+    }
+
+    const container = document.getElementById("carousel-news");
+    container.innerHTML = "";
+
+    json.data.forEach((noticia) => {
+      const item = document.createElement("div");
+      item.className = "noticias-carousel-item";
+
+      item.innerHTML = `
+        <img src="${noticia.image || 'https://via.placeholder.com/800x400'}" alt="${noticia.title}">
+        <div class="content">
+          <a class="news-title" href="${noticia.url}" target="_blank"
+             onclick="registrarView(${noticia.id})">
+            ${noticia.title}
+          </a>
+          <p class="news-description">
+            ${noticia.description || ""}
+          </p>
+        </div>
+      `;
+
+      container.appendChild(item);
     });
 
-  } catch (err) {
-    console.error("❌ DB ERROR:", err.message);
-    res.status(500).json({ error: "Database error" });
-  }
-});
+    items = document.querySelectorAll(".noticias-carousel-item");
 
-// ===============================
-// 🔥 TRENDING (POR VIEWS)
-// ===============================
-app.get("/news/trending", async (req, res) => {
-  try {
-    const result = await pool.query(`
-      SELECT * FROM news
-      ORDER BY views DESC, published_at DESC
-      LIMIT 10
-    `);
+    if (items.length > 0) {
+      index = 0;
+      items[0].classList.add("active");
+    }
 
-    res.json({
-      source: "trending",
-      data: result.rows
-    });
+    iniciarCarousel();
 
   } catch (err) {
-    console.error("❌ TRENDING ERROR:", err.message);
-    res.status(500).json({ error: "Trending error" });
+    console.error("❌ Erro ao carregar notícias:", err);
   }
-});
+}
 
-// ===============================
-// 📊 INCREMENT VIEW (TRACK CLICK)
-// ===============================
-app.post("/news/:id/view", async (req, res) => {
-  try {
-    const { id } = req.params;
+/* SLIDE ATIVO */
+function mostrar(i) {
+  if (!items.length) return;
 
-    await pool.query(`
-      UPDATE news
-      SET views = views + 1
-      WHERE id = $1
-    `, [id]);
+  items.forEach(el => el.classList.remove("active"));
+  items[i].classList.add("active");
+}
 
-    res.json({ success: true });
+/* PRÓXIMO */
+function proximo() {
+  if (!items.length) return;
+  index = (index + 1) % items.length;
+  mostrar(index);
+}
 
-  } catch (err) {
-    console.error("❌ VIEW ERROR:", err.message);
-    res.status(500).json({ error: "View tracking error" });
+/* ANTERIOR */
+function anterior() {
+  if (!items.length) return;
+  index = (index - 1 + items.length) % items.length;
+  mostrar(index);
+}
+
+/* CARROSSEL */
+function iniciarCarousel() {
+  const nextBtn = document.querySelector(".next");
+  const prevBtn = document.querySelector(".prev");
+
+  if (nextBtn) nextBtn.onclick = proximo;
+  if (prevBtn) prevBtn.onclick = anterior;
+
+  clearInterval(interval);
+  interval = setInterval(proximo, 5000);
+
+  const carousel = document.querySelector(".noticias-carousel");
+
+  if (carousel) {
+    carousel.onmouseenter = () => clearInterval(interval);
+    carousel.onmouseleave = () => {
+      interval = setInterval(proximo, 5000);
+    };
   }
-});
+}
 
-// ===============================
-// 🚀 START SERVER
-// ===============================
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 API rodando em http://0.0.0.0:${PORT}`);
-});
+document.addEventListener("DOMContentLoaded", carregarNoticias);
 </script>
 
   <!-- Script do Cookie Banner -->
