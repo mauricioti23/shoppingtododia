@@ -596,89 +596,198 @@ body {
 /* CAROUSEL ÚLTIMAS NOTÍCIAS */
 /* ========================= */
 
+/* Container principal */
 .noticias-carousel {
   position: relative;
-  max-width: 900px;
+  width: 100%;
+  max-width: 1000px;
   margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Container */
+/* Container do carrossel sem overflow */
 #carousel-news {
   position: relative;
+  background: #f9f9f9;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* CARD */
+/* Card da notícia */
 .noticias-carousel-item {
   display: none;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #ddd;
+  animation: fadeIn 0.5s ease;
 }
 
-/* ATIVO */
+/* Animação suave */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Card ativo */
 .noticias-carousel-item.active {
   display: block;
 }
 
-/* IMAGEM */
+/* Imagem - TAMANHO FIXO consistente */
 .noticias-carousel-item img {
   width: 100%;
-  height: 350px;
-  object-fit: cover; /* mantém qualidade e padrão */
-  background: #eee;
+  height: 400px;
+  object-fit: cover; /* Imagem cobre o espaço sem distorcer */
+  object-position: center;
+  background: #e0e0e0;
+  display: block;
 }
 
-/* CONTEÚDO */
+/* Conteúdo da notícia */
 .noticias-carousel-item .content {
-  padding: 20px;
-  text-align: left;
+  padding: 24px 30px;
+  background: #fff;
 }
 
+/* Título da notícia - SEO otimizado */
 .news-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #333;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
   text-decoration: none;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
 }
 
 .news-title:hover {
   color: #4A90E2;
+  text-decoration: underline;
 }
 
+/* Descrição da notícia */
 .news-description {
   font-size: 1rem;
-  color: #666;
-  line-height: 1.5;
+  color: #555;
+  line-height: 1.6;
+  margin-top: 5px;
 }
 
-/* BOTÕES - AJUSTE FINAL */
+/* BOTÕES DE NAVEGAÇÃO - FIXOS E CONSISTENTES */
 .noticias-carousel-control {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.7);
-  border: none;
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.65);
   color: #fff;
-  font-size: 1.8rem;
-  width: 45px;
-  height: 45px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
+  font-size: 28px;
+  font-weight: bold;
   cursor: pointer;
-  z-index: 20;
-
+  z-index: 30;
+  
+  /* Centralizar o símbolo */
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  /* Transição suave */
+  transition: all 0.3s ease;
+  
+  /* Remover outline padrão */
+  outline: none;
 }
 
-/* AGORA DENTRO DO CONTAINER (não corta mais) */
+/* Hover dos botões */
+.noticias-carousel-control:hover {
+  background: #4A90E2;
+  border-color: #fff;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Botão Anterior - SEMPRE à esquerda */
 .noticias-carousel-control.prev {
-  left: 10px;
+  left: 16px;
 }
 
+/* Botão Próximo - SEMPRE à direita */
 .noticias-carousel-control.next {
-  right: 10px;
+  right: 16px;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+  .noticias-carousel {
+    max-width: 95%;
+    margin: 30px auto;
+  }
+  
+  .noticias-carousel-item img {
+    height: 280px;
+  }
+  
+  .noticias-carousel-item .content {
+    padding: 18px 20px;
+  }
+  
+  .news-title {
+    font-size: 1.3rem;
+  }
+  
+  .news-description {
+    font-size: 0.9rem;
+  }
+  
+  .noticias-carousel-control {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+  
+  .noticias-carousel-control.prev {
+    left: 10px;
+  }
+  
+  .noticias-carousel-control.next {
+    right: 10px;
+  }
+}
+
+/* Responsividade para mobile */
+@media (max-width: 480px) {
+  .noticias-carousel-item img {
+    height: 220px;
+  }
+  
+  .noticias-carousel-item .content {
+    padding: 14px 16px;
+  }
+  
+  .news-title {
+    font-size: 1.1rem;
+  }
+  
+  .news-description {
+    font-size: 0.85rem;
+  }
+  
+  .noticias-carousel-control {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+/* Cache para melhor performance */
+.noticias-carousel-item img {
+  will-change: transform;
 }
