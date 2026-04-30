@@ -651,86 +651,23 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <!-- Script para carregar vídeos do YouTube (30.04.2026) -->
-<!-- Seção de Vídeos do YouTube -->
-<section class="section youtube-section" id="youtube-section">
-  <div class="container">
-    <h2>🎬 Vídeos em Destaque</h2>
-    <div id="youtube-container" class="youtube-grid">
-      <div class="loading">🎬 Carregando vídeos...</div>
-    </div>
-  </div>
-</section>
-
-<style>
-.youtube-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 25px;
-  margin-top: 20px;
-}
-.youtube-video {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-.youtube-video:hover {
-  transform: translateY(-5px);
-}
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-}
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.video-info {
-  padding: 15px;
-}
-.video-info h3 {
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-.video-info h3 a {
-  color: #333;
-  text-decoration: none;
-}
-.video-info h3 a:hover {
-  color: #4A90E2;
-}
-.video-badge {
-  display: inline-block;
-  background: #4A90E2;
-  color: #fff;
-  font-size: 0.7rem;
-  padding: 3px 8px;
-  border-radius: 12px;
-  margin-top: 8px;
-}
-.loading {
-  text-align: center;
-  padding: 40px;
-  color: #666;
-}
-</style>
-
+ 
 <script>
 async function carregarVideos() {
   const container = document.getElementById('youtube-container');
   if (!container) return;
   
+  container.innerHTML = '<div class="loading">🎬 Carregando vídeos...</div>';
+  
   try {
-    const response = await fetch('http://yt-api.shoppingtododia.com.br/youtube/home');
+    // Usar URL relativa - funciona em HTTP e HTTPS
+    const response = await fetch('/youtube/home');
     const data = await response.json();
     
-    if (data.success && data.data.length > 0) {
-      let html = '';
+    console.log('Dados recebidos:', data);
+    
+    if (data.success && data.data && data.data.length > 0) {
+      let html = '<div class="youtube-grid">';
       data.data.forEach(video => {
         html += `
           <div class="youtube-video">
@@ -738,25 +675,35 @@ async function carregarVideos() {
               <iframe src="https://www.youtube.com/embed/${video.video_id}" 
                       frameborder="0" 
                       allowfullscreen
-                      loading="lazy">
+                      loading="lazy"
+                      title="${video.title.replace(/"/g, '&quot;')}">
               </iframe>
             </div>
             <div class="video-info">
-              <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank">${video.title}</a></h3>
-              <p>📺 ${video.channel_title || 'Shopping Todo Dia'}</p>
-              <span class="video-badge">🔥 ${video.content_type || 'Destaque'}</span>
+              <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank" rel="noopener noreferrer">${escapeHtml(video.title)}</a></h3>
+              <p>📺 ${escapeHtml(video.channel_title || 'Shopping Todo Dia')}</p>
+              <span class="video-badge">🔥 ${escapeHtml(video.content_type || 'Destaque')}</span>
             </div>
           </div>
         `;
       });
+      html += '</div>';
       container.innerHTML = html;
     } else {
       container.innerHTML = '<p style="text-align:center">📹 Em breve, vídeos em destaque!</p>';
     }
   } catch (err) {
-    console.error('Erro:', err);
-    container.innerHTML = '<p style="text-align:center">⚠️ Não foi possível carregar os vídeos.</p>';
+    console.error('Erro ao carregar vídeos:', err);
+    container.innerHTML = '<p style="text-align:center">⚠️ Não foi possível carregar os vídeos. Tente novamente mais tarde.</p>';
   }
+}
+
+// Função para evitar XSS
+function escapeHtml(text) {
+  if (!text) return '';
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
 }
 
 document.addEventListener('DOMContentLoaded', carregarVideos);
