@@ -72,57 +72,36 @@ body {
 }
 
 .search-bar input {
-  padding: 5px 10px;
+  padding: 8px 12px;
   border: none;
   border-radius: 4px 0 0 4px;
   outline: none;
+  font-size: 0.9rem;
 }
 
 .search-bar button {
-  padding: 5px 10px;
+  padding: 8px 12px;
   border: none;
   background: #4A90E2;
   color: #fff;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
   transition: background 0.3s;
+  font-size: 0.9rem;
 }
 
 .search-bar button:hover {
   background: #357ABD;
 }
 
-/* Seção Hero */
-.hero {
-  background: url('/images/hero-bg.jpg') no-repeat center center/cover;
-  color: #fff;
-  padding: 100px 0;
-  text-align: center;
-  position: relative;
-}
-
-.hero-container h1 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.hero-container p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.ad-banner {
-  background: #f1f1f1;
-  padding: 10px;
-  text-align: center;
-  margin-top: 20px;
-  border: 1px solid #ddd;
-}
-
 /* Seções Comuns */
 .section {
   padding: 60px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.section:last-child {
+  border-bottom: none;
 }
 
 .section h2,
@@ -158,17 +137,19 @@ body {
   border-radius: 8px;
   overflow: hidden;
   background: #fff;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .card img {
   width: 100%;
-  display: block;
+  height: 200px;
   object-fit: cover;
+  display: block;
 }
 
 .card-content {
@@ -177,8 +158,9 @@ body {
 
 .card-content h3 {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 10px;
+  line-height: 1.4;
 }
 
 .card-content p {
@@ -190,7 +172,7 @@ body {
 .card-content a {
   text-decoration: none;
   color: #4A90E2;
-  font-weight: 700;
+  font-weight: 600;
   transition: color 0.3s;
 }
 
@@ -198,487 +180,25 @@ body {
   color: #357ABD;
 }
 
-/* Produtos Recomendados: Ajuste de imagem */
-/* Agora as imagens terão um tamanho fixo e serão ajustadas via object-fit: contain para evitar cortes */
+/* Produtos Recomendados */
 .promo-card img {
-  width: 100%;
-  height: 250px;
+  height: 200px;
   object-fit: contain;
-  display: block;
-}
-
-/* Seção YouTube */
-.youtube-section .youtube-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.youtube-video {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.youtube-video:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.youtube-video .video-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-  background: #000;
-}
-
-.youtube-video .video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.youtube-video .video-info {
-  padding: 15px;
-}
-
-.youtube-video .video-info h3 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.1rem;
-  margin: 0 0 8px 0;
-  line-height: 1.4;
-}
-
-.youtube-video .video-info h3 a {
-  color: #222;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.youtube-video .video-info h3 a:hover {
-  color: #4A90E2;
-}
-
-.youtube-video .video-info .channel-name {
-  font-size: 0.85rem;
-  color: #666;
-  margin-bottom: 8px;
-}
-
-.youtube-video .video-info .video-meta {
-  font-size: 0.75rem;
-  color: #999;
-  display: flex;
-  gap: 15px;
-}
-
-.video-badge {
-  display: inline-block;
-  background: #4A90E2;
-  color: white;
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  border-radius: 12px;
-  margin-bottom: 8px;
-}
-
-@media (max-width: 768px) {
-  .youtube-section .youtube-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
-/* Container responsivo para iframes (Aspect Ratio 9:16) */
-.iframe-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding-top: 177.78%;
-}
-
-.iframe-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-
-/* Rodapé */
-.site-footer {
-  background: #333;
-  color: #fff;
-  padding: 30px 0;
-  text-align: center;
-}
-
-.site-footer p {
-  margin-bottom: 10px;
-  font-size: 1rem;
-}
-
-.site-footer a {
-  color: #4A90E2;
-  text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.3s;
-  font-size: 1rem;
-}
-
-.site-footer a:hover {
-  color: #357ABD;
-}
-
-.footer-nav {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-}
-
-.footer-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-.footer-nav ul li {
-  display: inline;
-}
-
-.footer-nav ul li a {
-  font-weight: 700;
-}
-
-/* Carousel de Notícias Rápidas */
-.noticias-carousel {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  margin: 20px auto;
-  overflow: hidden;
-  border: 1px solid #ddd;
   background: #f9f9f9;
+  padding: 10px;
 }
 
-.noticias-carousel-inner {
-  display: flex;
-  transition: transform 0.5s ease;
-}
+/* ======================================== */
+/* CAROUSEL ÚLTIMAS NOTÍCIAS - OTIMIZADO    */
+/* ======================================== */
 
-.noticias-carousel-item {
-  flex-shrink: 0;
-  text-align: center;
-  padding: 20px;
-}
-
-.noticias-carousel-item img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Título e Descrição das Notícias */
-.news-title {
-  display: block;
-  margin-top: 10px;
-  font-size: 1.5rem;
-  color: #4A90E2;
-  text-decoration: none;
-  text-align: center;
-}
-
-.news-title:hover {
-  text-decoration: underline;
-}
-
-.news-description {
-  margin-top: 5px;
-  font-size: 1rem;
-  color: #666;
-  text-align: center;
-}
-
-/* Botões de controle do Carousel */
-.noticias-carousel-control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  outline: none;
-  z-index: 10;
-}
-
-.noticias-carousel-control.prev {
-  left: 10px;
-}
-
-.noticias-carousel-control.next {
-  right: 10px;
-}
-
-/* TikTok Section */
-.tiktok-section .tiktok-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
-  gap: 20px;
-}
-
-.tiktok-video {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
-}
-
-/* Botão "Compre agora" */
-.btn-compre-agora {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  background-color: #4A90E2;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-  text-align: center;
-}
-
-.btn-compre-agora:hover {
-  background-color: #357ABD;
-}
-
-/* Seção de Tutoriais */
-.tutorial-section {
-  background-color: #f9f9f9;
-  padding: 60px 0;
-}
-
-.tutorial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.tutorial-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
-  transition: transform 0.3s;
-}
-
-.tutorial-card:hover {
-  transform: translateY(-5px);
-}
-
-.tutorial-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-.tutorial-card .card-content {
-  padding: 15px;
-}
-
-.tutorial-card .card-content h3 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.tutorial-card .card-content p {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 10px;
-}
-
-.tutorial-card .card-content a {
-  text-decoration: none;
-  color: #4A90E2;
-  font-weight: 700;
-  transition: color 0.3s;
-}
-
-.tutorial-card .card-content a:hover {
-  color: #357ABD;
-}
-
-/* Página de Tutorial */
-.tutorial-content {
-  padding: 60px 0;
-}
-
-.tutorial-content h1 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 2.5rem;
-  color: #4A90E2;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.tutorial-image {
-  display: block;
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
-  border-radius: 8px;
-}
-
-.tutorial-content p {
-  font-size: 1.1rem;
-  color: #444;
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-.tutorial-content h2 {
-  font-size: 1.8rem;
-  margin-top: 30px;
-  color: #333;
-}
-
-.tutorial-content ul {
-  list-style: disc;
-  padding-left: 20px;
-  margin-bottom: 20px;
-}
-
-.tutorial-content ul li {
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-
-.tutorial-content a {
-  color: #4A90E2;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.tutorial-content a:hover {
-  text-decoration: underline;
-}
-
-/* Responsividade para Mobile */
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .logo img.logo-img {
-    height: 70px;
-  }
-  
-  .main-nav {
-    width: 100%;
-  }
-  
-  .main-nav ul.menu {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px 0;
-    gap: 0;
-  }
-  
-  .main-nav ul.menu li {
-    flex: 0 0 33.33%;
-    text-align: center;
-    margin-bottom: 5px;
-  }
-  
-  .search-bar {
-    width: 100%;
-    padding: 10px 0;
-  }
-  
-  .search-bar form {
-    display: flex;
-    width: 100%;
-  }
-  
-  .search-bar input {
-    flex: 1;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-  }
-  
-  .search-bar button {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-left: none;
-    background: #4A90E2;
-    color: #fff;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-  }
-  
-  .search-bar button:hover {
-    background: #357ABD;
-  }
-  
-  .hero-container h1 {
-    font-size: 2.5rem;
-  }
-  
-  .hero-container p {
-    font-size: 1rem;
-  }
-  
-  .iframe-container {
-    padding-top: 177.78%;
-  }
-  
-  .carousel-item img {
-    width: 100%;
-    max-width: none;
-  }
-  
-  .footer-nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-}
-
-/* ========================= */
-/* CAROUSEL ÚLTIMAS NOTÍCIAS */
-/* ========================= */
-
-/* Container principal */
 .noticias-carousel {
   position: relative;
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 20px auto 40px;
   padding: 0 50px;
 }
 
-/* Container interno */
 #carousel-news {
   background: #fff;
   border-radius: 12px;
@@ -686,7 +206,6 @@ body {
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-/* Card da notícia */
 .noticias-carousel-item {
   display: none;
 }
@@ -701,7 +220,6 @@ body {
   to { opacity: 1; }
 }
 
-/* Imagem - TAMANHO FIXO */
 .noticias-carousel-item img {
   width: 100%;
   height: 400px;
@@ -709,13 +227,11 @@ body {
   display: block;
 }
 
-/* Conteúdo */
 .noticias-carousel-item .content {
   padding: 25px 30px;
   background: #fff;
 }
 
-/* Título */
 .news-title {
   font-family: 'Oswald', sans-serif;
   font-size: 1.5rem;
@@ -731,20 +247,15 @@ body {
   text-decoration: underline;
 }
 
-/* Descrição */
 .news-description {
   font-size: 1rem;
   color: #555;
   line-height: 1.5;
 }
 
-/* ======================================== */
-/* BOTÕES - FIXOS, NÃO SE MOVEM             */
-/* ======================================== */
-
 .noticias-carousel-control {
   position: absolute !important;
-  top: 200px !important; /* Posição FIXA */
+  top: 200px !important;
   width: 48px !important;
   height: 48px !important;
   background: #4A90E2 !important;
@@ -778,67 +289,110 @@ body {
 }
 
 /* ======================================== */
-/* RESPONSIVIDADE                           */
+/* SEÇÃO YOUTUBE - VÍDEOS EM DESTAQUE       */
 /* ======================================== */
 
-@media (max-width: 768px) {
-  .noticias-carousel {
-    padding: 0 40px;
-  }
-  
-  .noticias-carousel-item img {
-    height: 300px;
-  }
-  
-  .noticias-carousel-control {
-    top: 150px !important; /* 300px / 2 = 150px */
-    width: 42px !important;
-    height: 42px !important;
-    font-size: 24px !important;
-  }
-  
-  .news-title {
-    font-size: 1.3rem;
-  }
-  
-  .noticias-carousel-item .content {
-    padding: 20px 25px;
-  }
+.youtube-section .youtube-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
 }
 
-@media (max-width: 480px) {
-  .noticias-carousel {
-    padding: 0 30px;
-  }
-  
-  .noticias-carousel-item img {
-    height: 220px;
-  }
-  
-  .noticias-carousel-control {
-    top: 110px !important; /* 220px / 2 = 110px */
-    width: 36px !important;
-    height: 36px !important;
-    font-size: 20px !important;
-  }
-  
-  .noticias-carousel-control.prev {
-    left: 5px !important;
-  }
-  
-  .noticias-carousel-control.next {
-    right: 5px !important;
-  }
-  
-  .noticias-carousel-item .content {
-    padding: 15px 18px;
-  }
-  
-  .news-title {
-    font-size: 1.1rem;
-  }
-  
-  .news-description {
-    font-size: 0.85rem;
-  }
+.youtube-video {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.youtube-video:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.youtube-video .video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: #000;
+}
+
+.youtube-video .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.youtube-video .video-info {
+  padding: 15px;
+}
+
+.youtube-video .video-info h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.youtube-video .video-info h3 a {
+  color: #222;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.youtube-video .video-info h3 a:hover {
+  color: #4A90E2;
+}
+
+/* Rodapé */
+.site-footer {
+  background: #333;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.site-footer p {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.site-footer a {
+  color: #4A90E2;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.site-footer a:hover {
+  color: #357ABD;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+/* Botão Topo */
+.btn-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #4A90E2;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.8rem;
 }
