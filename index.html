@@ -529,36 +529,35 @@
 
 
 <!-- SCRIPT COMPLETO PARA O SITE (30.04.2026) -->
+
 <script>
 // ============================================
 // NEWS API
 // ============================================
-const API_URL = "https://api.shoppingtododia.com.br/news";
+const NEWS_API = "https://api.shoppingtododia.com.br/news";
 let newsIndex = 0;
 let newsItems = [];
 let newsInterval;
 
 async function carregarNoticias() {
-  console.log("[NEWS] Carregando notícias...");
+  console.log("[NEWS] Carregando...");
   const container = document.getElementById("carousel-news");
   if (!container) return;
   
   try {
-    const res = await fetch(API_URL);
+    const res = await fetch(NEWS_API);
     if (!res.ok) throw new Error("HTTP " + res.status);
     const json = await res.json();
     
-    if (!json || !json.data) throw new Error("Formato inválido");
-    
     container.innerHTML = "";
     
-    json.data.forEach((noticia) => {
+    (json.data || []).forEach((noticia) => {
       const item = document.createElement("div");
       item.className = "noticias-carousel-item";
       item.innerHTML = `
         <img src="${noticia.image || 'https://via.placeholder.com/800x400/4A90E2/FFFFFF?text=📰+SHOPPING+TODODIA'}" alt="${noticia.title}">
         <div class="content">
-          <a class="news-title" href="${noticia.url}" target="_blank">${noticia.title}</a>
+          <a class="news-title" href="${noticia.url}" target="_blank" rel="noopener">${noticia.title}</a>
           <p class="news-description">${(noticia.description || "").substring(0, 120)}...</p>
         </div>
       `;
@@ -567,10 +566,9 @@ async function carregarNoticias() {
     
     newsItems = document.querySelectorAll(".noticias-carousel-item");
     if (newsItems.length) {
-      newsIndex = 0;
       newsItems[0].classList.add("active");
+      iniciarCarrossel();
     }
-    iniciarCarrossel();
     console.log(`[NEWS] ${newsItems.length} notícias`);
   } catch (err) {
     console.error("[NEWS] Erro:", err);
@@ -614,32 +612,27 @@ function iniciarCarrossel() {
 // YOUTUBE API
 // ============================================
 async function carregarVideos() {
-  console.log("[YT] Carregando vídeos...");
+  console.log("[YT] Carregando...");
   const container = document.getElementById('youtube-container');
   if (!container) return;
   
   container.innerHTML = '<div style="text-align:center;padding:40px;">🎬 Carregando vídeos...</div>';
   
   try {
-    const response = await fetch('https://yt-api.shoppingtododia.com.br/youtube/home');
-    const data = await response.json();
+    const res = await fetch('https://yt-api.shoppingtododia.com.br/youtube/home');
+    const data = await res.json();
     
-    if (data.success && data.data && data.data.length) {
+    if (data.data && data.data.length) {
       let html = '<div class="youtube-grid">';
-      data.data.forEach(video => {
+      data.data.forEach(v => {
         html += `
           <div class="youtube-video">
             <div class="video-container">
-              <iframe src="https://www.youtube.com/embed/${video.video_id}" 
-                      frameborder="0" 
-                      allowfullscreen
-                      loading="lazy"
-                      title="${video.title.replace(/"/g, '&quot;')}">
-              </iframe>
+              <iframe src="https://www.youtube.com/embed/${v.video_id}" frameborder="0" allowfullscreen loading="lazy" title="${v.title.replace(/"/g, '&quot;')}"></iframe>
             </div>
             <div class="video-info">
-              <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank" rel="noopener noreferrer">${video.title}</a></h3>
-              <p>📺 ${video.channel_title || 'YouTube'}</p>
+              <h3><a href="https://www.youtube.com/watch?v=${v.video_id}" target="_blank">${v.title}</a></h3>
+              <p>📺 ${v.channel_title || 'YouTube'}</p>
             </div>
           </div>
         `;
@@ -657,16 +650,12 @@ async function carregarVideos() {
 }
 
 // ============================================
-// INICIALIZAÇÃO
+// INICIAR
 // ============================================
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("[INIT] Inicializando site...");
   carregarNoticias();
   carregarVideos();
-  setInterval(() => {
-    carregarNoticias();
-    carregarVideos();
-  }, 30 * 60 * 1000);
+  setInterval(() => { carregarNoticias(); carregarVideos(); }, 30 * 60 * 1000);
 });
 </script>
 
