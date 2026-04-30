@@ -207,18 +207,92 @@ body {
   display: block;
 }
 
-/* Instagram Section */
-.instagram-section .instagram-grid {
+/* Seção YouTube */
+.youtube-section .youtube-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
 }
 
-.instagram-reel {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
+.youtube-video {
   background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.youtube-video:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.youtube-video .video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  background: #000;
+}
+
+.youtube-video .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.youtube-video .video-info {
+  padding: 15px;
+}
+
+.youtube-video .video-info h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.youtube-video .video-info h3 a {
+  color: #222;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.youtube-video .video-info h3 a:hover {
+  color: #4A90E2;
+}
+
+.youtube-video .video-info .channel-name {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.youtube-video .video-info .video-meta {
+  font-size: 0.75rem;
+  color: #999;
+  display: flex;
+  gap: 15px;
+}
+
+.video-badge {
+  display: inline-block;
+  background: #4A90E2;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .youtube-section .youtube-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 /* Container responsivo para iframes (Aspect Ratio 9:16) */
