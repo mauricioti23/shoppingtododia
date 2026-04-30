@@ -527,7 +527,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-  <!-- Script Carousel Notícias Rápidas (Corrigido 30.04.2026) -->
+<!-- Script Carousel Notícias Rápidas (Corrigido 30.04.2026) -->
 
 <script>
 const API_URL = "https://api.shoppingtododia.com.br/news";
@@ -536,123 +536,107 @@ let index = 0;
 let items = [];
 let interval;
 
-/* 📊 REGISTRAR VIEW */
-function registrarView(id) {
-  fetch(`${API_URL}/${id}/view`, {
-    method: "POST"
-  }).catch(err => console.log("view error:", err));
-}
-
-/* 🔄 CARREGA NOTÍCIAS */
 async function carregarNoticias() {
   try {
     const res = await fetch(API_URL, { cache: "no-store" });
-
     if (!res.ok) throw new Error("HTTP " + res.status);
-
     const json = await res.json();
-
-    if (!json || !Array.isArray(json.data)) {
-      throw new Error("Formato inválido da API");
-    }
+    if (!json || !Array.isArray(json.data)) throw new Error("Formato inválido");
 
     const container = document.getElementById("carousel-news");
     container.innerHTML = "";
 
-    json.data.forEach((noticia) => {
+    json.data.slice(0, 10).forEach((noticia) => {
       const item = document.createElement("div");
       item.className = "noticias-carousel-item";
-
       item.innerHTML = `
-        <img src="${noticia.image || 'https://via.placeholder.com/800x400/4A90E2/FFFFFF?text=📰+SHOPPING+TODODIA'}">
+        <img src="${noticia.image || 'https://via.placeholder.com/800x400/4A90E2/FFFFFF?text=📰+SHOPPING+TODODIA'}" alt="${noticia.title}">
         <div class="content">
-          <a class="news-title" href="${noticia.url}" target="_blank"
-             onclick="registrarView(${noticia.id})">
-            ${noticia.title}
-          </a>
-          <p class="news-description">
-            ${noticia.description || ""}
-          </p>
+          <a class="news-title" href="${noticia.url}" target="_blank">${noticia.title}</a>
+          <p class="news-description">${noticia.description?.substring(0, 120) || ""}...</p>
         </div>
       `;
-
       container.appendChild(item);
     });
 
     items = document.querySelectorAll(".noticias-carousel-item");
-
-    if (items.length > 0) {
-      index = 0;
-      items[0].classList.add("active");
-    }
-
+    if (items.length > 0) { index = 0; items[0].classList.add("active"); }
     iniciarCarousel();
-
-  } catch (err) {
-    console.error("❌ Erro ao carregar notícias:", err);
-  }
+  } catch (err) { console.error("Erro notícias:", err); }
 }
 
-/* 🔁 ATUALIZA AUTOMÁTICA DO FEED (30 min) */
-function iniciarAutoRefresh() {
-  setInterval(() => {
-    console.log("🔄 Atualizando feed do backend...");
-    carregarNoticias();
-  }, 30 * 60 * 1000);
-}
+function mostrar(i) { items.forEach(el => el.classList.remove("active")); items[i].classList.add("active"); }
+function proximo() { if (!items.length) return; index = (index + 1) % items.length; mostrar(index); }
+function anterior() { if (!items.length) return; index = (index - 1 + items.length) % items.length; mostrar(index); }
 
-/* SLIDE ATIVO */
-function mostrar(i) {
-  if (!items.length) return;
-
-  items.forEach(el => el.classList.remove("active"));
-  items[i].classList.add("active");
-}
-
-/* PRÓXIMO */
-function proximo() {
-  if (!items.length) return;
-  index = (index + 1) % items.length;
-  mostrar(index);
-}
-
-/* ANTERIOR */
-function anterior() {
-  if (!items.length) return;
-  index = (index - 1 + items.length) % items.length;
-  mostrar(index);
-}
-
-/* CARROSSEL - CORRIGIDO */
 function iniciarCarousel() {
   const nextBtn = document.querySelector(".noticias-carousel-control.next");
   const prevBtn = document.querySelector(".noticias-carousel-control.prev");
-
   if (nextBtn) nextBtn.onclick = proximo;
   if (prevBtn) prevBtn.onclick = anterior;
-
   clearInterval(interval);
   interval = setInterval(proximo, 5000);
-
   const carousel = document.querySelector(".noticias-carousel");
-
   if (carousel) {
     carousel.onmouseenter = () => clearInterval(interval);
-    carousel.onmouseleave = () => {
-      interval = setInterval(proximo, 5000);
-    };
+    carousel.onmouseleave = () => { interval = setInterval(proximo, 5000); };
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  carregarNoticias();
-  iniciarAutoRefresh();
-});
+document.addEventListener("DOMContentLoaded", () => { carregarNoticias(); setInterval(carregarNoticias, 30 * 60 * 1000); });
+</script>
+
+ <!-- Script para carregar vídeos do YouTube (30.04.2026) -->
+<script>
+async function carregarVideos() {
+  const container = document.getElementById('youtube-container');
+  if (!container) return;
+  
+  container.innerHTML = '<div class="loading" style="text-align: center; padding: 40px;">🎬 Carregando vídeos...</div>';
+  
+  try {
+    // URL completa com HTTPS
+    const response = await fetch('https://yt-api.shoppingtododia.com.br/youtube/home');
+    const data = await response.json();
+    
+    console.log('YouTube API response:', data);
+    
+    if (data.success && data.data && data.data.length > 0) {
+      let html = '<div class="youtube-grid">';
+      data.data.forEach(video => {
+        html += `
+          <div class="youtube-video">
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/${video.video_id}" 
+                      frameborder="0" 
+                      allowfullscreen
+                      loading="lazy"
+                      title="${video.title.replace(/"/g, '&quot;')}">
+              </iframe>
+            </div>
+            <div class="video-info">
+              <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank" rel="noopener noreferrer">${video.title}</a></h3>
+              <p>📺 ${video.channel_title || 'Shopping Todo Dia'}</p>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    } else {
+      container.innerHTML = '<p style="text-align:center">📹 Em breve, vídeos em destaque!</p>';
+    }
+  } catch (err) {
+    console.error('Erro ao carregar vídeos:', err);
+    container.innerHTML = '<p style="text-align:center">⚠️ Não foi possível carregar os vídeos. Tente novamente mais tarde.</p>';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', carregarVideos);
 </script>
 
 <!-- Script para carregar vídeos do YouTube (30.04.2026) -->
 
-<!-- Script para carregar vídeos do YouTube (CORRIGIDO) -->
 <script>
 async function carregarVideos() {
   const container = document.getElementById('youtube-container');
