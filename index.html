@@ -651,7 +651,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <!-- Script para carregar vídeos do YouTube (30.04.2026) -->
- 
+
 <script>
 async function carregarVideos() {
   const container = document.getElementById('youtube-container');
@@ -660,13 +660,10 @@ async function carregarVideos() {
   container.innerHTML = '<div class="loading">🎬 Carregando vídeos...</div>';
   
   try {
-    // Usar URL relativa - funciona em HTTP e HTTPS
-    const response = await fetch('/youtube/home');
+    const response = await fetch('https://yt-api.shoppingtododia.com.br/youtube/home');
     const data = await response.json();
     
-    console.log('Dados recebidos:', data);
-    
-    if (data.success && data.data && data.data.length > 0) {
+    if (data.success && data.data && data.data.length > 0 && data.data[0].video_id !== 'dQw4w9WgXcQ') {
       let html = '<div class="youtube-grid">';
       data.data.forEach(video => {
         html += `
@@ -675,14 +672,12 @@ async function carregarVideos() {
               <iframe src="https://www.youtube.com/embed/${video.video_id}" 
                       frameborder="0" 
                       allowfullscreen
-                      loading="lazy"
-                      title="${video.title.replace(/"/g, '&quot;')}">
+                      loading="lazy">
               </iframe>
             </div>
             <div class="video-info">
-              <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank" rel="noopener noreferrer">${escapeHtml(video.title)}</a></h3>
-              <p>📺 ${escapeHtml(video.channel_title || 'Shopping Todo Dia')}</p>
-              <span class="video-badge">🔥 ${escapeHtml(video.content_type || 'Destaque')}</span>
+              <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank">${video.title}</a></h3>
+              <p>📺 ${video.channel_title || 'YouTube'}</p>
             </div>
           </div>
         `;
@@ -693,17 +688,9 @@ async function carregarVideos() {
       container.innerHTML = '<p style="text-align:center">📹 Em breve, vídeos em destaque!</p>';
     }
   } catch (err) {
-    console.error('Erro ao carregar vídeos:', err);
-    container.innerHTML = '<p style="text-align:center">⚠️ Não foi possível carregar os vídeos. Tente novamente mais tarde.</p>';
+    console.error('Erro:', err);
+    container.innerHTML = '<p style="text-align:center">📹 Vídeos em destaque em breve!</p>';
   }
-}
-
-// Função para evitar XSS
-function escapeHtml(text) {
-  if (!text) return '';
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
 }
 
 document.addEventListener('DOMContentLoaded', carregarVideos);
