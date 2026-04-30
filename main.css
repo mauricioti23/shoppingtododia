@@ -605,64 +605,70 @@ body {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-/* Container do carrossel sem overflow */
+/* Container do carrossel - sem overflow visível */
 #carousel-news {
   position: relative;
-  background: #f9f9f9;
-  border-radius: 12px;
-  overflow: hidden;
+  background: #f5f5f5;
+  min-height: 500px;
 }
 
 /* Card da notícia */
 .noticias-carousel-item {
   display: none;
   background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  animation: fadeIn 0.5s ease;
-}
-
-/* Animação suave */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 /* Card ativo */
 .noticias-carousel-item.active {
   display: block;
+  opacity: 1;
+  animation: slideIn 0.4s ease;
 }
 
-/* Imagem - TAMANHO FIXO consistente */
+/* Animação suave */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Imagem - tamanho fixo e consistente */
 .noticias-carousel-item img {
   width: 100%;
   height: 400px;
-  object-fit: cover; /* Imagem cobre o espaço sem distorcer */
+  object-fit: cover;
   object-position: center;
-  background: #e0e0e0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: block;
 }
 
-/* Conteúdo da notícia */
+/* Conteúdo da notícia - sobreposto ou abaixo? Vamos deixar abaixo (melhor para SEO) */
 .noticias-carousel-item .content {
-  padding: 24px 30px;
+  padding: 25px 30px 30px 30px;
   background: #fff;
 }
 
 /* Título da notícia - SEO otimizado */
 .news-title {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #222;
   text-decoration: none;
   display: block;
   margin-bottom: 12px;
   line-height: 1.3;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .news-title:hover {
@@ -670,61 +676,109 @@ body {
   text-decoration: underline;
 }
 
-/* Descrição da notícia */
+/* Descrição */
 .news-description {
   font-size: 1rem;
   color: #555;
   line-height: 1.6;
-  margin-top: 5px;
+  margin-top: 8px;
 }
 
-/* BOTÕES DE NAVEGAÇÃO - FIXOS E CONSISTENTES */
+/* ======================================== */
+/* BOTÕES DE NAVEGAÇÃO - VERSÃO MELHORADA   */
+/* ======================================== */
+
+/* Botões - posicionados fora da imagem, no container */
 .noticias-carousel-control {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  background: rgba(0, 0, 0, 0.65);
-  color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  top: 200px; /* Posição fixa no meio da imagem (400px/2) */
+  width: 50px;
+  height: 50px;
+  background: #4A90E2;
+  color: white;
+  border: none;
   border-radius: 50%;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
-  z-index: 30;
+  z-index: 100;
   
-  /* Centralizar o símbolo */
+  /* Centralizar o conteúdo */
   display: flex;
   align-items: center;
   justify-content: center;
   
-  /* Transição suave */
+  /* Sombra e transição */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
   
-  /* Remover outline padrão */
+  /* Remover outline */
   outline: none;
 }
 
 /* Hover dos botões */
 .noticias-carousel-control:hover {
-  background: #4A90E2;
-  border-color: #fff;
-  transform: translateY(-50%) scale(1.05);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  background: #357ABD;
+  transform: scale(1.08);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-/* Botão Anterior - SEMPRE à esquerda */
+/* Botão Anterior - fixo na esquerda */
 .noticias-carousel-control.prev {
-  left: 16px;
+  left: 15px;
 }
 
-/* Botão Próximo - SEMPRE à direita */
+/* Botão Próximo - fixo na direita */
 .noticias-carousel-control.next {
-  right: 16px;
+  right: 15px;
 }
 
-/* Responsividade para tablets */
+/* ======================================== */
+/* VERSÃO ALTERNATIVA: Botões maiores e com fundo escuro */
+/* ======================================== */
+
+/* Se preferir botões mais destacados, descomente este bloco e comente o anterior */
+/*
+.noticias-carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 55px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: 2px solid rgba(255,255,255,0.8);
+  border-radius: 50%;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.noticias-carousel-control:hover {
+  background: #4A90E2;
+  border-color: white;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.noticias-carousel-control.prev {
+  left: 20px;
+}
+
+.noticias-carousel-control.next {
+  right: 20px;
+}
+*/
+
+/* ======================================== */
+/* RESPONSIVIDADE */
+/* ======================================== */
+
+/* Tablets */
 @media (max-width: 768px) {
   .noticias-carousel {
     max-width: 95%;
@@ -732,62 +786,93 @@ body {
   }
   
   .noticias-carousel-item img {
-    height: 280px;
-  }
-  
-  .noticias-carousel-item .content {
-    padding: 18px 20px;
-  }
-  
-  .news-title {
-    font-size: 1.3rem;
-  }
-  
-  .news-description {
-    font-size: 0.9rem;
+    height: 300px;
   }
   
   .noticias-carousel-control {
-    width: 40px;
-    height: 40px;
+    top: 150px; /* Ajuste para imagem menor (300px/2) */
+    width: 45px;
+    height: 45px;
     font-size: 24px;
   }
   
   .noticias-carousel-control.prev {
-    left: 10px;
+    left: 12px;
   }
   
   .noticias-carousel-control.next {
-    right: 10px;
+    right: 12px;
+  }
+  
+  .noticias-carousel-item .content {
+    padding: 20px 25px;
+  }
+  
+  .news-title {
+    font-size: 1.4rem;
+  }
+  
+  .news-description {
+    font-size: 0.95rem;
   }
 }
 
-/* Responsividade para mobile */
+/* Mobile */
 @media (max-width: 480px) {
   .noticias-carousel-item img {
     height: 220px;
   }
   
+  .noticias-carousel-control {
+    top: 110px; /* Ajuste para imagem menor (220px/2) */
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+  
+  .noticias-carousel-control.prev {
+    left: 8px;
+  }
+  
+  .noticias-carousel-control.next {
+    right: 8px;
+  }
+  
   .noticias-carousel-item .content {
-    padding: 14px 16px;
+    padding: 15px 18px;
   }
   
   .news-title {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   
   .news-description {
     font-size: 0.85rem;
   }
-  
-  .noticias-carousel-control {
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
-  }
 }
 
-/* Cache para melhor performance */
-.noticias-carousel-item img {
-  will-change: transform;
+/* ======================================== */
+/* MELHORIAS DE SEO E ACESSIBILIDADE       */
+/* ======================================== */
+
+/* Adicionar microdados para SEO (opcional, via HTML) */
+/* Garantir contraste adequado */
+.news-title {
+  color: #1a1a1a;
+}
+
+.news-description {
+  color: #4a4a4a;
+}
+
+/* Indicador de carregamento */
+.carousel-loading {
+  text-align: center;
+  padding: 50px;
+  color: #666;
+}
+
+/* Fallback para imagens quebradas */
+.noticias-carousel-item img[src=""] {
+  display: none;
 }
