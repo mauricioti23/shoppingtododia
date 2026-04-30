@@ -541,7 +541,9 @@
 
   <!-- Script Carousel Notícias Rápidas (Atualizado em 28.04.2026 -->
 
-  <script>
+  <!-- Script Carousel Notícias Rápidas (Corrigido) -->
+
+<script>
 const API_URL = "https://api.shoppingtododia.com.br/news";
 
 let index = 0;
@@ -576,7 +578,7 @@ async function carregarNoticias() {
       item.className = "noticias-carousel-item";
 
       item.innerHTML = `
-        <img src="${noticia.image || 'https://via.placeholder.com/800x400'}">
+        <img src="${noticia.image || 'https://via.placeholder.com/800x400/4A90E2/FFFFFF?text=📰+SHOPPING+TODODIA'}">
         <div class="content">
           <a class="news-title" href="${noticia.url}" target="_blank"
              onclick="registrarView(${noticia.id})">
@@ -610,7 +612,7 @@ function iniciarAutoRefresh() {
   setInterval(() => {
     console.log("🔄 Atualizando feed do backend...");
     carregarNoticias();
-  }, 30 * 60 * 1000); // 30 minutos
+  }, 30 * 60 * 1000);
 }
 
 /* SLIDE ATIVO */
@@ -635,10 +637,10 @@ function anterior() {
   mostrar(index);
 }
 
-/* CARROSSEL */
+/* CARROSSEL - CORRIGIDO */
 function iniciarCarousel() {
-  const nextBtn = document.querySelector(".next");
-  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".noticias-carousel-control.next");
+  const prevBtn = document.querySelector(".noticias-carousel-control.prev");
 
   if (nextBtn) nextBtn.onclick = proximo;
   if (prevBtn) prevBtn.onclick = anterior;
