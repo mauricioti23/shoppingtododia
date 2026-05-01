@@ -7,6 +7,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
@@ -14,6 +15,7 @@ body {
   background: #fff;
   color: #333;
   line-height: 1.6;
+  scroll-padding-top: 80px;
 }
 
 /* Container Centralizado */
@@ -44,10 +46,28 @@ body {
   gap: 15px;
 }
 
+/* Logo + Nome do Site Centralizado */
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .logo img.logo-img {
   height: 80px;
   border-radius: 10px;
   transition: all 0.3s;
+}
+
+.site-name {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.site-name a {
+  text-decoration: none;
+  color: #fff;
 }
 
 /* Botão Hambúrguer */
@@ -72,7 +92,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Animação do botão quando aberto */
 .menu-toggle.active span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
@@ -242,7 +261,7 @@ body {
   color: #357ABD;
 }
 
-/* Produtos Recomendados: Ajuste de imagem */
+/* Produtos Recomendados */
 .promo-card img {
   width: 100%;
   height: 250px;
@@ -266,7 +285,7 @@ body {
   background: #fff;
 }
 
-/* Container responsivo para iframes (Aspect Ratio 9:16) */
+/* Container responsivo para iframes */
 .iframe-container {
   position: relative;
   width: 100%;
@@ -636,6 +655,15 @@ body {
 }
 
 /* ======================================== */
+/* SCROLL BEHAVIOR AJUSTADO                 */
+/* ======================================== */
+
+section[id],
+[id] {
+  scroll-margin-top: 100px;
+}
+
+/* ======================================== */
 /* RESPONSIVIDADE MOBILE                    */
 /* ======================================== */
 
@@ -679,8 +707,18 @@ body {
     font-size: 1rem;
   }
 
+  /* Logo e Nome Centralizados */
+  .logo-wrapper {
+    flex: 1;
+    justify-content: center;
+  }
+  
   .logo img.logo-img {
-    height: 55px;
+    height: 48px;
+  }
+  
+  .site-name {
+    font-size: 1.2rem;
   }
 
   .search-bar {
@@ -797,40 +835,11 @@ body {
     font-size: 0.85rem;
   }
 
-  .logo img.logo-img {
-    height: 48px;
+  .site-name {
+    font-size: 0.9rem;
   }
 
   .main-nav {
     width: 85%;
   }
-}
-/* ======================================== */
-/* SCROLL BEHAVIOR AJUSTADO                 */
-/* ======================================== */
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 100px; /* Compensa o header fixo */
-}
-
-/* Ajuste para elementos com ID (seções) */
-section[id],
-[id] {
-  scroll-margin-top: 100px;
-}
-
-/* Garantir que o scroll não seja cortado */
-body {
-  scroll-padding-top: 80px;
-}
-/* Ajuste para scroll suave com header fixo */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px;
-}
-
-/* Alternativa para navegadores que não suportam scroll-padding-top */
-section[id] {
-  scroll-margin-top: 90px;
 }

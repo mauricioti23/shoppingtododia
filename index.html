@@ -2,6 +2,8 @@
 <html lang="pt-BR">
 
 <head>
+  <!-- Google Fonts - Fonte Caligráfica -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <!-- Meta tags básicas -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,12 +90,17 @@
     <button id="accept-cookies" class="btn btn-primary" style="margin-top:10px;">Aceitar</button>
   </div>
 
- <!-- Cabeçalho com Menu Hambúrguer -->
+ <!-- Cabeçalho com Menu Hambúrguer e Nome do Site -->
 <header class="site-header">
   <div class="container header-container">
-    <!-- Logo -->
-    <div class="logo">
-      <a href="/" id="logoHomeLink"><img src="/images/logo/Shopping (3).png" alt="Logo Shopping Todo Dia" class="logo-img"></a>
+    <!-- Logo + Nome do Site -->
+    <div class="logo-wrapper">
+      <div class="logo">
+        <a href="/"><img src="/images/logo/Shopping (3).png" alt="Logo Shopping Todo Dia" class="logo-img"></a>
+      </div>
+      <div class="site-name">
+        <a href="/">Shopping <span>Todo Dia</span></a>
+      </div>
     </div>
 
     <!-- Botão Hambúrguer -->
@@ -106,13 +113,13 @@
     <!-- Menu de Navegação -->
     <nav class="main-nav" id="mainNav">
       <ul class="menu">
-        <li><a href="#" class="active" data-section="home">Home</a></li>
-        <li><a href="#reviews" data-section="reviews">Análises / Reviews</a></li>
-        <li><a href="#tutoriais" data-section="tutoriais">Tutoriais</a></li>
-        <li><a href="/blog/blog.html" target="_blank" data-section="blog">Blog</a></li>
-        <li><a href="#promocoes" data-section="promocoes">Promoções</a></li>
-        <li><a href="#youtube" data-section="youtube">Vídeos em destaque</a></li>
-        <li><a href="#contato" data-section="contato">Contato</a></li>
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="#reviews">Análises / Reviews</a></li>
+        <li><a href="#tutoriais">Tutoriais</a></li>
+        <li><a href="/blog/blog.html" target="_blank">Blog</a></li>
+        <li><a href="#promocoes">Promoções</a></li>
+        <li><a href="#youtube">Vídeos em destaque</a></li>
+        <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
 
@@ -406,45 +413,6 @@
     </div>
   </footer>
 
-  <!-- Botão Flutuante para Voltar ao Topo -->
-  <button id="btnTop" class="btn-top" aria-label="Voltar ao Topo">⬆️</button>
-
-  <!-- Estilos Inline do Botão (opcional, pode ser movido para o main.css) -->
-  <style>
-    .btn-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: var(--color-accent, #4A90E2);
-      color: var(--color-white, #fff);
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 2rem;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      z-index: 1000;
-    }
-
-    .btn-top:hover {
-      transform: translateY(-5px);
-      background-color: #cc4629;
-    }
-
-    .btn-top.hidden {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(100px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .btn-top.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
 
   <!-- Bootstrap JS Bundle (única inclusão) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
