@@ -595,82 +595,62 @@ document.addEventListener('DOMContentLoaded', carregarNoticias);
 
 <!-- SCRIPT YOUTUBE (01.05.2026) o/ -->
 
-<!-- SCRIPT YOUTUBE CORRIGIDO - VERSÃO SIMPLIFICADA -->
-
 <script>
-// SCRIPT YOUTUBE SIMPLIFICADO
-(function() {
+async function carregarVideos() {
   const container = document.getElementById('youtube-container');
-  if (!container) {
-    console.error('Container #youtube-container não encontrado');
-    return;
-  }
+  if (!container) return;
   
   container.innerHTML = '<div style="text-align:center;padding:40px;">🎬 Carregando...</div>';
   
-  fetch('https://yt-api.shoppingtododia.com.br/home')
-    .then(resposta => resposta.json())
-    .then(dados => {
-      console.log('YT dados:', dados);
-      if (dados.success && dados.data && dados.data.length) {
-        let html = '<div class="youtube-grid">';
-        dados.data.forEach(video => {
-          html += `
-            <div class="youtube-video">
-              <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/${video.video_id}" frameborder="0" allowfullscreen loading="lazy"></iframe>
-              </div>
-              <div class="video-info">
-                <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank">${video.title}</a></h3>
-                <p>📺 ${video.channel_title || 'YouTube'}</p>
-              </div>
+  // Adicionar timestamp para evitar cache
+  const url = 'https://yt-api.shoppingtododia.com.br/home?_=' + Date.now();
+  
+  try {
+    console.log('[YT] Buscando:', url);
+    const resposta = await fetch(url);
+    const dados = await resposta.json();
+    
+    console.log('[YT] Dados:', dados);
+    
+    if (dados.success && dados.data && dados.data.length) {
+      let html = '<div class="youtube-grid">';
+      dados.data.forEach(video => {
+        html += `
+          <div class="youtube-video">
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/${video.video_id}" 
+                      frameborder="0" 
+                      allowfullscreen
+                      loading="lazy"
+                      title="${video.title.replace(/"/g, '&quot;')}">
+              </iframe>
             </div>
-          `;
-        });
-        html += '</div>';
-        container.innerHTML = html;
-      } else {
-        container.innerHTML = '<p style="text-align:center">📹 Em breve...</p>';
-      }
-    })
-    .catch(erro => {
-      console.error('Erro YT:', erro);
-      container.innerHTML = '<p style="text-align:center">⚠️ Erro ao carregar vídeos</p>';
-    });
-})();
+            <div class="video-info">
+              <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank" rel="noopener">${video.title}</a></h3>
+              <p>📺 ${video.channel_title || 'Shopping Todo Dia'}</p>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+      console.log('[YT] Vídeos carregados!');
+    } else {
+      container.innerHTML = '<p style="text-align:center">📹 Vídeos em breve!</p>';
+    }
+  } catch (err) {
+    console.error('[YT] Erro:', err);
+    container.innerHTML = '<p style="text-align:center">⚠️ Erro ao carregar vídeos</p>';
+  }
+}
+
+// Executar quando a página carregar
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', carregarVideos);
+} else {
+  carregarVideos();
+}
 </script>
-
-  <!-- Script do Cookie Banner -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (!localStorage.getItem('cookieConsent')) {
-        document.getElementById('cookie-banner').style.display = 'block';
-      }
-      document.getElementById('accept-cookies').addEventListener('click', function () {
-        localStorage.setItem('cookieConsent', 'true');
-        document.getElementById('cookie-banner').style.display = 'none';
-      });
-    });
-  </script>
-
-  <!-- Script para o Botão Flutuante -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const btnTop = document.getElementById('btnTop');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          btnTop.classList.add('visible');
-          btnTop.classList.remove('hidden');
-        } else {
-          btnTop.classList.add('hidden');
-          btnTop.classList.remove('visible');
-        }
-      });
-      btnTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
-  </script>
 
   <!-- Script para Pesquisa (novo) -->
   <script>
