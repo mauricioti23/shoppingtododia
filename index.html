@@ -596,78 +596,55 @@ document.addEventListener('DOMContentLoaded', carregarNoticias);
 <!-- SCRIPT YOUTUBE (01.05.2026) o/ -->
 
 <script>
-// SCRIPT YOUTUBE VÍDEOS - VERSÃO FINAL COM FALLBACK
+// SCRIPT YOUTUBE VÍDEOS - URL CORRIGIDA
 async function carregarVideos() {
   const container = document.getElementById('youtube-container');
   if (!container) return;
   
   container.innerHTML = '<div style="text-align:center;padding:40px;">🎬 Carregando vídeos...</div>';
   
-  // Lista de URLs para tentar
-  const urls = [
-    'https://yt-api.shoppingtododia.com.br/youtube/home',
-    'https://yt-api.shoppingtododia.com.br/home',
-    'http://yt-api.shoppingtododia.com.br:3002/youtube/home',
-    'https://api.shoppingtododia.com.br/youtube/home'
-  ];
-  
-  let tentativa = 0;
-  
-  for (const url of urls) {
-    try {
-      console.log(`[YT] Tentando URL ${tentativa + 1}: ${url}`);
-      const response = await fetch(url, { method: 'GET', cache: 'no-store' });
-      console.log(`[YT] Status: ${response.status}`);
-      
-      if (response.ok) {
-        const data = await response.json();
-        console.log('[YT] Dados recebidos:', data);
-        
-        if (data.success && data.data && data.data.length > 0) {
-          let html = '<div class="youtube-grid">';
-          data.data.forEach(video => {
-            html += `
-              <div class="youtube-video">
-                <div class="video-container">
-                  <iframe src="https://www.youtube.com/embed/${video.video_id}" 
-                          frameborder="0" 
-                          allowfullscreen
-                          loading="lazy"
-                          title="${video.title.replace(/"/g, '&quot;')}">
-                  </iframe>
-                </div>
-                <div class="video-info">
-                  <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank" rel="noopener noreferrer">${video.title}</a></h3>
-                  <p>📺 ${video.channel_title || 'Shopping Todo Dia'}</p>
-                </div>
-              </div>
-            `;
-          });
-          html += '</div>';
-          container.innerHTML = html;
-          console.log('[YT] Vídeos carregados com sucesso!');
-          return;
-        } else {
-          console.log('[YT] Nenhum vídeo nos dados');
-          container.innerHTML = '<p style="text-align:center">📹 Em breve, vídeos em destaque!</p>';
-          return;
-        }
-      }
-    } catch (err) {
-      console.log(`[YT] Erro na tentativa ${tentativa + 1}:`, err.message);
+  try {
+    // URL CORRETA - agora é /home, não /youtube/home
+    const response = await fetch('https://yt-api.shoppingtododia.com.br/home');
+    console.log('[YT] Status:', response.status);
+    
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    console.log('[YT] Dados:', data);
+    
+    if (data.success && data.data && data.data.length > 0) {
+      let html = '<div class="youtube-grid">';
+      data.data.forEach(video => {
+        html += `
+          <div class="youtube-video">
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/${video.video_id}" 
+                      frameborder="0" 
+                      allowfullscreen
+                      loading="lazy"
+                      title="${video.title.replace(/"/g, '&quot;')}">
+              </iframe>
+            </div>
+            <div class="video-info">
+              <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank" rel="noopener noreferrer">${video.title}</a></h3>
+              <p>📺 ${video.channel_title || 'Shopping Todo Dia'}</p>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+      console.log('[YT] Vídeos carregados!');
+    } else {
+      container.innerHTML = '<p style="text-align:center">📹 Em breve, vídeos em destaque!</p>';
     }
-    tentativa++;
+  } catch (err) {
+    console.error('[YT] Erro:', err);
+    container.innerHTML = '<p style="text-align:center">⚠️ Erro ao carregar vídeos. Tente novamente.</p>';
   }
-  
-  console.error('[YT] Todas as tentativas falharam');
-  container.innerHTML = '<p style="text-align:center">⚠️ Erro ao carregar vídeos. Tente novamente.</p>';
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', carregarVideos);
-} else {
-  carregarVideos();
-}
+document.addEventListener('DOMContentLoaded', carregarVideos);
 </script>
 
   <!-- Script do Cookie Banner -->
