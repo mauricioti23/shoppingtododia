@@ -530,6 +530,7 @@
 
 <!-- SCRIPT COMPLETO PARA O SITE (01.05.2026) -->
  
+ 
 <script>
 (async function() {
   // ==================== NOTÍCIAS ====================
@@ -539,12 +540,15 @@
   async function loadNews() {
     if (!newsContainer) return;
     try {
-      const res = await fetch('http://136.248.121.252:3001/api/news/news', {
+      // URL CORRIGIDA - usa o domínio com HTTPS
+      const res = await fetch('https://api.shoppingtododia.com.br/news', {
         cache: 'no-store',
         headers: { 'Cache-Control': 'no-cache' }
       });
+      
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = await res.json();
+      
       if (!json.data || !json.data.length) throw new Error('Sem dados');
       
       newsContainer.innerHTML = '';
@@ -560,6 +564,7 @@
         `;
         newsContainer.appendChild(div);
       });
+      
       newsItems = document.querySelectorAll('.noticias-carousel-item');
       if (newsItems.length) {
         newsItems[0].classList.add('active');
@@ -602,6 +607,7 @@
   setInterval(() => { loadNews(); }, 30 * 60 * 1000);
 })();
 </script>
+
 
   <!-- Script do Cookie Banner -->
   <script>
