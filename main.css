@@ -768,3 +768,62 @@ body {
     font-size: 0.85rem;
   }
 }
+
+/* Adicione ao final do seu main.css */
+.youtube-section .youtube-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.youtube-video {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.youtube-video:hover {
+  transform: translateY(-5px);
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  background: #000;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-info {
+  padding: 15px;
+}
+
+.video-info h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.video-info h3 a {
+  color: #222;
+  text-decoration: none;
+}
+
+.video-info h3 a:hover {
+  color: #4A90E2;
+}
+
+.video-info p {
+  color: #666;
+  font-size: 0.85rem;
+}
