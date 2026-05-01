@@ -88,34 +88,43 @@
     <button id="accept-cookies" class="btn btn-primary" style="margin-top:10px;">Aceitar</button>
   </div>
 
-  <!-- Cabeçalho -->
-  <header class="site-header">
-    <div class="container header-container">
-      <!-- Logo -->
-      <div class="logo">
-        <a href="/"><img src="/images/logo/Shopping (3).png" alt="Logo Shopping Todo Dia" class="logo-img"></a>
-      </div>
-      <!-- Menu -->
-      <nav class="main-nav">
-        <ul class="menu">
-          <li><a href="https://shoppingtododia.com.br/" class="active">Home</a></li>
-          <li><a href="#reviews">Análises / Reviews</a></li>
-          <li><a href="#tutoriais">Tutoriais</a></li>
-          <li><a href="/blog/blog.html" target="_blank" rel="noopener noreferrer">Blog</a></li>
-          <li><a href="#promocoes">Promoções</a></li>
-          <li><a href="#instagram">Redes Sociais</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </nav>
-      <!-- Campo de Pesquisa -->
-      <div class="search-bar">
-        <form action="/" method="get" role="search">
-          <input type="text" name="s" placeholder="Pesquisar..." aria-label="Pesquisar">
-          <button type="submit"><span class="icon-search">🔍</span></button>
-        </form>
-      </div>
+ <!-- Cabeçalho com Menu Hambúrguer -->
+<header class="site-header">
+  <div class="container header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <a href="/" id="logoHomeLink"><img src="/images/logo/Shopping (3).png" alt="Logo Shopping Todo Dia" class="logo-img"></a>
     </div>
-  </header>
+
+    <!-- Botão Hambúrguer -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Menu de Navegação -->
+    <nav class="main-nav" id="mainNav">
+      <ul class="menu">
+        <li><a href="#" class="active" data-section="home">Home</a></li>
+        <li><a href="#reviews" data-section="reviews">Análises / Reviews</a></li>
+        <li><a href="#tutoriais" data-section="tutoriais">Tutoriais</a></li>
+        <li><a href="/blog/blog.html" target="_blank" data-section="blog">Blog</a></li>
+        <li><a href="#promocoes" data-section="promocoes">Promoções</a></li>
+        <li><a href="#youtube" data-section="youtube">Vídeos em destaque</a></li>
+        <li><a href="#contato" data-section="contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <!-- Campo de Pesquisa -->
+    <div class="search-bar">
+      <form action="/" method="get" role="search">
+        <input type="text" name="s" placeholder="Pesquisar..." aria-label="Pesquisar">
+        <button type="submit"><span class="icon-search">🔍</span></button>
+      </form>
+    </div>
+  </div>
+</header>
 
   <main class="content">
     <!-- Título para o Carousel de Notícias Rápidas -->
@@ -584,7 +593,71 @@ if (document.readyState === 'loading') {
     });
   </script>
 
- 
+<!-- Script do Menu Hambúrguer e Scroll -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    const header = document.querySelector('.site-header');
+    const headerHeight = header ? header.offsetHeight : 80;
+    
+    // ========== MENU HAMBÚRGUER ==========
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        menuToggle.classList.toggle('active');
+        mainNav.classList.toggle('open');
+        document.body.style.overflow = mainNav.classList.contains('open') ? 'hidden' : '';
+      });
+      
+      // Fechar menu ao clicar em qualquer link
+      const links = mainNav.querySelectorAll('a');
+      links.forEach(link => {
+        link.addEventListener('click', function() {
+          menuToggle.classList.remove('active');
+          mainNav.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+      
+      // Fechar menu ao clicar fora
+      document.addEventListener('click', function(event) {
+        if (mainNav.classList.contains('open') && 
+            !mainNav.contains(event.target) && 
+            !menuToggle.contains(event.target)) {
+          menuToggle.classList.remove('active');
+          mainNav.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+    
+    // ========== SCROLL SUAVE COM OFFSET ==========
+    // Para todos os links âncora (#)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      const href = anchor.getAttribute('href');
+      if (href === '#' || href === '#/' || href === '#/') return;
+      
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        
+        if (target) {
+          const headerH = header ? header.offsetHeight : 80;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = targetPosition - headerH - 15;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
+  
 </body>
 
 </html>

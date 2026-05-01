@@ -24,7 +24,10 @@ body {
   padding: 0 15px;
 }
 
-/* Cabeçalho */
+/* ======================================== */
+/* CABEÇALHO E MENU HAMBÚRGUER              */
+/* ======================================== */
+
 .site-header {
   background: #333;
   padding: 15px 0;
@@ -38,6 +41,7 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 15px;
 }
 
 .logo img.logo-img {
@@ -46,11 +50,48 @@ body {
   transition: all 0.3s;
 }
 
+/* Botão Hambúrguer */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Animação do botão quando aberto */
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
 /* Navegação Principal */
 .main-nav ul.menu {
   list-style: none;
   display: flex;
   gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 .main-nav ul.menu li a {
@@ -58,6 +99,8 @@ body {
   color: #fff;
   font-weight: 700;
   transition: color 0.3s;
+  padding: 8px 0;
+  display: inline-block;
 }
 
 .main-nav ul.menu li a:hover,
@@ -72,14 +115,15 @@ body {
 }
 
 .search-bar input {
-  padding: 5px 10px;
+  padding: 8px 12px;
   border: none;
   border-radius: 4px 0 0 4px;
   outline: none;
+  font-size: 0.9rem;
 }
 
 .search-bar button {
-  padding: 5px 10px;
+  padding: 8px 12px;
   border: none;
   background: #4A90E2;
   color: #fff;
@@ -177,7 +221,7 @@ body {
 
 .card-content h3 {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
@@ -190,7 +234,7 @@ body {
 .card-content a {
   text-decoration: none;
   color: #4A90E2;
-  font-weight: 700;
+  font-weight: 600;
   transition: color 0.3s;
 }
 
@@ -199,12 +243,13 @@ body {
 }
 
 /* Produtos Recomendados: Ajuste de imagem */
-/* Agora as imagens terão um tamanho fixo e serão ajustadas via object-fit: contain para evitar cortes */
 .promo-card img {
   width: 100%;
   height: 250px;
   object-fit: contain;
   display: block;
+  background: #f9f9f9;
+  padding: 10px;
 }
 
 /* Instagram Section */
@@ -278,88 +323,171 @@ body {
   justify-content: center;
 }
 
-.footer-nav ul li {
-  display: inline;
-}
-
 .footer-nav ul li a {
   font-weight: 700;
 }
 
-/* Carousel de Notícias Rápidas */
+/* ======================================== */
+/* CARROSSEL DE NOTÍCIAS                    */
+/* ======================================== */
+
 .noticias-carousel {
   position: relative;
-  width: 100%;
-  max-width: 1200px;
-  margin: 20px auto;
-  overflow: hidden;
-  border: 1px solid #ddd;
-  background: #f9f9f9;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 50px;
 }
 
-.noticias-carousel-inner {
-  display: flex;
-  transition: transform 0.5s ease;
+#carousel-news {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 .noticias-carousel-item {
-  flex-shrink: 0;
-  text-align: center;
-  padding: 20px;
+  display: none;
+}
+
+.noticias-carousel-item.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .noticias-carousel-item img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
+  height: 400px;
+  object-fit: cover;
   display: block;
-  margin: 0 auto;
 }
 
-/* Título e Descrição das Notícias */
+.noticias-carousel-item .content {
+  padding: 25px 30px;
+  background: #fff;
+}
+
 .news-title {
-  display: block;
-  margin-top: 10px;
+  font-family: 'Oswald', sans-serif;
   font-size: 1.5rem;
-  color: #4A90E2;
+  font-weight: 700;
+  color: #222;
   text-decoration: none;
-  text-align: center;
+  display: block;
+  margin-bottom: 12px;
 }
 
 .news-title:hover {
+  color: #4A90E2;
   text-decoration: underline;
 }
 
 .news-description {
-  margin-top: 5px;
   font-size: 1rem;
-  color: #666;
-  text-align: center;
+  color: #555;
+  line-height: 1.5;
 }
 
-/* Botões de controle do Carousel */
+/* Botões do carrossel - FIXOS */
 .noticias-carousel-control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  outline: none;
-  z-index: 10;
+  position: absolute !important;
+  top: 200px !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: #4A90E2 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  font-size: 28px !important;
+  cursor: pointer !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.noticias-carousel-control:hover {
+  background: #357ABD !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3) !important;
 }
 
 .noticias-carousel-control.prev {
-  left: 10px;
+  left: 5px !important;
+  right: auto !important;
 }
 
 .noticias-carousel-control.next {
-  right: 10px;
+  right: 5px !important;
+  left: auto !important;
+}
+
+/* ======================================== */
+/* SEÇÃO YOUTUBE                            */
+/* ======================================== */
+
+.youtube-section .youtube-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.youtube-video {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.youtube-video:hover {
+  transform: translateY(-5px);
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  background: #000;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-info {
+  padding: 15px;
+}
+
+.video-info h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.video-info h3 a {
+  color: #222;
+  text-decoration: none;
+}
+
+.video-info h3 a:hover {
+  color: #4A90E2;
+}
+
+.video-info p {
+  color: #666;
+  font-size: 0.85rem;
 }
 
 /* TikTok Section */
@@ -420,9 +548,9 @@ body {
 
 .tutorial-card img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 180px;
   object-fit: cover;
+  display: block;
 }
 
 .tutorial-card .card-content {
@@ -431,7 +559,7 @@ body {
 
 .tutorial-card .card-content h3 {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
@@ -444,7 +572,7 @@ body {
 .tutorial-card .card-content a {
   text-decoration: none;
   color: #4A90E2;
-  font-weight: 700;
+  font-weight: 600;
   transition: color 0.3s;
 }
 
@@ -507,207 +635,81 @@ body {
   text-decoration: underline;
 }
 
-/* Responsividade para Mobile */
+/* ======================================== */
+/* RESPONSIVIDADE MOBILE                    */
+/* ======================================== */
+
 @media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    align-items: center;
+  /* Menu Hambúrguer */
+  .menu-toggle {
+    display: flex;
   }
-  
-  .logo img.logo-img {
-    height: 70px;
-  }
-  
+
   .main-nav {
-    width: 100%;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: #333;
+    padding: 80px 20px 30px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
   }
-  
+
+  .main-nav.open {
+    left: 0;
+  }
+
   .main-nav ul.menu {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px 0;
+    flex-direction: column;
     gap: 0;
   }
-  
+
   .main-nav ul.menu li {
-    flex: 0 0 33.33%;
-    text-align: center;
-    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
   }
-  
+
+  .main-nav ul.menu li a {
+    display: block;
+    padding: 15px 0;
+    font-size: 1rem;
+  }
+
+  .logo img.logo-img {
+    height: 55px;
+  }
+
   .search-bar {
     width: 100%;
-    padding: 10px 0;
+    order: 3;
+    margin-top: 10px;
   }
-  
+
   .search-bar form {
     display: flex;
     width: 100%;
   }
-  
+
   .search-bar input {
     flex: 1;
     padding: 10px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     border: 1px solid #ccc;
     border-radius: 4px 0 0 4px;
   }
-  
+
   .search-bar button {
-    padding: 10px;
-    font-size: 1rem;
+    padding: 10px 15px;
     border: 1px solid #ccc;
     border-left: none;
-    background: #4A90E2;
-    color: #fff;
     border-radius: 0 4px 4px 0;
-    cursor: pointer;
   }
-  
-  .search-bar button:hover {
-    background: #357ABD;
-  }
-  
-  .hero-container h1 {
-    font-size: 2.5rem;
-  }
-  
-  .hero-container p {
-    font-size: 1rem;
-  }
-  
-  .iframe-container {
-    padding-top: 177.78%;
-  }
-  
-  .carousel-item img {
-    width: 100%;
-    max-width: none;
-  }
-  
-  .footer-nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-}
 
-/* ========================= */
-/* CAROUSEL ÚLTIMAS NOTÍCIAS */
-/* ========================= */
-
-/* Container principal */
-.noticias-carousel {
-  position: relative;
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 0 50px;
-}
-
-/* Container interno */
-#carousel-news {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-/* Card da notícia */
-.noticias-carousel-item {
-  display: none;
-}
-
-.noticias-carousel-item.active {
-  display: block;
-  animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Imagem - TAMANHO FIXO */
-.noticias-carousel-item img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  display: block;
-}
-
-/* Conteúdo */
-.noticias-carousel-item .content {
-  padding: 25px 30px;
-  background: #fff;
-}
-
-/* Título */
-.news-title {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #222;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 12px;
-}
-
-.news-title:hover {
-  color: #4A90E2;
-  text-decoration: underline;
-}
-
-/* Descrição */
-.news-description {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-/* ======================================== */
-/* BOTÕES - FIXOS, NÃO SE MOVEM             */
-/* ======================================== */
-
-.noticias-carousel-control {
-  position: absolute !important;
-  top: 200px !important; /* Posição FIXA */
-  width: 48px !important;
-  height: 48px !important;
-  background: #4A90E2 !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 50% !important;
-  font-size: 28px !important;
-  cursor: pointer !important;
-  z-index: 1000 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
-  transition: all 0.3s ease !important;
-}
-
-.noticias-carousel-control:hover {
-  background: #357ABD !important;
-  transform: scale(1.08) !important;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.3) !important;
-}
-
-.noticias-carousel-control.prev {
-  left: 5px !important;
-  right: auto !important;
-}
-
-.noticias-carousel-control.next {
-  right: 5px !important;
-  left: auto !important;
-}
-
-/* ======================================== */
-/* RESPONSIVIDADE                           */
-/* ======================================== */
-
-@media (max-width: 768px) {
+  /* Carrossel */
   .noticias-carousel {
     padding: 0 40px;
   }
@@ -717,7 +719,7 @@ body {
   }
   
   .noticias-carousel-control {
-    top: 150px !important; /* 300px / 2 = 150px */
+    top: 150px !important;
     width: 42px !important;
     height: 42px !important;
     font-size: 24px !important;
@@ -729,6 +731,33 @@ body {
   
   .noticias-carousel-item .content {
     padding: 20px 25px;
+  }
+
+  /* YouTube */
+  .youtube-section .youtube-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Hero */
+  .hero-container h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-container p {
+    font-size: 1rem;
+  }
+
+  /* Grades */
+  .reviews-grid, .blog-grid, .promo-grid, .tutorial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Rodapé */
+  .footer-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 }
 
@@ -742,7 +771,7 @@ body {
   }
   
   .noticias-carousel-control {
-    top: 110px !important; /* 220px / 2 = 110px */
+    top: 110px !important;
     width: 36px !important;
     height: 36px !important;
     font-size: 20px !important;
@@ -767,63 +796,41 @@ body {
   .news-description {
     font-size: 0.85rem;
   }
+
+  .logo img.logo-img {
+    height: 48px;
+  }
+
+  .main-nav {
+    width: 85%;
+  }
+}
+/* ======================================== */
+/* SCROLL BEHAVIOR AJUSTADO                 */
+/* ======================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Compensa o header fixo */
 }
 
-/* Adicione ao final do seu main.css */
-.youtube-section .youtube-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 25px;
-  margin-top: 20px;
+/* Ajuste para elementos com ID (seções) */
+section[id],
+[id] {
+  scroll-margin-top: 100px;
 }
 
-.youtube-video {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+/* Garantir que o scroll não seja cortado */
+body {
+  scroll-padding-top: 80px;
+}
+/* Ajuste para scroll suave com header fixo */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
-.youtube-video:hover {
-  transform: translateY(-5px);
-}
-
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  background: #000;
-}
-
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.video-info {
-  padding: 15px;
-}
-
-.video-info h3 {
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-
-.video-info h3 a {
-  color: #222;
-  text-decoration: none;
-}
-
-.video-info h3 a:hover {
-  color: #4A90E2;
-}
-
-.video-info p {
-  color: #666;
-  font-size: 0.85rem;
+/* Alternativa para navegadores que não suportam scroll-padding-top */
+section[id] {
+  scroll-margin-top: 90px;
 }
