@@ -429,7 +429,9 @@ async function carregarNoticias() {
   container.innerHTML = '<div style="text-align:center;padding:40px;">📰 Carregando notícias...</div>';
   
   try {
-    const response = await fetch('https://api.shoppingtododia.com.br/news');
+    // ADICIONA TIMESTAMP PARA EVITAR CACHE DO NAVEGADOR
+    const url = 'https://api.shoppingtododia.com.br/news?_=' + Date.now();
+    const response = await fetch(url);
     const data = await response.json();
     
     if (!data.success || !data.data || data.data.length === 0) {
@@ -475,13 +477,17 @@ async function carregarNoticias() {
       carousel.onmouseleave = () => { interval = setInterval(nextSlide, 5000); };
     }
     
+    console.log('[OK] Notícias carregadas:', data.data.length);
+    
   } catch (error) {
-    console.error(error);
+    console.error('[ERRO]', error);
     container.innerHTML = '<div style="text-align:center;padding:40px;">⚠️ Erro ao carregar notícias</div>';
   }
 }
 
+// Força recarga a cada 10 minutos
 document.addEventListener('DOMContentLoaded', carregarNoticias);
+setInterval(carregarNoticias, 10 * 60 * 1000);
 </script>
 
 <!-- SCRIPT YOUTUBE (01.05.2026) o/ -->
