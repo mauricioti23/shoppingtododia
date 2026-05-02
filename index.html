@@ -425,20 +425,15 @@
 async function carregarNoticias() {
   const container = document.getElementById('carousel-news');
   if (!container) {
-    console.error('Container #carousel-news não encontrado!');
+    console.error('Container não encontrado');
     return;
   }
   
   container.innerHTML = '<div style="text-align:center;padding:40px;">📰 Carregando notícias...</div>';
   
   try {
-    const url = 'https://api.shoppingtododia.com.br/news?_=' + Date.now();
-    console.log('Buscando notícias em:', url);
-    
-    const response = await fetch(url);
+    const response = await fetch('https://api.shoppingtododia.com.br/news?_=' + Date.now());
     const data = await response.json();
-    
-    console.log('Dados recebidos:', data);
     
     if (!data.success || !data.data || data.data.length === 0) {
       throw new Error('Sem notícias');
@@ -446,10 +441,7 @@ async function carregarNoticias() {
     
     container.innerHTML = '';
     
-    // Limitar a 10 notícias
-    const noticias = data.data.slice(0, 10);
-    
-    noticias.forEach((noticia, idx) => {
+    data.data.slice(0, 10).forEach((noticia, idx) => {
       const slide = document.createElement('div');
       slide.className = 'noticias-carousel-item';
       if (idx === 0) slide.classList.add('active');
@@ -468,25 +460,14 @@ async function carregarNoticias() {
     const slides = document.querySelectorAll('.noticias-carousel-item');
     
     function showSlide(index) {
-      if (!slides.length) return;
       slides.forEach((s, i) => s.classList.toggle('active', i === index));
     }
     
-    function nextSlide() {
-      if (!slides.length) return;
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }
-    
-    function prevSlide() {
-      if (!slides.length) return;
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      showSlide(currentIndex);
-    }
+    function nextSlide() { currentIndex = (currentIndex + 1) % slides.length; showSlide(currentIndex); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + slides.length) % slides.length; showSlide(currentIndex); }
     
     const prevBtn = document.querySelector('.noticias-carousel-control.prev');
     const nextBtn = document.querySelector('.noticias-carousel-control.next');
-    
     if (prevBtn) prevBtn.onclick = prevSlide;
     if (nextBtn) nextBtn.onclick = nextSlide;
     
@@ -500,8 +481,8 @@ async function carregarNoticias() {
     console.log(`✅ ${slides.length} notícias carregadas!`);
     
   } catch (error) {
-    console.error('Erro ao carregar notícias:', error);
-    container.innerHTML = '<div style="text-align:center;padding:40px;">⚠️ Erro ao carregar notícias: ' + error.message + '</div>';
+    console.error('Erro:', error);
+    container.innerHTML = '<div style="text-align:center;padding:40px;">⚠️ Erro ao carregar notícias</div>';
   }
 }
 
@@ -515,14 +496,7 @@ function escapeHtml(text) {
   });
 }
 
-// Carregar quando a página estiver pronta
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', carregarNoticias);
-} else {
-  carregarNoticias();
-}
-
-// Recarregar a cada 10 minutos
+document.addEventListener('DOMContentLoaded', carregarNoticias);
 setInterval(carregarNoticias, 10 * 60 * 1000);
 </script>
 
