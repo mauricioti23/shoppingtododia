@@ -421,18 +421,19 @@
 
 <!-- SCRIPT ULTIMAS NOTICIAS PARA O SITE (01.05.2026) o/ -->
 
- <script>
-async function carregarNoticias() {
+ async function carregarNoticias() {
   const container = document.getElementById('carousel-news');
   if (!container) return;
   
   container.innerHTML = '<div style="text-align:center;padding:40px;">📰 Carregando notícias...</div>';
   
   try {
-    // ADICIONA TIMESTAMP PARA EVITAR CACHE DO NAVEGADOR
+    // URL CORRETA
     const url = 'https://api.shoppingtododia.com.br/news?_=' + Date.now();
     const response = await fetch(url);
     const data = await response.json();
+    
+    console.log('Resposta da API:', data);
     
     if (!data.success || !data.data || data.data.length === 0) {
       throw new Error('Sem notícias');
@@ -477,18 +478,15 @@ async function carregarNoticias() {
       carousel.onmouseleave = () => { interval = setInterval(nextSlide, 5000); };
     }
     
-    console.log('[OK] Notícias carregadas:', data.data.length);
+    console.log('Notícias carregadas com sucesso!', data.data.length);
     
   } catch (error) {
-    console.error('[ERRO]', error);
-    container.innerHTML = '<div style="text-align:center;padding:40px;">⚠️ Erro ao carregar notícias</div>';
+    console.error('ERRO DETALHADO:', error);
+    container.innerHTML = '<div style="text-align:center;padding:40px;">⚠️ Erro ao carregar notícias: ' + error.message + '</div>';
   }
 }
 
-// Força recarga a cada 10 minutos
 document.addEventListener('DOMContentLoaded', carregarNoticias);
-setInterval(carregarNoticias, 10 * 60 * 1000);
-</script>
 
 <!-- SCRIPT YOUTUBE (01.05.2026) o/ -->
 
