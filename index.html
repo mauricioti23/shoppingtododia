@@ -429,7 +429,6 @@ async function carregarNoticias() {
   container.innerHTML = '<div style="text-align:center;padding:40px;">📰 Carregando notícias...</div>';
   
   try {
-    // Anti-cache
     const url = 'https://api.shoppingtododia.com.br/news?_=' + Date.now();
     const response = await fetch(url);
     const data = await response.json();
@@ -485,10 +484,9 @@ async function carregarNoticias() {
   }
 }
 
-// Carregar ao abrir a página
 document.addEventListener('DOMContentLoaded', carregarNoticias);
 
-// ⭐ NOVO: Recarregar a cada 30 minutos (1800000 ms)
+// ⭐ APENAS ADICIONE ESTA LINHA ⭐
 setInterval(carregarNoticias, 30 * 60 * 1000);
 </script>
 
