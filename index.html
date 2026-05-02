@@ -421,19 +421,24 @@
 
 <!-- SCRIPT ULTIMAS NOTICIAS PARA O SITE (01.05.2026) o/ -->
 
- async function carregarNoticias() {
+ <script>
+async function carregarNoticias() {
   const container = document.getElementById('carousel-news');
-  if (!container) return;
+  if (!container) {
+    console.error('Container #carousel-news não encontrado!');
+    return;
+  }
   
   container.innerHTML = '<div style="text-align:center;padding:40px;">📰 Carregando notícias...</div>';
   
   try {
-    // URL CORRETA
     const url = 'https://api.shoppingtododia.com.br/news?_=' + Date.now();
+    console.log('Buscando notícias em:', url);
+    
     const response = await fetch(url);
     const data = await response.json();
     
-    console.log('Resposta da API:', data);
+    console.log('Dados recebidos:', data);
     
     if (!data.success || !data.data || data.data.length === 0) {
       throw new Error('Sem notícias');
@@ -441,7 +446,10 @@
     
     container.innerHTML = '';
     
-    data.data.slice(0, 10).forEach((noticia, idx) => {
+    // Limitar a 10 notícias
+    const noticias = data.data.slice(0, 10);
+    
+    noticias.forEach((noticia, idx) => {
       const slide = document.createElement('div');
       slide.className = 'noticias-carousel-item';
       if (idx === 0) slide.classList.add('active');
@@ -449,8 +457,8 @@
       slide.innerHTML = `
         <img src="${noticia.image || 'https://via.placeholder.com/800x400/4A90E2/FFFFFF?text=📰+SHOPPING+TODODIA'}" alt="${noticia.title}">
         <div class="content">
-          <a class="news-title" href="${noticia.url}" target="_blank">${noticia.title}</a>
-          <p class="news-description">${(noticia.description || '').substring(0, 120)}...</p>
+          <a class="news-title" href="${noticia.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(noticia.title)}</a>
+          <p class="news-description">${escapeHtml((noticia.description || '').substring(0, 120))}...</p>
         </div>
       `;
       container.appendChild(slide);
@@ -460,14 +468,25 @@
     const slides = document.querySelectorAll('.noticias-carousel-item');
     
     function showSlide(index) {
+      if (!slides.length) return;
       slides.forEach((s, i) => s.classList.toggle('active', i === index));
     }
     
-    function nextSlide() { currentIndex = (currentIndex + 1) % slides.length; showSlide(currentIndex); }
-    function prevSlide() { currentIndex = (currentIndex - 1 + slides.length) % slides.length; showSlide(currentIndex); }
+    function nextSlide() {
+      if (!slides.length) return;
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+    
+    function prevSlide() {
+      if (!slides.length) return;
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
     
     const prevBtn = document.querySelector('.noticias-carousel-control.prev');
     const nextBtn = document.querySelector('.noticias-carousel-control.next');
+    
     if (prevBtn) prevBtn.onclick = prevSlide;
     if (nextBtn) nextBtn.onclick = nextSlide;
     
@@ -478,15 +497,34 @@
       carousel.onmouseleave = () => { interval = setInterval(nextSlide, 5000); };
     }
     
-    console.log('Notícias carregadas com sucesso!', data.data.length);
+    console.log(`✅ ${slides.length} notícias carregadas!`);
     
   } catch (error) {
-    console.error('ERRO DETALHADO:', error);
+    console.error('Erro ao carregar notícias:', error);
     container.innerHTML = '<div style="text-align:center;padding:40px;">⚠️ Erro ao carregar notícias: ' + error.message + '</div>';
   }
 }
 
-document.addEventListener('DOMContentLoaded', carregarNoticias);
+function escapeHtml(text) {
+  if (!text) return '';
+  return text.replace(/[&<>]/g, function(m) {
+    if (m === '&') return '&amp;';
+    if (m === '<') return '&lt;';
+    if (m === '>') return '&gt;';
+    return m;
+  });
+}
+
+// Carregar quando a página estiver pronta
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', carregarNoticias);
+} else {
+  carregarNoticias();
+}
+
+// Recarregar a cada 10 minutos
+setInterval(carregarNoticias, 10 * 60 * 1000);
+</script>
 
 <!-- SCRIPT YOUTUBE (01.05.2026) o/ -->
 
