@@ -419,7 +419,7 @@
 
 
 
-<!-- SCRIPT ULTIMAS NOTICIAS PARA O SITE (02.05.2026) o/ -->
+<!-- SCRIPT ULTIMAS NOTICIAS PARA O SITE (01.05.2026) o/ -->
 
  <script>
 async function carregarNoticias() {
@@ -488,6 +488,65 @@ document.addEventListener('DOMContentLoaded', carregarNoticias);
 
 // ⭐ APENAS ADICIONE ESTA LINHA ⭐
 setInterval(carregarNoticias, 30 * 60 * 1000);
+</script>
+
+<!-- SCRIPT YOUTUBE (02.05.2026) o/ -->
+
+<script>
+async function carregarVideos() {
+  const container = document.getElementById('youtube-container');
+  if (!container) return;
+  
+  container.innerHTML = '<div style="text-align:center;padding:40px;">🎬 Carregando...</div>';
+  
+  // Adicionar timestamp para evitar cache
+  const url = 'https://yt-api.shoppingtododia.com.br/home?_=' + Date.now();
+  
+  try {
+    console.log('[YT] Buscando:', url);
+    const resposta = await fetch(url);
+    const dados = await resposta.json();
+    
+    console.log('[YT] Dados:', dados);
+    
+    if (dados.success && dados.data && dados.data.length) {
+      let html = '<div class="youtube-grid">';
+      dados.data.forEach(video => {
+        html += `
+          <div class="youtube-video">
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/${video.video_id}" 
+                      frameborder="0" 
+                      allowfullscreen
+                      loading="lazy"
+                      title="${video.title.replace(/"/g, '&quot;')}">
+              </iframe>
+            </div>
+            <div class="video-info">
+              <h3><a href="https://www.youtube.com/watch?v=${video.video_id}" target="_blank" rel="noopener">${video.title}</a></h3>
+              <p>📺 ${video.channel_title || 'Shopping Todo Dia'}</p>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+      console.log('[YT] Vídeos carregados!');
+    } else {
+      container.innerHTML = '<p style="text-align:center">📹 Vídeos em breve!</p>';
+    }
+  } catch (err) {
+    console.error('[YT] Erro:', err);
+    container.innerHTML = '<p style="text-align:center">⚠️ Erro ao carregar vídeos</p>';
+  }
+}
+
+// Executar quando a página carregar
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', carregarVideos);
+} else {
+  carregarVideos();
+}
 </script>
 
   <!-- Script para Pesquisa (novo) -->
