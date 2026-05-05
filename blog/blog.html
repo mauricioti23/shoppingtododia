@@ -612,8 +612,12 @@
               </div>
     </section>
 
+<!-- 
+  Seção para colocar no blog.html do Vercel
+  Substitua a seção "Últimas Análises / Reviews" por esta
+-->
 
-<!-- Últimos Reviews - Carregados via API -->
+<!-- Últimas Análises / Reviews -->
 <section style="background-color: black;" id="blog" class="pt-5 pb-5">
   <div class="container">
     <div class="row mb-5">
@@ -622,7 +626,7 @@
     </div>
     <div id="reviews-container" class="row g-4">
       <div class="col-12 text-center text-white-50 py-5">
-        <i class="bi bi-hourglass-split"></i> Carregando reviews...
+        <i class="bi bi-hourglass-split"></i> Carregando...
       </div>
     </div>
   </div>
@@ -637,7 +641,7 @@
     .then(response => response.json())
     .then(data => {
       if (!data.success || !data.data || data.data.length === 0) {
-        container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">📹 Aguardando novos reviews diários...</div>';
+        container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">📹 Aguardando novos reviews...</div>';
         return;
       }
       
@@ -652,12 +656,12 @@
             <div class="card h-100 bg-dark text-white border-secondary">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start mb-2">
-                  <span class="badge bg-primary">✨ IA Generated</span>
+                  <span class="badge bg-primary">✨ Review</span>
                   <small class="text-muted"><i class="bi bi-calendar3"></i> ${formattedDate}</small>
                 </div>
                 <h3 class="card-title h5">${escapeHtml(title.substring(0, 60))}</h3>
                 <p class="card-text text-white-50 small">${escapeHtml(productName)}</p>
-                <p class="card-text">Review completo gerado por inteligência artificial baseado no melhor conteúdo do YouTube.</p>
+                <p class="card-text">Review completo baseado no melhor conteúdo do YouTube.</p>
                 <div class="d-flex justify-content-between align-items-center mt-3">
                   <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn btn-primary btn-sm" target="_blank">Ler review completo →</a>
                   <small class="text-muted"><i class="bi bi-eye"></i> ${review.views || 0}</small>
@@ -671,8 +675,8 @@
       container.innerHTML = html;
     })
     .catch(error => {
-      console.error('Erro ao carregar reviews:', error);
-      container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">⚠️ Erro ao carregar reviews. Tente novamente mais tarde.</div>';
+      console.error('Erro:', error);
+      container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">⚠️ Erro ao carregar reviews.</div>';
     });
     
   function escapeHtml(text) {
@@ -686,6 +690,7 @@
   }
 })();
 </script>
+
 
   </main>
 
