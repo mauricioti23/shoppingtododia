@@ -612,7 +612,7 @@
               </div>
     </section>
 
-   <!-- Últimos Reviews - Carregados via API 05.05.2026 -->
+   <!-- Últimos Reviews - Carregados via API -->
 <section style="background-color: black;" id="blog" class="pt-5 pb-5">
   <div class="container">
     <div class="row mb-5">
@@ -628,21 +628,15 @@
 </section>
 
 <script>
-// Executar imediatamente
-setTimeout(function() {
+(function() {
   const container = document.getElementById('reviews-container');
-  if (!container) {
-    console.error('Container #reviews-container não encontrado!');
-    return;
-  }
+  if (!container) return;
   
   fetch('https://review-api.shoppingtododia.com.br/api/reviews')
     .then(response => response.json())
     .then(data => {
-      console.log('API response:', data);
-      
       if (!data.success || !data.data || data.data.length === 0) {
-        container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">📹 Nenhum review encontrado ainda.</div>';
+        container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">📹 Em breve, novos reviews gerados por IA!</div>';
         return;
       }
       
@@ -652,41 +646,44 @@ setTimeout(function() {
         const productName = review.product_name || 'Produto';
         const formattedDate = new Date(review.created_at).toLocaleDateString('pt-BR');
         
-        html += '<div class="col-md-4">';
-        html += '<div class="card h-100 bg-dark text-white border-secondary">';
-        html += '<div class="card-body">';
-        html += '<div class="d-flex justify-content-between align-items-start mb-2">';
-        html += '<span class="badge bg-primary">✨ IA Generated</span>';
-        html += '<small class="text-muted"><i class="bi bi-calendar3"></i> ' + formattedDate + '</small>';
-        html += '</div>';
-        html += '<h3 class="card-title h5">' + escapeHtml(title.substring(0, 60)) + '</h3>';
-        html += '<p class="card-text text-white-50 small">' + escapeHtml(productName) + '</p>';
-        html += '<p class="card-text">Review completo gerado por inteligência artificial baseado no melhor conteúdo do YouTube.</p>';
-        html += '<div class="d-flex justify-content-between align-items-center mt-3">';
-        html += '<a href="https://review-api.shoppingtododia.com.br/reviews/review-' + review.slug + '.html" class="btn btn-primary btn-sm" target="_blank">Ler review completo →</a>';
-        html += '<small class="text-muted"><i class="bi bi-eye"></i> ' + (review.views || 0) + '</small>';
-        html += '</div></div></div></div>';
+        html += `
+          <div class="col-md-4">
+            <div class="card h-100 bg-dark text-white border-secondary">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="badge bg-primary">✨ IA Generated</span>
+                  <small class="text-muted"><i class="bi bi-calendar3"></i> ${formattedDate}</small>
+                </div>
+                <h3 class="card-title h5">${escapeHtml(title.substring(0, 60))}</h3>
+                <p class="card-text text-white-50 small">${escapeHtml(productName)}</p>
+                <p class="card-text">Review completo gerado por inteligência artificial baseado no melhor conteúdo do YouTube.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn btn-primary btn-sm" target="_blank">Ler review completo →</a>
+                  <small class="text-muted"><i class="bi bi-eye"></i> ${review.views || 0}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
       });
       
       container.innerHTML = html;
-      console.log('✅ Reviews carregados:', data.data.length);
     })
     .catch(error => {
       console.error('Erro:', error);
-      container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">❌ Erro ao carregar reviews. Verifique o console.</div>';
+      container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">❌ Erro ao carregar reviews. Tente novamente mais tarde.</div>';
     });
     
-}, 100);
-
-function escapeHtml(text) {
-  if (!text) return '';
-  return text.replace(/[&<>]/g, function(m) {
-    if (m === '&') return '&amp;';
-    if (m === '<') return '&lt;';
-    if (m === '>') return '&gt;';
-    return m;
-  });
-}
+  function escapeHtml(text) {
+    if (!text) return '';
+    return text.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+})();
 </script>
 
   </main>
