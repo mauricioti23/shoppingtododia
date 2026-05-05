@@ -612,12 +612,13 @@
               </div>
     </section>
 
-   <!-- Últimos Reviews - Carregados via API -->
+
+<!-- Últimos Reviews - Carregados via API -->
 <section style="background-color: black;" id="blog" class="pt-5 pb-5">
   <div class="container">
     <div class="row mb-5">
       <h2 class="section-title text-center">🎬 Últimas Análises / Reviews</h2>
-      <p class="text-center text-white-50">Reviews gerados por IA com base nos melhores vídeos do YouTube</p>
+      <p class="text-center text-white-50">Reviews diários com os melhores produtos para você!</p>
     </div>
     <div id="reviews-container" class="row g-4">
       <div class="col-12 text-center text-white-50 py-5">
@@ -636,7 +637,7 @@
     .then(response => response.json())
     .then(data => {
       if (!data.success || !data.data || data.data.length === 0) {
-        container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">📹 Em breve, novos reviews gerados por IA!</div>';
+        container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">📹 Aguardando novos reviews diários...</div>';
         return;
       }
       
@@ -670,8 +671,8 @@
       container.innerHTML = html;
     })
     .catch(error => {
-      console.error('Erro:', error);
-      container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">❌ Erro ao carregar reviews. Tente novamente mais tarde.</div>';
+      console.error('Erro ao carregar reviews:', error);
+      container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">⚠️ Erro ao carregar reviews. Tente novamente mais tarde.</div>';
     });
     
   function escapeHtml(text) {
