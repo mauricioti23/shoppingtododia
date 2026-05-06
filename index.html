@@ -328,51 +328,300 @@
     </section>
 
     <!-- Seção do Blog -->
-    <section class="section blog-section" id="blog">
-      <div class="container">
-        <h2>Blog</h2>
-        <div class="grid blog-grid">
-          <article class="card blog-card">
-            <img src="/images/SMARTPHONES/2025/comparativoapplegalaxyfoto.jpg"
-              alt="iPhone 16 Pro Max Vs. Samsung Galaxy S25 Ultra - Qual é o melhor para você?" loading="lazy">
+     
+    <!-- Seção do Blog com Categories e Reviews -->
+<section class="section blog-section" id="blog">
+  <div class="container">
+    <h2>Blog - Reviews por Categoria</h2>
+    <p style="text-align: center; margin-bottom: 30px; color: #666;">Confira nossas análises completas dos melhores produtos</p>
+
+    <!-- Menu de Categorias - Responsivo -->
+    <div class="categories-menu">
+      <button type="button" class="cat-btn active" data-cat="smartphones">Smartphones</button>
+      <button type="button" class="cat-btn" data-cat="eletroeletronicos">Eletroeletrônicos</button>
+      <button type="button" class="cat-btn" data-cat="belezaemoda">Beleza e Moda</button>
+      <button type="button" class="cat-btn" data-cat="calcados">Calçados</button>
+    </div>
+
+    <!-- Conteúdo das Categorias -->
+    <div class="reviews-container">
+      
+      <!-- Categoria Smartphones -->
+      <div id="cat-smartphones" class="reviews-category active">
+        <div class="grid reviews-grid">
+          
+          <article class="card review-card">
+            <img src="/images/SMARTPHONES/iphonepromax.jpg" alt="iPhone 16 Pro Max" loading="lazy">
             <div class="card-content">
-              <h3>iPhone 16 Pro Max Vs. Samsung Galaxy S25 Ultra - Qual é o melhor para você?</h3>
-              <p>Eles estão entre os lançamentos mais esperados de 2025, quem irá vencer? A marca ou a tecnologia?</p>
-              <a href="https://shoppingtododia.com.br/blog/posts/comparativosamsungxapple.html" target="_blank"
-                rel="noopener noreferrer">Leia mais</a>
+              <h3>iPhone 16 Pro Max</h3>
+              <p>O iPhone 16 Pro Max é um dos smartphones mais avançados da Apple, reunindo recursos inovadores e desempenho excepcional.</p>
+              <a href="/blog/posts/comparativosamsungxapple.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
             </div>
           </article>
-          <article class="card blog-card">
-            <img src="/images/ELETROELETRONICOS/aspiradorropoglass3.jpg" alt="Robô Aspirador Ropo Glass 3"
-              loading="lazy">
+
+          <article class="card review-card">
+            <img src="/images/SMARTPHONES/samsunga55.jpg" alt="Samsung Galaxy A55 5G" loading="lazy">
             <div class="card-content">
-              <h3>Robô Aspirador Ropo Glass 3 – Análise Completa</h3>
-              <p>O Aspirador Robô Inteligente Ropo Glass 3 é uma solução moderna para quem deseja manter a casa sempre
-                limpa com o mínimo de esforço. Equipado com tecnologia avançada de navegação, potência de sucção
-                eficiente e integração com assistentes virtuais, ele garante uma limpeza prática e eficiente para o dia
-                a dia.
-              </p>
-              <a href="https://shoppingtododia.com.br/blog/posts/review-aspiradoropoglass3.html" target="_blank"
-                rel="noopener noreferrer">Leia mais</a>
+              <h3>Samsung Galaxy A55 5G</h3>
+              <p>O Samsung Galaxy A55 é a mais nova aposta da Samsung para o segmento intermediário premium, com câmeras avançadas e tela incrível.</p>
+              <a href="/blog/posts/review-samsunggalaxyA55.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
             </div>
           </article>
-          <article class="card blog-card">
-            <img src="/images/SMARTPHONES/xiaomi redmi note 13/1.jpg" alt="Xiaomi Redmi Note 13 – Análise Completa"
-              loading="lazy">
+
+          <article class="card review-card">
+            <img src="/images/SMARTPHONES/xiaomiredmi13.jpg" alt="Xiaomi Redmi Note 13" loading="lazy">
             <div class="card-content">
-              <h3>Xiaomi Redmi Note 13 – Análise Completa</h3>
-              <p>O Xiaomi Redmi Note 13 é um dos mais recentes lançamentos da Xiaomi no segmento intermediário, trazendo
-                melhorias significativas em tela, desempenho e câmeras. Com um design moderno, hardware atualizado e uma
-                bateria de longa duração, ele se destaca como uma excelente opção para quem busca um smartphone
-                equilibrado e acessível.
-              </p>
-              <a href="https://shoppingtododia.com.br/blog/posts/comparativosamsungxapple.html" target="_blank"
-                rel="noopener noreferrer">Leia mais</a>
+              <h3>Xiaomi Redmi Note 13</h3>
+              <p>O Xiaomi Redmi Note 13 é um dos mais recentes lançamentos da Xiaomi no segmento intermediário, com hardware atualizado.</p>
+              <a href="/blog/posts/review-xiaomiredmi13.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
             </div>
           </article>
+
+          <article class="card review-card">
+            <img src="/images/SMARTPHONES/2025/edge40.jpg" alt="Motorola Edge 40" loading="lazy">
+            <div class="card-content">
+              <h3>Motorola Edge 40</h3>
+              <p>O Motorola Edge 40 Neo é um dos mais recentes lançamentos da Motorola na linha premium, com design sofisticado.</p>
+              <a href="/blog/posts/review-motorolaedge40.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/SMARTPHONES/samsunga56.jpg" alt="Samsung Galaxy A56 256GB" loading="lazy">
+            <div class="card-content">
+              <h3>Samsung Galaxy A56 256GB</h3>
+              <p>Smartphone com tela Dynamic AMOLED 2X de 120Hz, câmera de 50MP com OIS e carregamento rápido de 45W.</p>
+              <a href="/blog/posts/review-samsungA56.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
         </div>
       </div>
-    </section>
+
+      <!-- Categoria Eletroeletrônicos -->
+      <div id="cat-eletroeletronicos" class="reviews-category">
+        <div class="grid reviews-grid">
+
+          <article class="card review-card">
+            <img src="/images/ELETROELETRONICOS/modialfamily4l.jpg" alt="Fritadeira Air Fryer Mondial 4L" loading="lazy">
+            <div class="card-content">
+              <h3>Fritadeira Air Fryer Mondial 4L</h3>
+              <p>A Fritadeira Air Fryer Mondial 4L é um eletrodoméstico essencial para quem busca frituras mais saudáveis sem abrir mão do sabor.</p>
+              <a href="/blog/posts/review-fritadeiramondial4L.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/ELETROELETRONICOS/jblgo4preta.jpg" alt="Caixa de Som JBL GO 4" loading="lazy">
+            <div class="card-content">
+              <h3>Caixa de Som JBL GO 4</h3>
+              <p>Qualidade sonora, resistência e conectividade em um design compacto. A escolha ideal para som portátil.</p>
+              <a href="/blog/posts/review-jblgo4.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/ELETROELETRONICOS/cameratplinktapo.jpg" alt="Câmera TP-Link Tapo C200" loading="lazy">
+            <div class="card-content">
+              <h3>Câmera TP-Link Tapo C200</h3>
+              <p>Com rotação panorâmica, detecção de movimento e visão noturna, é a solução completa para segurança residencial.</p>
+              <a href="/blog/posts/review-cameratplinktapo.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/ELETROELETRONICOS/aspiradorropoglass3/1.jpg" alt="Aspirador Robô Ropo Glass 3" loading="lazy">
+            <div class="card-content">
+              <h3>Aspirador Robô Ropo Glass 3</h3>
+              <p>Tecnologia avançada de navegação, potência de sucção eficiente e integração com assistentes virtuais.</p>
+              <a href="/blog/posts/review-aspiradoropoglass3.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/ELETROELETRONICOS/jbl partybox/1.jpg" alt="JBL Partybox 100w" loading="lazy">
+            <div class="card-content">
+              <h3>Caixa de Som JBL Partybox 100w</h3>
+              <p>Som envolvente, graves potentes e um show de luzes dinâmico. Perfeita para festas e eventos.</p>
+              <a href="/blog/posts/review-jbl-partybox.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Categoria Beleza e Moda -->
+      <div id="cat-belezaemoda" class="reviews-category">
+        <div class="grid reviews-grid">
+
+          <article class="card review-card">
+            <img src="/images/BELEZA E MODA/perfumecarolinaherreragoodgirl.jpg" alt="Perfume Carolina Herrera" loading="lazy">
+            <div class="card-content">
+              <h3>Perfume Carolina Herrera Good Girl</h3>
+              <p>Lançado em 2016, conquistou o público feminino ao combinar sensualidade e elegância em uma fragrância marcante.</p>
+              <a href="/blog/posts/review-perfume-carolinaherrera.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/BELEZA E MODA/serumfacialprincipia.jpg" alt="Sérum Principia Vitamina C-10" loading="lazy">
+            <div class="card-content">
+              <h3>Sérum Principia Vitamina C-10</h3>
+              <p>Fórmula concentrada e livre de ingredientes agressivos, oferece tratamento eficaz para a pele.</p>
+              <a href="/blog/posts/review-serumpincipia.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/BELEZA E MODA/xiaomiwatch4.jpg" alt="Smartwatch Xiaomi Watch 4" loading="lazy">
+            <div class="card-content">
+              <h3>Smartwatch Xiaomi Watch 4</h3>
+              <p>Design sofisticado, funcionalidades avançadas e bateria de longa duração. Um excelente companheiro para o dia a dia.</p>
+              <a href="/blog/posts/review-redmiwatch4.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/BELEZA E MODA/nikepegasus30.jpg" alt="Tênis Nike Air Zoom Pegasus 38" loading="lazy">
+            <div class="card-content">
+              <h3>Tênis Nike Air Zoom Pegasus 38</h3>
+              <p>Projetado para corredores iniciantes e experientes, com aprimoramentos em conforto e amortecimento.</p>
+              <a href="/blog/posts/review-TenisNikeAirPegasus38.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Categoria Calçados -->
+      <div id="cat-calcados" class="reviews-category">
+        <div class="grid reviews-grid">
+
+          <article class="card review-card">
+            <img src="/images/CALCADOS/adidasultraboost5/1.jpg" alt="Tênis Adidas Ultraboost 5" loading="lazy">
+            <div class="card-content">
+              <h3>Tênis Adidas Ultraboost 5</h3>
+              <p>Modelo icônico da Adidas, projetado para oferecer o máximo em conforto e desempenho para corrida.</p>
+              <a href="/blog/posts/review-TenisAdidasUltraboost5.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/CALCADOS/sapatodemocrataair.jpg" alt="Sapato Smart Comfort Air Spot" loading="lazy">
+            <div class="card-content">
+              <h3>Sapato Smart Comfort Air Spot</h3>
+              <p>Ideal para o trabalho ou eventos formais, com design sofisticado e tecnologia de amortecimento.</p>
+              <a href="/blog/posts/review-SapatoDemocrataSmartComfort.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/CALCADOS/sapatinhamolecabico.jpg" alt="Sapatilha Moleca Bico Redondo" loading="lazy">
+            <div class="card-content">
+              <h3>Sapatilha Moleca Bico Redondo</h3>
+              <p>Design clássico e acabamento refinado, combina perfeitamente com diferentes estilos e ocasiões.</p>
+              <a href="/blog/posts/review-SapatilhaMolecaBicoRedondo.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+          <article class="card review-card">
+            <img src="/images/CALCADOS/sadalhahavaianasttropez.jpg" alt="Sandália Havaianas St. Tropez" loading="lazy">
+            <div class="card-content">
+              <h3>Sandália Havaianas Rasteirinha St. Tropez</h3>
+              <p>Confortável, estilosa e versátil, a escolha perfeita para quem busca um calçado para o dia a dia.</p>
+              <a href="/blog/posts/review-SapatilhaMolecaBicoRedondo.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CSS adicional para o menu de categorias -->
+<style>
+/* Menu de Categorias - estilo consistente com o site */
+.categories-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.cat-btn {
+  background: #f5f5f5;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cat-btn:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.cat-btn.active {
+  background: #4A90E2;
+  color: #fff;
+}
+
+/* Categorias - mostrar/esconder */
+.reviews-category {
+  display: none;
+}
+
+.reviews-category.active {
+  display: block;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  .categories-menu {
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+  
+  .cat-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}
+</style>
+
+<!-- Script para trocar as abas -->
+<script>
+// Função para alternar entre categorias
+document.addEventListener('DOMContentLoaded', function() {
+  const categoryBtns = document.querySelectorAll('.cat-btn');
+  const categories = document.querySelectorAll('.reviews-category');
+  
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const catId = this.getAttribute('data-cat');
+      
+      // Remove active de todos os botões
+      categoryBtns.forEach(b => b.classList.remove('active'));
+      // Adiciona active no botão clicado
+      this.classList.add('active');
+      
+      // Esconde todas as categorias
+      categories.forEach(cat => cat.classList.remove('active'));
+      // Mostra a categoria selecionada
+      const targetCat = document.getElementById(`cat-${catId}`);
+      if (targetCat) targetCat.classList.add('active');
+    });
+  });
+});
+</script>
 
   </main>
 
