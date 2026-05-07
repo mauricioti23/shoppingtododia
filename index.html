@@ -148,15 +148,15 @@
 
     <!-- Conteúdo Principal -->
     
-    <!-- Seção de Reviews / Análises - Carregados pela API -->
-<section class="section reviews-section" id="reviews">
+ <!-- Últimas Análises / Reviews 07.05.2026 -->
+<section style="background-color: black;" id="reviews" class="pt-5 pb-5">
   <div class="container">
-    <h2>Reviews / Análise de Produtos</h2>
-    <p style="text-align: center; margin-bottom: 30px; color: #666;">Análises completas geradas com base nos melhores vídeos do YouTube</p>
-    <div id="reviews-container" class="grid reviews-grid">
-      <div class="loading-reviews" style="text-align: center; padding: 40px; grid-column: 1 / -1;">
-        Carregando reviews...
-      </div>
+    <div class="row mb-5">
+      <h2 class="section-title text-center" style="color: white;">🎬 Últimas Análises / Reviews</h2>
+      <p class="text-center text-white-50">Reviews diários com os melhores produtos para você!</p>
+    </div>
+    <div id="reviews-container" class="row g-4">
+      <!-- Cards serão carregados aqui -->
     </div>
   </div>
 </section>
@@ -171,40 +171,41 @@
     const data = await response.json();
     
     if (!data.success || !data.data || data.data.length === 0) {
-      container.innerHTML = '<div class="loading-reviews" style="text-align: center; padding: 40px; grid-column: 1 / -1;">📹 Em breve, novos reviews gerados por IA!</div>';
+      container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">📹 Aguardando novos reviews...</div>';
       return;
     }
     
     let html = '';
-    data.data.forEach(review => {
+    for (const review of data.data) {
       const title = (review.title || 'Review').replace(/\*\*/g, '');
       const productName = review.product_name || 'Produto';
       const formattedDate = new Date(review.created_at).toLocaleDateString('pt-BR');
-      
-      // Imagem padrão caso não tenha thumbnail específica
-      const imageUrl = `https://img.youtube.com/vi/${review.video_id}/mqdefault.jpg`;
+      const thumbnail = review.video_id ? `https://img.youtube.com/vi/${review.video_id}/mqdefault.jpg` : '/images/logo/Shopping (3).png';
       
       html += `
-        <article class="card review-card">
-          <img src="${imageUrl}" alt="Review do ${productName}" loading="lazy" onerror="this.src='/images/logo/Shopping (3).png'">
-          <div class="card-content">
-            <h3>${escapeHtml(title.substring(0, 60))}</h3>
-            <p><strong>${escapeHtml(productName)}</strong> - Review completo baseado no melhor conteúdo do YouTube. Publicado em ${formattedDate}</p>
-            <div class="review-meta" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-              <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn-review" target="_blank" style="background: #4A90E2; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;">Leia mais →</a>
-              <small style="color: #888;"><i class="bi bi-eye"></i> ${review.views || 0} visualizações</small>
+        <div class="col-md-4">
+          <div class="card h-100 bg-dark text-white border-secondary">
+            <img src="${thumbnail}" class="card-img-top" alt="${escapeHtml(productName)}" style="height: 200px; object-fit: cover;" onerror="this.src='/images/logo/Shopping (3).png'">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="badge bg-primary">✨ Review</span>
+                <small class="text-muted"><i class="bi bi-calendar3"></i> ${formattedDate}</small>
+              </div>
+              <h5 class="card-title">${escapeHtml(title.substring(0, 60))}</h5>
+              <p class="card-text text-white-50 small">${escapeHtml(productName)}</p>
+              <p class="card-text">Review completo baseado no melhor conteúdo do YouTube.</p>
+              <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn btn-primary btn-sm" target="_blank">Ler review completo →</a>
             </div>
           </div>
-        </article>
+        </div>
       `;
-    });
+    }
     
     container.innerHTML = html;
-    console.log(`✅ ${data.data.length} reviews carregados da API`);
     
   } catch (error) {
-    console.error('Erro ao carregar reviews:', error);
-    container.innerHTML = '<div class="loading-reviews" style="text-align: center; padding: 40px; grid-column: 1 / -1;">⚠️ Erro ao carregar reviews. Tente novamente mais tarde.</div>';
+    console.error('Erro:', error);
+    container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">⚠️ Erro ao carregar reviews.</div>';
   }
   
   function escapeHtml(text) {
@@ -215,66 +216,6 @@
   }
 })();
 </script>
-
-<style>
-/* Estilos adicionais para os cards carregados via API */
-.review-card .btn-review {
-  display: inline-block;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.review-card .btn-review:hover {
-  background: #357ABD !important;
-  transform: translateY(-2px);
-}
-
-.review-card .review-meta small {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-</style>
-
-    <!-- Seção Vídeos em Destaque -->
-    <section class="section youtube-section" id="youtube">
-      <div class="container">
-        <h2>🎬 Vídeos em Destaque</h2>
-        <div class="youtube-grid" id="youtube-container">
-          <div class="loading-videos" style="text-align: center; padding: 40px;">
-            Carregando vídeos...
-          </div>
-        </div>
-      </div>
-    </section>
-
-       <!-- Seção de Promoções -->
-    <section class="section promo-section" id="promocoes">
-      <div class="container">
-        <h2>Promoções do Dia</h2>
-        <div class="grid promo-grid">
-          <!-- PRODUTO 1 -->
-<article class="card promo-card">
-  <img src="/images/SMARTPHONES/samsunga56.jpg" alt="Samsung Galaxy A56 256GB Smartphone" loading="lazy">
-  <div class="card-content">
-    <h3>Samsung Galaxy A56 256GB</h3>
-    <p><strong>Opinião de quem já comprou: </strong>"Smartphone excelente! Tela Dynamic AMOLED 2X de 120Hz é muito fluida, as fotos ficam incríveis com a câmera de 50MP com estabilização óptica. A bateria dura o dia todo e o carregamento de 45W é super rápido. O desempenho do Exynos 1580 é surpreendente, roda tudo sem travar. Melhor custo-benefício da categoria!"</p>
-    <a href="https://meli.la/2W4wicE" target="_blank" rel="noopener noreferrer">Ver Oferta</a><br><br>
-    <a href="blog/posts/review-samsungA56.html" target="_blank" rel="noopener noreferrer">Ver Review/Análise</a>
-  </div>
-</article>
-          <!-- PRODUTO 2 -->
-<article class="card promo-card">
-  <img src="/images/SMARTPHONES/Soundcore P30i.jpg" alt="Soundcore P30i Anker Fone Bluetooth 5.4" loading="lazy">
-  <div class="card-content">
-    <h3>Soundcore P30i Anker</h3>
-    <p><strong>Opinião de quem já comprou: </strong>"Fone excelente! O cancelamento de ruído adaptativo funciona muito bem, os graves são potentes e encorpados. A bateria dura horas e o estojo 2-em-1 com suporte para celular é muito prático. O Bluetooth 5.4 conecta rápido e não falha. Melhor fone que já comprei pelo preço! Vale cada centavo."</p>
-    <a href="https://meli.la/1ha3TfF" target="_blank" rel="noopener noreferrer">Ver Oferta</a><br><br>
-    <a href="blog/posts/revies-foneSoundcoreP30i.html" target="_blank" rel="noopener noreferrer">Ver Review/Análise</a>
-  </div>
-</article>
-</div>
-
-    </section>
 
     <!-- Seção de Tutoriais -->
     <section class="section tutorial-section" id="tutoriais">
