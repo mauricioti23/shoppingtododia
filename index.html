@@ -148,7 +148,7 @@
 
     <!-- Conteúdo Principal -->
     
- <!-- Últimas Análises / Reviews 07.05.2026 -->
+ <!-- Últimas Análises / Reviews -->
 <section style="background-color: black;" id="reviews" class="pt-5 pb-5">
   <div class="container">
     <div class="row mb-5">
@@ -156,65 +156,46 @@
       <p class="text-center text-white-50">Reviews diários com os melhores produtos para você!</p>
     </div>
     <div id="reviews-container" class="row g-4">
-      <!-- Cards serão carregados aqui -->
+      <div class="col-12 text-center text-white-50 py-5">
+        <i class="bi bi-hourglass-split"></i> Carregando...
+      </div>
     </div>
   </div>
 </section>
 
 <script>
-(async function() {
-  const container = document.getElementById('reviews-container');
-  if (!container) return;
-  
-  try {
-    const response = await fetch('https://review-api.shoppingtododia.com.br/api/reviews');
-    const data = await response.json();
+// Versão simplificada para teste
+fetch('https://review-api.shoppingtododia.com.br/api/reviews')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('reviews-container');
+    console.log('Dados recebidos:', data);
     
     if (!data.success || !data.data || data.data.length === 0) {
-      container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">📹 Aguardando novos reviews...</div>';
+      container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">📹 Nenhum review encontrado. ID:' + (data.data?.length || 0) + '</div>';
       return;
     }
     
     let html = '';
-    for (const review of data.data) {
-      const title = (review.title || 'Review').replace(/\*\*/g, '');
-      const productName = review.product_name || 'Produto';
-      const formattedDate = new Date(review.created_at).toLocaleDateString('pt-BR');
-      const thumbnail = review.video_id ? `https://img.youtube.com/vi/${review.video_id}/mqdefault.jpg` : '/images/logo/Shopping (3).png';
-      
+    data.data.forEach(review => {
       html += `
         <div class="col-md-4">
           <div class="card h-100 bg-dark text-white border-secondary">
-            <img src="${thumbnail}" class="card-img-top" alt="${escapeHtml(productName)}" style="height: 200px; object-fit: cover;" onerror="this.src='/images/logo/Shopping (3).png'">
             <div class="card-body">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <span class="badge bg-primary">✨ Review</span>
-                <small class="text-muted"><i class="bi bi-calendar3"></i> ${formattedDate}</small>
-              </div>
-              <h5 class="card-title">${escapeHtml(title.substring(0, 60))}</h5>
-              <p class="card-text text-white-50 small">${escapeHtml(productName)}</p>
-              <p class="card-text">Review completo baseado no melhor conteúdo do YouTube.</p>
-              <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn btn-primary btn-sm" target="_blank">Ler review completo →</a>
+              <h5 class="card-title">${review.product_name || 'Produto'}</h5>
+              <p class="card-text">${(review.title || '').substring(0, 100)}</p>
+              <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn btn-primary btn-sm" target="_blank">Ler review →</a>
             </div>
           </div>
         </div>
       `;
-    }
-    
+    });
     container.innerHTML = html;
-    
-  } catch (error) {
-    console.error('Erro:', error);
-    container.innerHTML = '<div class="col-12 text-center text-white-50 py-5">⚠️ Erro ao carregar reviews.</div>';
-  }
-  
-  function escapeHtml(text) {
-    if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
-})();
+  })
+  .catch(error => {
+    console.error('Erro detalhado:', error);
+    document.getElementById('reviews-container').innerHTML = '<div class="col-12 text-center text-white-50 py-5">❌ Erro: ' + error.message + '</div>';
+  });
 </script>
 
     <!-- Seção de Tutoriais -->
