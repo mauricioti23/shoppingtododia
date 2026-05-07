@@ -550,88 +550,72 @@ document.addEventListener('DOMContentLoaded', carregarReviewsCarrossel);
 
     </section>
 
-    <!-- Seção de Tutoriais -->
-    <section class="section tutorial-section" id="tutoriais">
-      <div class="container">
-        <h2>Tutoriais</h2>
-        <div class="grid tutorial-grid">
-          <article class="card tutorial-card">
-            <img src="/site/tutoriais/imagens-tutorial/tutorialpele.jpg"
-              alt="Como Cuidar da Sua Pele para Manter a Saúde e a Beleza" loading="lazy">
-            <div class="card-content">
-              <h3>Como Cuidar da Sua Pele para Manter a Saúde e a Beleza</h3>
-              <p>Ter uma pele bem cuidada é fundamental não só para uma aparência radiante, mas também para manter a
-                saúde e o equilíbrio do seu corpo. Uma rotina diária de cuidados pode ajudar a prevenir imperfeições,
-                manter a hidratação e proteger a pele dos danos do dia a dia.</p>
-              <a href="/site/tutoriais/tutorial-CuidadosComAPele.html" target="_blank" rel="noopener noreferrer">Leia
-                mais</a>
-            </div>
-          </article>
-          <article class="card tutorial-card">
-            <img src="/site/tutoriais/imagens-tutorial/robosepets.jpg"
-              alt="Bem-Estar Animal: Mantenha sua Casa Limpa com Robôs Aspiradores" loading="lazy">
-            <div class="card-content">
-              <h3>Bem-Estar Animal: Mantenha sua Casa Limpa com Robôs Aspiradores</h3>
-              <p>Quem tem pets em casa sabe da alegria que eles trazem, mas também dos desafios para manter a casa
-                sempre limpa. Pelos, poeira e outras sujeiras podem se espalhar rapidamente, afetando tanto a saúde dos
-                humanos quanto o conforto dos animais. Por isso, robôs aspiradores, como o WAP W100 e o Ropo Glass 3,
-                têm se tornado aliados essenciais: eles ajudam a manter o ambiente livre de partículas, reduzindo a
-                necessidade de limpezas constantes. Confira dicas completas para garantir o bem-estar do seu pet ao
-                mesmo tempo em que mantém a casa impecável.</p>
-              <a href="/site/tutoriais/tutorial-LimpezaDaCasaComRobos.html" target="_blank"
-                rel="noopener noreferrer">Leia mais</a>
-            </div>
-          </article>
-          <article class="card tutorial-card">
-            <img src="/site/tutoriais/imagens-tutorial/smartphonescustobeneficio.jpg"
-              alt="Como Escolher o Melhor Smartphone Custo-Benefício para Você" loading="lazy">
-            <div class="card-content">
-              <h3>Como Escolher o Melhor Smartphone Custo-Benefício para Você</h3>
-              <p>O mercado de smartphones oferece uma infinidade de opções, cada um com diferentes especificações e
-                preços. Fazer a escolha certa pode impactar diretamente na usabilidade do aparelho e no custo a longo
-                prazo, garantindo uma experiência de uso satisfatória e um bom investimento.</p>
-              <a href="/site/tutoriais/tutorial-ComoEscolherCelularCustoBeneficio.html" target="_blank"
-                rel="noopener noreferrer">Leia mais</a>
-            </div>
-          </article>
-          <article class="card tutorial-card">
-            <img src="/site/tutoriais/imagens-tutorial/tutorialcaixadesom.jpg"
-              alt="Escolha a Caixa de Som Ideal para Cada Perfil de Usuário" loading="lazy">
-            <div class="card-content">
-              <h3>Escolha a Caixa de Som Ideal para Cada Perfil de Usuário</h3>
-              <p>A escolha da caixa de som ideal depende, sobretudo, do perfil do usuário e do ambiente onde ela será
-                utilizada. Este tutorial, baseado nos reviews dos modelos JBL GO 4 e JBL PartyBox, oferece um passo a
-                passo completo para que você encontre o aparelho perfeito para suas necessidades.</p>
-              <a href="/site/tutoriais/tutorial-ComoEscolherCaixasDeSom.html" target="_blank"
-                rel="noopener noreferrer">Leia mais</a>
-            </div>
-          </article>
-          <!--
-<article class="card tutorial-card">
-  <img src="/images/TUTORIAIS/cuidados-roupas.jpg" alt="Dicas para Lavar e Conservar Suas Roupas" loading="lazy">
-  <div class="card-content">
-    <h3>Dicas para Lavar e Conservar Suas Roupas</h3>
-    <p>Evite encolhimento e desbotamento com essas dicas essenciais para suas roupas.</p>
-    <a href="https://shoppingtododia.com.br/blog/posts/cuidados-roupas.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
-  </div>
-</article>
-<article class="card tutorial-card">
-  <img src="/images/TUTORIAIS/proteger-celular.jpg" alt="Como Proteger Seu Celular e Acessórios" loading="lazy">
-  <div class="card-content">
-    <h3>Como Proteger Seu Celular e Acessórios</h3>
-    <p>Descubra como evitar riscos e aumentar a vida útil do seu smartphone e acessórios.</p>
-    <a href="https://shoppingtododia.com.br/blog/posts/proteger-celular.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
-  </div>
-</article>
--->
-
+    <!-- Seção de Tutoriais - Carrossel -->
+<section class="section tutorial-section" id="tutoriais">
+  <div class="container">
+    <h2>Tutoriais</h2>
+    <p style="text-align: center; margin-bottom: 30px; color: #666;">Dicas e guias para ajudar você a aproveitar melhor seus produtos</p>
+    
+    <div class="tutorial-carousel-container">
+      <div id="tutorial-carousel" class="tutorial-carousel">
+        <div class="tutorial-carousel-track">
+          <!-- Tutorial 1 -->
+          <div class="tutorial-carousel-slide">
+            <article class="card tutorial-card">
+              <img src="/site/tutoriais/imagens-tutorial/tutorialpele.jpg" alt="Como Cuidar da Sua Pele para Manter a Saúde e a Beleza" loading="lazy">
+              <div class="card-content">
+                <h3>Como Cuidar da Sua Pele para Manter a Saúde e a Beleza</h3>
+                <p>Ter uma pele bem cuidada é fundamental não só para uma aparência radiante, mas também para manter a saúde e o equilíbrio do seu corpo. Uma rotina diária de cuidados pode ajudar a prevenir imperfeições, manter a hidratação e proteger a pele dos danos do dia a dia.</p>
+                <a href="/site/tutoriais/tutorial-CuidadosComAPele.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+              </div>
+            </article>
+          </div>
+          
+          <!-- Tutorial 2 -->
+          <div class="tutorial-carousel-slide">
+            <article class="card tutorial-card">
+              <img src="/site/tutoriais/imagens-tutorial/robosepets.jpg" alt="Bem-Estar Animal: Mantenha sua Casa Limpa com Robôs Aspiradores" loading="lazy">
+              <div class="card-content">
+                <h3>Bem-Estar Animal: Mantenha sua Casa Limpa com Robôs Aspiradores</h3>
+                <p>Quem tem pets em casa sabe da alegria que eles trazem, mas também dos desafios para manter a casa sempre limpa. Pelos, poeira e outras sujeiras podem se espalhar rapidamente, afetando tanto a saúde dos humanos quanto o conforto dos animais.</p>
+                <a href="/site/tutoriais/tutorial-LimpezaDaCasaComRobos.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+              </div>
+            </article>
+          </div>
+          
+          <!-- Tutorial 3 -->
+          <div class="tutorial-carousel-slide">
+            <article class="card tutorial-card">
+              <img src="/site/tutoriais/imagens-tutorial/smartphonescustobeneficio.jpg" alt="Como Escolher o Melhor Smartphone Custo-Benefício para Você" loading="lazy">
+              <div class="card-content">
+                <h3>Como Escolher o Melhor Smartphone Custo-Benefício para Você</h3>
+                <p>O mercado de smartphones oferece uma infinidade de opções, cada um com diferentes especificações e preços. Fazer a escolha certa pode impactar diretamente na usabilidade do aparelho e no custo a longo prazo.</p>
+                <a href="/site/tutoriais/tutorial-ComoEscolherCelularCustoBeneficio.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+              </div>
+            </article>
+          </div>
+          
+          <!-- Tutorial 4 -->
+          <div class="tutorial-carousel-slide">
+            <article class="card tutorial-card">
+              <img src="/site/tutoriais/imagens-tutorial/tutorialcaixadesom.jpg" alt="Escolha a Caixa de Som Ideal para Cada Perfil de Usuário" loading="lazy">
+              <div class="card-content">
+                <h3>Escolha a Caixa de Som Ideal para Cada Perfil de Usuário</h3>
+                <p>A escolha da caixa de som ideal depende, sobretudo, do perfil do usuário e do ambiente onde ela será utilizada. Este tutorial oferece um passo a passo completo para que você encontre o aparelho perfeito para suas necessidades.</p>
+                <a href="/site/tutoriais/tutorial-ComoEscolherCaixasDeSom.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
-    </section>
+      
+      <button class="tutorial-carousel-control prev" id="tutorialPrevBtn">‹</button>
+      <button class="tutorial-carousel-control next" id="tutorialNextBtn">›</button>
+    </div>
+  </div>
+</section>
 
-    <!-- Seção do Blog -->
-
-    <!-- Seção do Blog com Categories e Reviews -->
+<!-- Seção do Blog com Categories e Reviews - Carrossel -->
 <section class="section blog-section" id="blog">
   <div class="container">
     <h2>Blog - Reviews por Categoria</h2>
@@ -645,204 +629,232 @@ document.addEventListener('DOMContentLoaded', carregarReviewsCarrossel);
       <button type="button" class="cat-btn" data-cat="calcados">Calçados</button>
     </div>
 
-    <!-- Conteúdo das Categorias -->
-    <div class="reviews-container">
+    <!-- Conteúdo das Categorias em Carrossel -->
+    <div class="blog-carousel-container">
       
       <!-- Categoria Smartphones -->
-      <div id="cat-smartphones" class="reviews-category active">
-        <div class="grid reviews-grid">
-          
-          <article class="card review-card">
-            <img src="/images/SMARTPHONES/iphonepromax.jpg" alt="iPhone 16 Pro Max" loading="lazy">
-            <div class="card-content">
-              <h3>iPhone 16 Pro Max</h3>
-              <p>O iPhone 16 Pro Max é um dos smartphones mais avançados da Apple, reunindo recursos inovadores e desempenho excepcional.</p>
-              <a href="/blog/posts/comparativosamsungxapple.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+      <div id="cat-smartphones" class="blog-category active">
+        <div class="blog-carousel">
+          <div class="blog-carousel-track">
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/SMARTPHONES/iphonepromax.jpg" alt="iPhone 16 Pro Max" loading="lazy">
+                <div class="card-content">
+                  <h3>iPhone 16 Pro Max</h3>
+                  <p>O iPhone 16 Pro Max é um dos smartphones mais avançados da Apple, reunindo recursos inovadores e desempenho excepcional.</p>
+                  <a href="/blog/posts/comparativosamsungxapple.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/SMARTPHONES/samsunga55.jpg" alt="Samsung Galaxy A55 5G" loading="lazy">
-            <div class="card-content">
-              <h3>Samsung Galaxy A55 5G</h3>
-              <p>O Samsung Galaxy A55 é a mais nova aposta da Samsung para o segmento intermediário premium, com câmeras avançadas e tela incrível.</p>
-              <a href="/blog/posts/review-samsunggalaxyA55.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/SMARTPHONES/samsunga55.jpg" alt="Samsung Galaxy A55 5G" loading="lazy">
+                <div class="card-content">
+                  <h3>Samsung Galaxy A55 5G</h3>
+                  <p>O Samsung Galaxy A55 é a mais nova aposta da Samsung para o segmento intermediário premium, com câmeras avançadas e tela incrível.</p>
+                  <a href="/blog/posts/review-samsunggalaxyA55.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/SMARTPHONES/xiaomiredmi13.jpg" alt="Xiaomi Redmi Note 13" loading="lazy">
-            <div class="card-content">
-              <h3>Xiaomi Redmi Note 13</h3>
-              <p>O Xiaomi Redmi Note 13 é um dos mais recentes lançamentos da Xiaomi no segmento intermediário, com hardware atualizado.</p>
-              <a href="/blog/posts/review-xiaomiredmi13.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/SMARTPHONES/xiaomiredmi13.jpg" alt="Xiaomi Redmi Note 13" loading="lazy">
+                <div class="card-content">
+                  <h3>Xiaomi Redmi Note 13</h3>
+                  <p>O Xiaomi Redmi Note 13 é um dos mais recentes lançamentos da Xiaomi no segmento intermediário, com hardware atualizado.</p>
+                  <a href="/blog/posts/review-xiaomiredmi13.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/SMARTPHONES/2025/edge40.jpg" alt="Motorola Edge 40" loading="lazy">
-            <div class="card-content">
-              <h3>Motorola Edge 40</h3>
-              <p>O Motorola Edge 40 Neo é um dos mais recentes lançamentos da Motorola na linha premium, com design sofisticado.</p>
-              <a href="/blog/posts/review-motorolaedge40.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/SMARTPHONES/2025/edge40.jpg" alt="Motorola Edge 40" loading="lazy">
+                <div class="card-content">
+                  <h3>Motorola Edge 40</h3>
+                  <p>O Motorola Edge 40 Neo é um dos mais recentes lançamentos da Motorola na linha premium, com design sofisticado.</p>
+                  <a href="/blog/posts/review-motorolaedge40.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/SMARTPHONES/samsunga56.jpg" alt="Samsung Galaxy A56 256GB" loading="lazy">
-            <div class="card-content">
-              <h3>Samsung Galaxy A56 256GB</h3>
-              <p>Smartphone com tela Dynamic AMOLED 2X de 120Hz, câmera de 50MP com OIS e carregamento rápido de 45W.</p>
-              <a href="/blog/posts/review-samsungA56.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/SMARTPHONES/samsunga56.jpg" alt="Samsung Galaxy A56 256GB" loading="lazy">
+                <div class="card-content">
+                  <h3>Samsung Galaxy A56 256GB</h3>
+                  <p>Smartphone com tela Dynamic AMOLED 2X de 120Hz, câmera de 50MP com OIS e carregamento rápido de 45W.</p>
+                  <a href="/blog/posts/review-samsungA56.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
+          </div>
         </div>
+        <button class="blog-carousel-control prev" data-cat="smartphones">‹</button>
+        <button class="blog-carousel-control next" data-cat="smartphones">›</button>
       </div>
 
       <!-- Categoria Eletroeletrônicos -->
-      <div id="cat-eletroeletronicos" class="reviews-category">
-        <div class="grid reviews-grid">
-
-          <article class="card review-card">
-            <img src="/images/ELETROELETRONICOS/modialfamily4l.jpg" alt="Fritadeira Air Fryer Mondial 4L" loading="lazy">
-            <div class="card-content">
-              <h3>Fritadeira Air Fryer Mondial 4L</h3>
-              <p>A Fritadeira Air Fryer Mondial 4L é um eletrodoméstico essencial para quem busca frituras mais saudáveis sem abrir mão do sabor.</p>
-              <a href="/blog/posts/review-fritadeiramondial4L.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+      <div id="cat-eletroeletronicos" class="blog-category">
+        <div class="blog-carousel">
+          <div class="blog-carousel-track">
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/ELETROELETRONICOS/modialfamily4l.jpg" alt="Fritadeira Air Fryer Mondial 4L" loading="lazy">
+                <div class="card-content">
+                  <h3>Fritadeira Air Fryer Mondial 4L</h3>
+                  <p>A Fritadeira Air Fryer Mondial 4L é um eletrodoméstico essencial para quem busca frituras mais saudáveis sem abrir mão do sabor.</p>
+                  <a href="/blog/posts/review-fritadeiramondial4L.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/ELETROELETRONICOS/jblgo4preta.jpg" alt="Caixa de Som JBL GO 4" loading="lazy">
-            <div class="card-content">
-              <h3>Caixa de Som JBL GO 4</h3>
-              <p>Qualidade sonora, resistência e conectividade em um design compacto. A escolha ideal para som portátil.</p>
-              <a href="/blog/posts/review-jblgo4.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/ELETROELETRONICOS/jblgo4preta.jpg" alt="Caixa de Som JBL GO 4" loading="lazy">
+                <div class="card-content">
+                  <h3>Caixa de Som JBL GO 4</h3>
+                  <p>Qualidade sonora, resistência e conectividade em um design compacto. A escolha ideal para som portátil.</p>
+                  <a href="/blog/posts/review-jblgo4.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/ELETROELETRONICOS/cameratplinktapo.jpg" alt="Câmera TP-Link Tapo C200" loading="lazy">
-            <div class="card-content">
-              <h3>Câmera TP-Link Tapo C200</h3>
-              <p>Com rotação panorâmica, detecção de movimento e visão noturna, é a solução completa para segurança residencial.</p>
-              <a href="/blog/posts/review-cameratplinktapo.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/ELETROELETRONICOS/cameratplinktapo.jpg" alt="Câmera TP-Link Tapo C200" loading="lazy">
+                <div class="card-content">
+                  <h3>Câmera TP-Link Tapo C200</h3>
+                  <p>Com rotação panorâmica, detecção de movimento e visão noturna, é a solução completa para segurança residencial.</p>
+                  <a href="/blog/posts/review-cameratplinktapo.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/ELETROELETRONICOS/aspiradorropoglass3/1.jpg" alt="Aspirador Robô Ropo Glass 3" loading="lazy">
-            <div class="card-content">
-              <h3>Aspirador Robô Ropo Glass 3</h3>
-              <p>Tecnologia avançada de navegação, potência de sucção eficiente e integração com assistentes virtuais.</p>
-              <a href="/blog/posts/review-aspiradoropoglass3.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/ELETROELETRONICOS/aspiradorropoglass3/1.jpg" alt="Aspirador Robô Ropo Glass 3" loading="lazy">
+                <div class="card-content">
+                  <h3>Aspirador Robô Ropo Glass 3</h3>
+                  <p>Tecnologia avançada de navegação, potência de sucção eficiente e integração com assistentes virtuais.</p>
+                  <a href="/blog/posts/review-aspiradoropoglass3.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/ELETROELETRONICOS/jbl partybox/1.jpg" alt="JBL Partybox 100w" loading="lazy">
-            <div class="card-content">
-              <h3>Caixa de Som JBL Partybox 100w</h3>
-              <p>Som envolvente, graves potentes e um show de luzes dinâmico. Perfeita para festas e eventos.</p>
-              <a href="/blog/posts/review-jbl-partybox.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/ELETROELETRONICOS/jbl partybox/1.jpg" alt="JBL Partybox 100w" loading="lazy">
+                <div class="card-content">
+                  <h3>Caixa de Som JBL Partybox 100w</h3>
+                  <p>Som envolvente, graves potentes e um show de luzes dinâmico. Perfeita para festas e eventos.</p>
+                  <a href="/blog/posts/review-jbl-partybox.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
+          </div>
         </div>
+        <button class="blog-carousel-control prev" data-cat="eletroeletronicos">‹</button>
+        <button class="blog-carousel-control next" data-cat="eletroeletronicos">›</button>
       </div>
 
       <!-- Categoria Beleza e Moda -->
-      <div id="cat-belezaemoda" class="reviews-category">
-        <div class="grid reviews-grid">
-
-          <article class="card review-card">
-            <img src="/images/BELEZA E MODA/perfumecarolinaherreragoodgirl.jpg" alt="Perfume Carolina Herrera" loading="lazy">
-            <div class="card-content">
-              <h3>Perfume Carolina Herrera Good Girl</h3>
-              <p>Lançado em 2016, conquistou o público feminino ao combinar sensualidade e elegância em uma fragrância marcante.</p>
-              <a href="/blog/posts/review-perfume-carolinaherrera.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+      <div id="cat-belezaemoda" class="blog-category">
+        <div class="blog-carousel">
+          <div class="blog-carousel-track">
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/BELEZA E MODA/perfumecarolinaherreragoodgirl.jpg" alt="Perfume Carolina Herrera" loading="lazy">
+                <div class="card-content">
+                  <h3>Perfume Carolina Herrera Good Girl</h3>
+                  <p>Lançado em 2016, conquistou o público feminino ao combinar sensualidade e elegância em uma fragrância marcante.</p>
+                  <a href="/blog/posts/review-perfume-carolinaherrera.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/BELEZA E MODA/serumfacialprincipia.jpg" alt="Sérum Principia Vitamina C-10" loading="lazy">
-            <div class="card-content">
-              <h3>Sérum Principia Vitamina C-10</h3>
-              <p>Fórmula concentrada e livre de ingredientes agressivos, oferece tratamento eficaz para a pele.</p>
-              <a href="/blog/posts/review-serumpincipia.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/BELEZA E MODA/serumfacialprincipia.jpg" alt="Sérum Principia Vitamina C-10" loading="lazy">
+                <div class="card-content">
+                  <h3>Sérum Principia Vitamina C-10</h3>
+                  <p>Fórmula concentrada e livre de ingredientes agressivos, oferece tratamento eficaz para a pele.</p>
+                  <a href="/blog/posts/review-serumpincipia.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/BELEZA E MODA/xiaomiwatch4.jpg" alt="Smartwatch Xiaomi Watch 4" loading="lazy">
-            <div class="card-content">
-              <h3>Smartwatch Xiaomi Watch 4</h3>
-              <p>Design sofisticado, funcionalidades avançadas e bateria de longa duração. Um excelente companheiro para o dia a dia.</p>
-              <a href="/blog/posts/review-redmiwatch4.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/BELEZA E MODA/xiaomiwatch4.jpg" alt="Smartwatch Xiaomi Watch 4" loading="lazy">
+                <div class="card-content">
+                  <h3>Smartwatch Xiaomi Watch 4</h3>
+                  <p>Design sofisticado, funcionalidades avançadas e bateria de longa duração. Um excelente companheiro para o dia a dia.</p>
+                  <a href="/blog/posts/review-redmiwatch4.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/BELEZA E MODA/nikepegasus30.jpg" alt="Tênis Nike Air Zoom Pegasus 38" loading="lazy">
-            <div class="card-content">
-              <h3>Tênis Nike Air Zoom Pegasus 38</h3>
-              <p>Projetado para corredores iniciantes e experientes, com aprimoramentos em conforto e amortecimento.</p>
-              <a href="/blog/posts/review-TenisNikeAirPegasus38.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/BELEZA E MODA/nikepegasus30.jpg" alt="Tênis Nike Air Zoom Pegasus 38" loading="lazy">
+                <div class="card-content">
+                  <h3>Tênis Nike Air Zoom Pegasus 38</h3>
+                  <p>Projetado para corredores iniciantes e experientes, com aprimoramentos em conforto e amortecimento.</p>
+                  <a href="/blog/posts/review-TenisNikeAirPegasus38.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
+          </div>
         </div>
+        <button class="blog-carousel-control prev" data-cat="belezaemoda">‹</button>
+        <button class="blog-carousel-control next" data-cat="belezaemoda">›</button>
       </div>
 
       <!-- Categoria Calçados -->
-      <div id="cat-calcados" class="reviews-category">
-        <div class="grid reviews-grid">
-
-          <article class="card review-card">
-            <img src="/images/CALCADOS/adidasultraboost5/1.jpg" alt="Tênis Adidas Ultraboost 5" loading="lazy">
-            <div class="card-content">
-              <h3>Tênis Adidas Ultraboost 5</h3>
-              <p>Modelo icônico da Adidas, projetado para oferecer o máximo em conforto e desempenho para corrida.</p>
-              <a href="/blog/posts/review-TenisAdidasUltraboost5.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+      <div id="cat-calcados" class="blog-category">
+        <div class="blog-carousel">
+          <div class="blog-carousel-track">
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/CALCADOS/adidasultraboost5/1.jpg" alt="Tênis Adidas Ultraboost 5" loading="lazy">
+                <div class="card-content">
+                  <h3>Tênis Adidas Ultraboost 5</h3>
+                  <p>Modelo icônico da Adidas, projetado para oferecer o máximo em conforto e desempenho para corrida.</p>
+                  <a href="/blog/posts/review-TenisAdidasUltraboost5.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/CALCADOS/sapatodemocrataair.jpg" alt="Sapato Smart Comfort Air Spot" loading="lazy">
-            <div class="card-content">
-              <h3>Sapato Smart Comfort Air Spot</h3>
-              <p>Ideal para o trabalho ou eventos formais, com design sofisticado e tecnologia de amortecimento.</p>
-              <a href="/blog/posts/review-SapatoDemocrataSmartComfort.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/CALCADOS/sapatodemocrataair.jpg" alt="Sapato Smart Comfort Air Spot" loading="lazy">
+                <div class="card-content">
+                  <h3>Sapato Smart Comfort Air Spot</h3>
+                  <p>Ideal para o trabalho ou eventos formais, com design sofisticado e tecnologia de amortecimento.</p>
+                  <a href="/blog/posts/review-SapatoDemocrataSmartComfort.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/CALCADOS/sapatinhamolecabico.jpg" alt="Sapatilha Moleca Bico Redondo" loading="lazy">
-            <div class="card-content">
-              <h3>Sapatilha Moleca Bico Redondo</h3>
-              <p>Design clássico e acabamento refinado, combina perfeitamente com diferentes estilos e ocasiões.</p>
-              <a href="/blog/posts/review-SapatilhaMolecaBicoRedondo.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/CALCADOS/sapatinhamolecabico.jpg" alt="Sapatilha Moleca Bico Redondo" loading="lazy">
+                <div class="card-content">
+                  <h3>Sapatilha Moleca Bico Redondo</h3>
+                  <p>Design clássico e acabamento refinado, combina perfeitamente com diferentes estilos e ocasiões.</p>
+                  <a href="/blog/posts/review-SapatilhaMolecaBicoRedondo.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="card review-card">
-            <img src="/images/CALCADOS/sadalhahavaianasttropez.jpg" alt="Sandália Havaianas St. Tropez" loading="lazy">
-            <div class="card-content">
-              <h3>Sandália Havaianas Rasteirinha St. Tropez</h3>
-              <p>Confortável, estilosa e versátil, a escolha perfeita para quem busca um calçado para o dia a dia.</p>
-              <a href="/blog/posts/review-SapatilhaMolecaBicoRedondo.html" target="_blank" rel="noopener noreferrer">Leia mais →</a>
+            <div class="blog-carousel-slide">
+              <article class="card review-card">
+                <img src="/images/CALCADOS/sadalhahavaianasttropez.jpg" alt="Sandália Havaianas St. Tropez" loading="lazy">
+                <div class="card-content">
+                  <h3>Sandália Havaianas Rasteirinha St. Tropez</h3>
+                  <p>Confortável, estilosa e versátil, a escolha perfeita para quem busca um calçado para o dia a dia.</p>
+                  <a href="/blog/posts/review-SapatilhaMolecaBicoRedondo.html" target="_blank">Leia mais →</a>
+                </div>
+              </article>
             </div>
-          </article>
-
+          </div>
         </div>
+        <button class="blog-carousel-control prev" data-cat="calcados">‹</button>
+        <button class="blog-carousel-control next" data-cat="calcados">›</button>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- CSS adicional para o menu de categorias -->
 <style>
 /* Menu de Categorias - estilo consistente com o site */
 .categories-menu {
@@ -877,51 +889,352 @@ document.addEventListener('DOMContentLoaded', carregarReviewsCarrossel);
 }
 
 /* Categorias - mostrar/esconder */
-.reviews-category {
+.blog-category {
   display: none;
+  position: relative;
 }
 
-.reviews-category.active {
+.blog-category.active {
   display: block;
 }
 
-/* Responsividade para mobile */
+/* Estilos do Carrossel de Tutoriais */
+.tutorial-carousel-container,
+.blog-carousel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+.tutorial-carousel,
+.blog-carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.tutorial-carousel-track,
+.blog-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 20px;
+}
+
+.tutorial-carousel-slide,
+.blog-carousel-slide {
+  flex: 0 0 calc(33.333% - 14px);
+  min-width: calc(33.333% - 14px);
+}
+
+/* Cards */
+.tutorial-card,
+.review-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.tutorial-card:hover,
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.tutorial-card img,
+.review-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.tutorial-card .card-content,
+.review-card .card-content {
+  padding: 20px;
+}
+
+.tutorial-card .card-content h3,
+.review-card .card-content h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.tutorial-card .card-content p,
+.review-card .card-content p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.tutorial-card .card-content a,
+.review-card .card-content a {
+  display: inline-block;
+  background: #4A90E2;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.tutorial-card .card-content a:hover,
+.review-card .card-content a:hover {
+  background: #357ABD;
+  transform: translateY(-2px);
+}
+
+/* Controles do Carrossel */
+.tutorial-carousel-control,
+.blog-carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.tutorial-carousel-control:hover,
+.blog-carousel-control:hover {
+  background: #357ABD;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.tutorial-carousel-control.prev,
+.blog-carousel-control.prev {
+  left: 0;
+}
+
+.tutorial-carousel-control.next,
+.blog-carousel-control.next {
+  right: 0;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .tutorial-carousel-slide,
+  .blog-carousel-slide {
+    flex: 0 0 calc(50% - 10px);
+    min-width: calc(50% - 10px);
+  }
+}
+
 @media (max-width: 768px) {
-  .categories-menu {
-    gap: 8px;
-    margin-bottom: 30px;
+  .tutorial-carousel-container,
+  .blog-carousel-container {
+    padding: 0 40px;
   }
   
-  .cat-btn {
-    padding: 8px 16px;
-    font-size: 0.8rem;
+  .tutorial-carousel-slide,
+  .blog-carousel-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+  
+  .tutorial-carousel-control,
+  .blog-carousel-control {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+  
+  .tutorial-card .card-content h3,
+  .review-card .card-content h3 {
+    font-size: 1rem;
+  }
+  
+  .tutorial-card .card-content p,
+  .review-card .card-content p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tutorial-carousel-container,
+  .blog-carousel-container {
+    padding: 0 30px;
+  }
+  
+  .tutorial-carousel-control,
+  .blog-carousel-control {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  
+  .tutorial-carousel-control.prev,
+  .blog-carousel-control.prev {
+    left: -5px;
+  }
+  
+  .tutorial-carousel-control.next,
+  .blog-carousel-control.next {
+    right: -5px;
   }
 }
 </style>
 
-<!-- Script para trocar as abas -->
 <script>
+// Inicializar carrossel de Tutoriais
+function initTutorialCarousel() {
+  const track = document.querySelector('.tutorial-carousel-track');
+  if (!track) return;
+  
+  const slides = track.querySelectorAll('.tutorial-carousel-slide');
+  const totalSlides = slides.length;
+  if (totalSlides === 0) return;
+  
+  let currentIndex = 0;
+  let slidesPerView = 3;
+  
+  function updateSlidesPerView() {
+    if (window.innerWidth <= 768) {
+      slidesPerView = 1;
+    } else if (window.innerWidth <= 1024) {
+      slidesPerView = 2;
+    } else {
+      slidesPerView = 3;
+    }
+  }
+  
+  function updateCarousel() {
+    updateSlidesPerView();
+    const slideWidth = track.parentElement.clientWidth / slidesPerView;
+    
+    slides.forEach(slide => {
+      slide.style.flex = `0 0 ${slideWidth - 20}px`;
+      slide.style.minWidth = `${slideWidth - 20}px`;
+    });
+    
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+  
+  const prevBtn = document.getElementById('tutorialPrevBtn');
+  const nextBtn = document.getElementById('tutorialNextBtn');
+  
+  prevBtn?.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  });
+  
+  nextBtn?.addEventListener('click', () => {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateCarousel();
+    }
+  });
+  
+  window.addEventListener('resize', updateCarousel);
+  updateCarousel();
+}
+
+// Inicializar carrosséis das categorias do blog
+function initBlogCarousels() {
+  const categories = document.querySelectorAll('.blog-category');
+  
+  categories.forEach(category => {
+    const track = category.querySelector('.blog-carousel-track');
+    if (!track) return;
+    
+    const slides = track.querySelectorAll('.blog-carousel-slide');
+    const totalSlides = slides.length;
+    if (totalSlides === 0) return;
+    
+    let currentIndex = 0;
+    let slidesPerView = 3;
+    
+    function updateSlidesPerView() {
+      if (window.innerWidth <= 768) {
+        slidesPerView = 1;
+      } else if (window.innerWidth <= 1024) {
+        slidesPerView = 2;
+      } else {
+        slidesPerView = 3;
+      }
+    }
+    
+    function updateCarousel() {
+      updateSlidesPerView();
+      const slideWidth = track.parentElement.clientWidth / slidesPerView;
+      
+      slides.forEach(slide => {
+        slide.style.flex = `0 0 ${slideWidth - 20}px`;
+        slide.style.minWidth = `${slideWidth - 20}px`;
+      });
+      
+      const maxIndex = Math.max(0, totalSlides - slidesPerView);
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+      
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+    
+    const prevBtn = category.querySelector('.blog-carousel-control.prev');
+    const nextBtn = category.querySelector('.blog-carousel-control.next');
+    
+    prevBtn?.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+    
+    nextBtn?.addEventListener('click', () => {
+      const maxIndex = Math.max(0, totalSlides - slidesPerView);
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+    
+    window.addEventListener('resize', updateCarousel);
+    updateCarousel();
+  });
+}
+
 // Função para alternar entre categorias
 document.addEventListener('DOMContentLoaded', function() {
   const categoryBtns = document.querySelectorAll('.cat-btn');
-  const categories = document.querySelectorAll('.reviews-category');
+  const categories = document.querySelectorAll('.blog-category');
   
   categoryBtns.forEach(btn => {
     btn.addEventListener('click', function() {
       const catId = this.getAttribute('data-cat');
       
-      // Remove active de todos os botões
       categoryBtns.forEach(b => b.classList.remove('active'));
-      // Adiciona active no botão clicado
       this.classList.add('active');
       
-      // Esconde todas as categorias
       categories.forEach(cat => cat.classList.remove('active'));
-      // Mostra a categoria selecionada
       const targetCat = document.getElementById(`cat-${catId}`);
       if (targetCat) targetCat.classList.add('active');
     });
   });
+  
+  initTutorialCarousel();
+  initBlogCarousels();
 });
 </script>
 
