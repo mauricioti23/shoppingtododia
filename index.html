@@ -147,65 +147,93 @@
 </div>
 
     <!-- Conteúdo Principal -->
-    <!-- Seção de Reviews -->
-    <section class="section reviews-section" id="reviews">
-      <div class="container">
-        <h2>Reviews / Análise de Produtos</h2>
-        <div class="grid reviews-grid">
-
-          <!-- REVIEW 1 -->
-          <article class="card review-card">
-            <img src="/images/ELETROELETRONICOS/jbl go 4/1.jpg" alt="Review da Caixa de Som JBL Go 4" loading="lazy">
-            <div class="card-content">
-              <h3>Caixa de Som JBL GO 4 – Análise Completa e Promoções</h3>
-              <p>BL GO 4 – Som Potente e Portabilidade em um Só Produto
-                Se você busca qualidade sonora, resistência e conectividade em um design compacto, a JBL GO 4 é a
-                escolha ideal. Com um som potente para seu tamanho, essa caixa de som oferece uma experiência de áudio
-                envolvente em qualquer ambiente.
-              </p>
-              <a href="https://shoppingtododia.com.br/blog/posts/review-jblgo4.html" target="_blank"
-                rel="noopener noreferrer">Leia mais</a>
-            </div>
-          </article>
-
-         <!-- REVIEW 2 -->
-<article class="card review-card">
-  <img src="/images/SMARTPHONES/samsunga56.jpg" alt="Review do Samsung Galaxy A56 256GB" loading="lazy">
-  <div class="card-content">
-    <h3>Samsung Galaxy A56 256GB – Análise Completa e Promoções</h3>
-    <p>Samsung Galaxy A56 256GB – Potência, Tela Premium e Câmeras com IA em um Único Smartphone. Se você busca desempenho de ponta, tela Dynamic AMOLED 2X de 120Hz, bateria de longa duração com carregamento rápido de 45W e um conjunto fotográfico versátil com OIS, o Galaxy A56 256GB é a escolha ideal para o dia a dia e muito mais.</p>
-    <a href="/blog/posts/review-samsungA56.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
-  </div>
-</article>
-
-          <!-- REVIEW 3 -->
-          <article class="card review-card">
-            <img src="/images/ELETROELETRONICOS/cameratplinktapo/2.jpg"
-              alt="Câmera de Segurança Wi-Fi TP-Link Tapo C200" loading="lazy">
-            <div class="card-content">
-              <h3>Câmera de Segurança Wi-Fi TP-Link Tapo C200 – Análise Completa e Promoções</h3>
-              <p>A Câmera de Segurança Wi-Fi TP-Link Tapo C200 é uma solução completa para quem busca segurança e
-                monitoramento eficiente em residências ou escritórios. Com funcionalidades avançadas, como rotação
-                panorâmica, detecção de movimento e visão noturna, esta câmera se destaca pelo excelente custo-benefício
-                e facilidade de uso.
-              </p>
-              <a href="https://shoppingtododia.com.br/blog/posts/review-cameratplinktapo.html" target="_blank"
-                rel="noopener noreferrer">Leia mais</a>
-            </div>
-          </article>
-
-          <!-- REVIEW 4 -->
-<article class="card review-card">
-  <img src="/images/SMARTPHONES/Soundcore P30i.jpg" alt="Review do Fone Soundcore P30i Anker" loading="lazy">
-  <div class="card-content">
-    <h3>Soundcore P30i Anker – Review Completo e Promoções</h3>
-    <p>Soundcore P30i Anker – Cancelamento de Ruído Adaptativo, Graves Poderosos e 45h de Bateria. Se você busca um fone TWS completo com Bluetooth 5.4, estojo 2-em-1 com suporte para celular, resistência IP54 e áudio de qualidade com graves encorpados, o Soundcore P30i é a escolha ideal para o dia a dia.</p>
-    <a href="/blog/posts/revies-foneSoundcoreP30i.html" target="_blank" rel="noopener noreferrer">Leia mais</a>
-  </div>
-</article>
-        </div>
+    
+    <!-- Seção de Reviews / Análises - Carregados pela API -->
+<section class="section reviews-section" id="reviews">
+  <div class="container">
+    <h2>Reviews / Análise de Produtos</h2>
+    <p style="text-align: center; margin-bottom: 30px; color: #666;">Análises completas geradas com base nos melhores vídeos do YouTube</p>
+    <div id="reviews-container" class="grid reviews-grid">
+      <div class="loading-reviews" style="text-align: center; padding: 40px; grid-column: 1 / -1;">
+        Carregando reviews...
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<script>
+(async function() {
+  const container = document.getElementById('reviews-container');
+  if (!container) return;
+  
+  try {
+    const response = await fetch('https://review-api.shoppingtododia.com.br/api/reviews');
+    const data = await response.json();
+    
+    if (!data.success || !data.data || data.data.length === 0) {
+      container.innerHTML = '<div class="loading-reviews" style="text-align: center; padding: 40px; grid-column: 1 / -1;">📹 Em breve, novos reviews gerados por IA!</div>';
+      return;
+    }
+    
+    let html = '';
+    data.data.forEach(review => {
+      const title = (review.title || 'Review').replace(/\*\*/g, '');
+      const productName = review.product_name || 'Produto';
+      const formattedDate = new Date(review.created_at).toLocaleDateString('pt-BR');
+      
+      // Imagem padrão caso não tenha thumbnail específica
+      const imageUrl = `https://img.youtube.com/vi/${review.video_id}/mqdefault.jpg`;
+      
+      html += `
+        <article class="card review-card">
+          <img src="${imageUrl}" alt="Review do ${productName}" loading="lazy" onerror="this.src='/images/logo/Shopping (3).png'">
+          <div class="card-content">
+            <h3>${escapeHtml(title.substring(0, 60))}</h3>
+            <p><strong>${escapeHtml(productName)}</strong> - Review completo baseado no melhor conteúdo do YouTube. Publicado em ${formattedDate}</p>
+            <div class="review-meta" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+              <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn-review" target="_blank" style="background: #4A90E2; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600;">Leia mais →</a>
+              <small style="color: #888;"><i class="bi bi-eye"></i> ${review.views || 0} visualizações</small>
+            </div>
+          </div>
+        </article>
+      `;
+    });
+    
+    container.innerHTML = html;
+    console.log(`✅ ${data.data.length} reviews carregados da API`);
+    
+  } catch (error) {
+    console.error('Erro ao carregar reviews:', error);
+    container.innerHTML = '<div class="loading-reviews" style="text-align: center; padding: 40px; grid-column: 1 / -1;">⚠️ Erro ao carregar reviews. Tente novamente mais tarde.</div>';
+  }
+  
+  function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+})();
+</script>
+
+<style>
+/* Estilos adicionais para os cards carregados via API */
+.review-card .btn-review {
+  display: inline-block;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.review-card .btn-review:hover {
+  background: #357ABD !important;
+  transform: translateY(-2px);
+}
+
+.review-card .review-meta small {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+</style>
 
     <!-- Seção Vídeos em Destaque -->
     <section class="section youtube-section" id="youtube">
