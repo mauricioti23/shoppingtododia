@@ -199,6 +199,8 @@
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .review-card:hover {
@@ -214,6 +216,9 @@
 
 .review-card .card-content {
   padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .review-card .card-content h3 {
@@ -228,6 +233,7 @@
   color: #666;
   line-height: 1.5;
   margin-bottom: 15px;
+  flex: 1;
 }
 
 .review-card .btn-review {
@@ -239,6 +245,7 @@
   text-decoration: none;
   font-weight: 600;
   transition: background 0.3s, transform 0.2s;
+  align-self: flex-start;
 }
 
 .review-card .btn-review:hover {
@@ -335,21 +342,6 @@
 </style>
 
 <script>
-// Função para truncar texto em breve descrição
-function getShortDescription(content, maxLength = 120) {
-  if (!content) return '';
-  // Remove markdown e HTML
-  let text = content
-    .replace(/[#*`_]/g, '')
-    .replace(/\n/g, ' ')
-    .trim();
-  
-  if (text.length > maxLength) {
-    text = text.substring(0, maxLength) + '...';
-  }
-  return text;
-}
-
 // Função para carregar e inicializar o carrossel
 async function carregarReviewsCarrossel() {
   const container = document.getElementById('reviews-carousel');
@@ -364,7 +356,6 @@ async function carregarReviewsCarrossel() {
       return;
     }
     
-    // Criar track do carrossel
     const track = document.createElement('div');
     track.className = 'reviews-carousel-track';
     
@@ -372,17 +363,9 @@ async function carregarReviewsCarrossel() {
     data.data.forEach(review => {
       const title = (review.title || 'Review').replace(/\*\*/g, '');
       const productName = review.product_name || 'Produto';
-      const formattedDate = new Date(review.created_at).toLocaleDateString('pt-BR');
       
-      // Extrair breve descrição do conteúdo (se disponível)
-      let shortDesc = '';
-      if (review.content) {
-        shortDesc = getShortDescription(review.content, 100);
-      }
-      
-      if (!shortDesc) {
-        shortDesc = `Análise completa do ${productName} com informações sobre design, desempenho e custo-benefício.`;
-      }
+      // Usar a breve descrição vinda da API
+      let shortDesc = review.brief_description || `Análise completa do ${productName} com informações sobre design, desempenho e custo-benefício.`;
       
       const imageUrl = review.video_id ? `https://img.youtube.com/vi/${review.video_id}/mqdefault.jpg` : '/images/logo/Shopping (3).png';
       
@@ -393,9 +376,7 @@ async function carregarReviewsCarrossel() {
             <div class="card-content">
               <h3>${escapeHtml(title.substring(0, 60))}</h3>
               <p><strong>${escapeHtml(productName)}</strong> - ${escapeHtml(shortDesc)}</p>
-              <div class="review-meta" style="margin-top: 15px;">
-                <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn-review" target="_blank">Leia mais →</a>
-              </div>
+              <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn-review" target="_blank">Leia mais →</a>
             </div>
           </article>
         </div>
@@ -406,9 +387,7 @@ async function carregarReviewsCarrossel() {
     container.innerHTML = '';
     container.appendChild(track);
     
-    // Inicializar carrossel
     initCarousel();
-    
     console.log(`✅ ${data.data.length} reviews carregados no carrossel`);
     
   } catch (error) {
@@ -417,7 +396,6 @@ async function carregarReviewsCarrossel() {
   }
 }
 
-// Configuração do Carrossel
 let currentIndex = 0;
 let slidesPerView = 3;
 let totalSlides = 0;
@@ -435,7 +413,6 @@ function initCarousel() {
   
   if (totalSlides === 0) return;
   
-  // Determinar slides por view baseado na largura da tela
   function updateSlidesPerView() {
     if (window.innerWidth <= 768) {
       slidesPerView = 1;
@@ -451,13 +428,11 @@ function initCarousel() {
     updateSlidesPerView();
     slideWidth = track.parentElement.clientWidth / slidesPerView;
     
-    // Definir largura de cada slide
     slides.forEach(slide => {
       slide.style.flex = `0 0 ${slideWidth - 20}px`;
       slide.style.minWidth = `${slideWidth - 20}px`;
     });
     
-    // Mover para posição atual
     const maxIndex = Math.max(0, totalSlides - slidesPerView);
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     
@@ -465,7 +440,6 @@ function initCarousel() {
     track.style.transform = `translateX(-${offset}px)`;
   }
   
-  // Botão anterior
   const prevBtn = document.getElementById('reviewsPrevBtn');
   const nextBtn = document.getElementById('reviewsNextBtn');
   
@@ -487,10 +461,7 @@ function initCarousel() {
   if (prevBtn) prevBtn.onclick = goPrev;
   if (nextBtn) nextBtn.onclick = goNext;
   
-  window.addEventListener('resize', () => {
-    updateCarousel();
-  });
-  
+  window.addEventListener('resize', () => updateCarousel());
   updateCarousel();
 }
 
@@ -501,10 +472,8 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-// Carregar quando a página estiver pronta
 document.addEventListener('DOMContentLoaded', carregarReviewsCarrossel);
 </script>
-
 
     <!-- Seção Vídeos em Destaque -->
     <section class="section youtube-section" id="youtube">
