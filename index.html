@@ -148,7 +148,7 @@
 
     <!-- Conteúdo Principal -->
     
-    <!-- Seção de Reviews / Análises - Carregados pela API (Carrossel) -->
+    <!-- Seção de Reviews / Análises - Carregados pela API (Carrossel) 12.05.2026 -->
 <section class="section reviews-section" id="reviews">
   <div class="container">
     <h2>Reviews / Análise de Produtos</h2>
@@ -157,7 +157,7 @@
     <div class="reviews-carousel-container">
       <div id="reviews-carousel" class="reviews-carousel">
         <div class="loading-reviews" style="text-align: center; padding: 40px;">
-          Carregando reviews...
+          📹 Carregando reviews...
         </div>
       </div>
       
@@ -222,10 +222,12 @@
 }
 
 .review-card .card-content h3 {
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-bottom: 8px;
   color: #888;
   font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .review-card .card-content h2 {
@@ -242,6 +244,10 @@
   line-height: 1.5;
   margin-bottom: 15px;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .review-card .btn-review {
@@ -350,22 +356,15 @@
 </style>
 
 <script>
-// Função para limpar a descrição (remover "Introdução" do início)
-function cleanDescription(description, productName) {
-  if (!description) return `Análise completa do ${productName} com informações sobre design, desempenho e custo-benefício.`;
-  
-  // Remover "Introdução" ou "Introdução:" do início
-  let cleaned = description.replace(/^Introdução\s*:?\s*/i, '');
-  cleaned = cleaned.replace(/^O mercado.*?competitivo,\s*/i, '');
-  cleaned = cleaned.replace(/^O\s+[\w\s]+\s+é\s+um\s+[\w\s]+\s+que\s+promete\s+/i, '');
-  
-  // Garantir que não comece com letra maiúscula isolada
-  cleaned = cleaned.trim();
-  
-  if (cleaned.length > 0 && cleaned.length < 150) {
-    return cleaned;
+// Função para formatar a descrição (usa a brief_description da API)
+function formatDescription(description, productName) {
+  if (description && description.trim().length > 0) {
+    // Se a descrição for muito longa, corta
+    if (description.length > 250) {
+      return description.substring(0, 250) + '...';
+    }
+    return description;
   }
-  
   return `Análise completa do ${productName} com informações sobre design, desempenho e custo-benefício.`;
 }
 
@@ -375,7 +374,8 @@ async function carregarReviewsCarrossel() {
   if (!container) return;
   
   try {
-    const response = await fetch('https://review-api.shoppingtododia.com.br/api/reviews');
+    // Adicionar timestamp para evitar cache
+    const response = await fetch('https://review-api.shoppingtododia.com.br/api/reviews?_=' + Date.now());
     const data = await response.json();
     
     if (!data.success || !data.data || data.data.length === 0) {
@@ -391,25 +391,20 @@ async function carregarReviewsCarrossel() {
       const title = (review.title || 'Review').replace(/\*\*/g, '');
       const productName = review.product_name || 'Produto';
       
-      // Usar a breve descrição vinda da API ou gerar
-      let rawDesc = review.brief_description || '';
-      let shortDesc = cleanDescription(rawDesc, productName);
-      
-      // Limitar tamanho da descrição
-      if (shortDesc.length > 100) {
-        shortDesc = shortDesc.substring(0, 100) + '...';
-      }
+      // Usar a breve descrição vinda da API criada pelo admin
+      let description = review.brief_description || '';
+      let shortDesc = formatDescription(description, productName);
       
       const imageUrl = review.video_id ? `https://img.youtube.com/vi/${review.video_id}/mqdefault.jpg` : '/images/logo/Shopping (3).png';
       
       slidesHtml += `
         <div class="reviews-carousel-slide">
           <article class="card review-card">
-            <img src="${imageUrl}" alt="Review do ${escapeHtml(productName)}" loading="lazy" onerror="this.src='/images/logo/Shopping (3).png'">
+            <img src="${imageUrl}" alt="Review ${escapeHtml(productName)}" loading="lazy" onerror="this.src='/images/logo/Shopping (3).png'">
             <div class="card-content">
-              <h3>Review do ${escapeHtml(productName)}</h3>
-              <h2>${escapeHtml(title.substring(0, 60))}</h2>
-              <p>${escapeHtml(productName)} - ${escapeHtml(shortDesc)}</p>
+              <h3>REVIEW</h3>
+              <h2>${escapeHtml(title.substring(0, 80))}</h2>
+              <p>${escapeHtml(shortDesc)}</p>
               <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn-review" target="_blank">Leia mais →</a>
             </div>
           </article>
@@ -506,6 +501,7 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
+// Inicializar quando a página carregar
 document.addEventListener('DOMContentLoaded', carregarReviewsCarrossel);
 </script>
 
