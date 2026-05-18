@@ -356,20 +356,21 @@
 </style>
 
 <script>
-// Função para formatar a descrição (remove "Introdução" e limita a 150 caracteres)
+// Função para formatar a descrição - limite de 160 caracteres
 function formatDescription(description, productName) {
-  // Se tem descrição vinda do admin, usa ela
+  // Se tem descrição vinda da API, usa ela
   if (description && description.trim().length > 0) {
-    // Remove "Introdução" do início se ainda existir
-    let cleaned = description.replace(/^Introdução\s*:?\s*/i, '');
-    cleaned = cleaned.replace(/^O mercado.*?competitivo,\s*/i, '');
-    cleaned = cleaned.replace(/^O\s+[\w\s]+\s+é\s+um\s+[\w\s]+\s+que\s+promete\s+/i, '');
+    let cleaned = description.trim();
+    
+    // Remover apenas "Introdução" se estiver no início (não remover mais nada)
+    cleaned = cleaned.replace(/^Introdução\s*:?\s*/i, '');
     cleaned = cleaned.trim();
     
-    // Se a descrição for muito longa, corta em 150 caracteres
-    if (cleaned.length > 150) {
-      return cleaned.substring(0, 150) + '...';
+    // Limitar a 160 caracteres
+    if (cleaned.length > 160) {
+      cleaned = cleaned.substring(0, 157).trim() + '...';
     }
+    
     return cleaned;
   }
   // Fallback: descrição genérica
@@ -399,7 +400,7 @@ async function carregarReviewsCarrossel() {
       const title = (review.title || 'Review').replace(/\*\*/g, '');
       const productName = review.product_name || 'Produto';
       
-      // Usar a breve descrição vinda da API criada pelo admin
+      // Usar a descrição vinda da API
       let description = review.brief_description || '';
       let shortDesc = formatDescription(description, productName);
       
