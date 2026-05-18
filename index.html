@@ -413,8 +413,7 @@ async function carregarReviewsCarrossel() {
               <h3>REVIEW</h3>
               <h2>${escapeHtml(title.substring(0, 80))}</h2>
               <p>${escapeHtml(shortDesc)}</p>
-              <a href="https://review-api.shoppingtododia.com.br/reviews/review-${review.slug}.html" class="btn-review" target="_blank">Leia mais →</a>
-            </div>
+              <a href="https://review-api.shoppingtododia.com.br/reviews/${review.slug}.html" class="btn-review" target="_blank">Leia mais →</a>
           </article>
         </div>
       `;
