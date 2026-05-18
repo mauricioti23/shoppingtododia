@@ -362,8 +362,12 @@ function formatDescription(description, productName) {
   if (description && description.trim().length > 0) {
     let cleaned = description.trim();
     
-    // Remover apenas "Introdução" se estiver no início (não remover mais nada)
+    // APENAS remover "Introdução" se estiver no início
     cleaned = cleaned.replace(/^Introdução\s*:?\s*/i, '');
+    
+    // NÃO remover "O mercado..." - deixar o texto original da API
+    // NÃO remover outras frases genéricas
+    
     cleaned = cleaned.trim();
     
     // Limitar a 160 caracteres
