@@ -414,6 +414,7 @@ async function carregarReviewsCarrossel() {
               <h2>${escapeHtml(title.substring(0, 80))}</h2>
               <p>${escapeHtml(shortDesc)}</p>
               <a href="https://review-api.shoppingtododia.com.br/reviews/${review.slug}.html" class="btn-review" target="_blank">Leia mais →</a>
+            </div>
           </article>
         </div>
       `;
@@ -511,7 +512,6 @@ function escapeHtml(text) {
 // Inicializar quando a página carregar
 document.addEventListener('DOMContentLoaded', carregarReviewsCarrossel);
 </script>
-
 
     <!-- Seção Vídeos em Destaque -->
     <section class="section youtube-section" id="youtube">
