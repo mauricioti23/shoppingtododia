@@ -1253,7 +1253,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <!-- SCRIPT PROMOÇÕES SHOPEE (01.06.2026) -->
+ 
 <script>
+
+// SCRIPT PROMOÇÕES SHOPEE - VERSÃO CORRIGIDA
 async function carregarPromocoesShopee() {
   const container = document.getElementById('promocoes-container');
   if (!container) return;
@@ -1262,61 +1265,74 @@ async function carregarPromocoesShopee() {
   
   try {
     const url = 'https://shopee-api.shoppingtododia.com.br/api/artigos?_=' + Date.now();
-    console.log('[Shopee] Buscando promoções:', url);
-    
     const response = await fetch(url);
     const data = await response.json();
-    
-    console.log('[Shopee] Resposta:', data);
     
     if (data.success && data.data && data.data.length > 0) {
       const artigos = data.data.slice(0, 4);
       let html = '';
       
       artigos.forEach(artigo => {
-        let descricao = artigo.brief_description || `Confira o ${artigo.product_name} com preço especial!`;
-        if (descricao.length > 120) {
-          descricao = descricao.substring(0, 117) + '...';
-        }
+        let descricao = artigo.brief_description || `Confira ${artigo.product_name}`;
+        if (descricao.length > 120) descricao = descricao.substring(0, 117) + '...';
         
-        // CORREÇÃO: converter price para número
+        // CONVERSÃO CORRETA DO PREÇO
         const precoNumerico = parseFloat(artigo.price);
-        const precoFormatado = !isNaN(precoNumerico) && precoNumerico > 0 
+        const precoFormatado = (!isNaN(precoNumerico) && precoNumerico > 0) 
           ? `R$ ${precoNumerico.toFixed(2).replace('.', ',')}` 
           : 'Preço especial';
         
         const artigoUrl = `https://shopee-api.shoppingtododia.com.br/artigos/${artigo.slug}.html`;
         
+        // USANDO IMAGEM REAL DA SHOPEE OU PLACEHOLDER
+        const imgUrl = `https://via.placeholder.com/300x200/4A90E2/FFFFFF?text=${encodeURIComponent(artigo.product_name.substring(0, 20))}`;
+        
         html += `
           <article class="card promo-card">
-            <img src="/images/placeholder-produto.jpg" 
-                 alt="${escapeHtml(artigo.product_name)}" 
-                 loading="lazy"
-                 onerror="this.src='https://via.placeholder.com/300x250/4A90E2/FFFFFF?text=🛍️+OFERTA'">
+            <img src="${imgUrl}" 
+                 alt="${artigo.product_name.replace(/"/g, '&quot;')}" 
+                 loading="lazy" 
+                 style="width:100%; height:180px; object-fit:cover;">
             <div class="card-content">
-              <h3>${escapeHtml(artigo.product_name)}</h3>
-              <p><strong>💰 Preço especial: </strong>${precoFormatado}</p>
-              <p>${escapeHtml(descricao)}</p>
-              <a href="${artigo.affiliate_link || '#'}" target="_blank" rel="sponsored noopener" class="btn-oferta">Ver Oferta</a><br><br>
-              <a href="${artigoUrl}" target="_blank" rel="noopener" class="btn-review">Ver Review/Análise</a>
+              <h3>${artigo.product_name.substring(0, 60)}</h3>
+              <p><strong>💰 Preço especial:</strong> ${precoFormatado}</p>
+              <p>${descricao.substring(0, 100)}...</p>
+              <a href="${artigo.affiliate_link || '#'}" target="_blank" rel="sponsored" class="btn-oferta">Ver Oferta</a><br><br>
+              <a href="${artigoUrl}" target="_blank" class="btn-review">Ver Review/Análise</a>
             </div>
           </article>
         `;
       });
       
       container.innerHTML = html;
-      console.log(`[Shopee] ✅ ${artigos.length} promoções carregadas`);
-      
+      console.log(`✅ ${artigos.length} promoções da Shopee carregadas`);
     } else {
       container.innerHTML = gerarPromocoesFallback();
-      console.log('[Shopee] ⚠️ Nenhum artigo encontrado, usando fallback');
     }
-    
   } catch (error) {
-    console.error('[Shopee] ❌ Erro ao carregar promoções:', error);
+    console.error('Erro Shopee:', error);
     container.innerHTML = gerarPromocoesFallback();
   }
 }
+
+function gerarPromocoesFallback() {
+  return `
+    <article class="card promo-card">
+      <img src="/images/SMARTPHONES/samsunga56.jpg" alt="Samsung Galaxy A56">
+      <div class="card-content">
+        <h3>Samsung Galaxy A56 256GB</h3>
+        <p><strong>Opinião:</strong> Smartphone excelente com tela Dynamic AMOLED 2X de 120Hz...</p>
+        <a href="https://meli.la/2W4wicE" target="_blank">Ver Oferta</a><br><br>
+        <a href="blog/posts/review-samsungA56.html">Ver Review</a>
+      </div>
+    </article>
+  `;
+}
+
+// Inicializar
+document.addEventListener('DOMContentLoaded', carregarPromocoesShopee);
+setInterval(carregarPromocoesShopee, 30 * 60 * 1000);
+
 </script>
 
 // Script ultimas noticias 01.05.2026
