@@ -1361,9 +1361,14 @@ async function carregarPromocoesShopee() {
         const temPrecoValido = !isNaN(precoNumerico) && precoNumerico > 0;
         const precoFormatado = temPrecoValido ? `R$ ${precoNumerico.toFixed(2).replace('.', ',')}` : '';
         
-        const imagemProduto = produto.image_url || `https://placehold.co/300x200/4A90E2/white?text=${encodeURIComponent(produto.product_name.substring(0, 20))}`;
-        const linkAfiliado = produto.affiliate_link || produto.url || '#';
+        // Link do artigo (review completo)
         const artigoUrl = `https://shopee-api.shoppingtododia.com.br/artigos/${produto.slug}.html`;
+        
+        // Link de afiliado (ver oferta)
+        const linkAfiliado = produto.affiliate_link || '#';
+        
+        // Imagem do produto
+        const imagemProduto = produto.image_url || `https://placehold.co/300x200/4A90E2/white?text=${encodeURIComponent(produto.product_name.substring(0, 20))}`;
         
         slidesHtml += `
           <div class="promo-carousel-slide">
@@ -1390,19 +1395,18 @@ async function carregarPromocoesShopee() {
       container.appendChild(track);
       
       initPromoCarousel();
-      console.log(`✅ ${produtos.length} produtos Shopee carregados no carrossel`);
+      console.log(`✅ ${produtos.length} produtos Shopee carregados`);
       
     } else {
       container.innerHTML = '<div class="promo-carousel-track"><div style="text-align: center; padding: 40px; width: 100%;">⚠️ Nenhuma oferta disponível no momento</div></div>';
     }
     
   } catch (error) {
-    console.error('Erro ao carregar promoções Shopee:', error);
-    container.innerHTML = '<div class="promo-carousel-track"><div style="text-align: center; padding: 40px; width: 100%;">⚠️ Erro ao carregar ofertas. Tente novamente mais tarde.</div></div>';
+    console.error('Erro Shopee:', error);
+    container.innerHTML = '<div class="promo-carousel-track"><div style="text-align: center; padding: 40px; width: 100%;">⚠️ Erro ao carregar ofertas</div></div>';
   }
 }
 
-// Inicializar quando a página carregar
 document.addEventListener('DOMContentLoaded', carregarPromocoesShopee);
 
 </script>
