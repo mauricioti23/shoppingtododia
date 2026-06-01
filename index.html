@@ -1357,18 +1357,13 @@ async function carregarPromocoesShopee() {
         let descricao = produto.brief_description || `Confira ${produto.product_name}`;
         if (descricao.length > 100) descricao = descricao.substring(0, 97) + '...';
         
-        const precoNumerico = parseFloat(produto.price);
-        const temPrecoValido = !isNaN(precoNumerico) && precoNumerico > 0;
-        const precoFormatado = temPrecoValido ? `R$ ${precoNumerico.toFixed(2).replace('.', ',')}` : '';
+        // IMAGEM - usa a URL real da API
+        const imagemProduto = produto.image_url || `https://placehold.co/300x200/4A90E2/white?text=${encodeURIComponent(produto.product_name.substring(0, 20))}`;
         
-        // Link do artigo (review completo)
-        const artigoUrl = `https://shopee-api.shoppingtododia.com.br/artigos/${produto.slug}.html`;
-        
-        // Link de afiliado (ver oferta)
+        // LINK AFILIADO - usa a URL real da API
         const linkAfiliado = produto.affiliate_link || '#';
         
-        // Imagem do produto
-        const imagemProduto = produto.image_url || `https://placehold.co/300x200/4A90E2/white?text=${encodeURIComponent(produto.product_name.substring(0, 20))}`;
+        const artigoUrl = `https://shopee-api.shoppingtododia.com.br/artigos/${produto.slug}.html`;
         
         slidesHtml += `
           <div class="promo-carousel-slide">
@@ -1380,7 +1375,6 @@ async function carregarPromocoesShopee() {
               <div class="card-content">
                 <h3>SHOPEE</h3>
                 <h2>${produto.product_name.substring(0, 60)}</h2>
-                ${temPrecoValido ? `<div class="preco">💰 ${precoFormatado}</div>` : ''}
                 <p>${descricao}</p>
                 <a href="${linkAfiliado}" target="_blank" rel="sponsored noopener" class="btn-oferta">Ver Oferta →</a>
                 <a href="${artigoUrl}" target="_blank" class="btn-review">Ver Review Completo →</a>
@@ -1407,6 +1401,7 @@ async function carregarPromocoesShopee() {
   }
 }
 
+// Inicializar quando a página carregar
 document.addEventListener('DOMContentLoaded', carregarPromocoesShopee);
 
 </script>
