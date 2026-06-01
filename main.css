@@ -845,7 +845,7 @@ section[id],
 }
 
 /* ======================================== */
-/* CARROSSEL DE PROMOÇÕES SHOPEE - PADRÃO REVIEWS 01.06.2026 */
+/* CARROSSEL DE PROMOÇÕES SHOPEE - PADRÃO REVIEWS 02.06.2026 */
 /* ======================================== */
 
 .promo-carousel-container {
@@ -938,6 +938,7 @@ section[id],
   margin-bottom: 12px;
 }
 
+/* Botão VER OFERTA - COR SHOPEE (LARANJA) */
 .promo-card-shopee .btn-oferta {
   display: inline-block;
   background: #ee4d2d;
@@ -956,6 +957,7 @@ section[id],
   transform: translateY(-2px);
 }
 
+/* Botão VER REVIEW - AZUL (mantido) */
 .promo-card-shopee .btn-review {
   display: inline-block;
   background: #4A90E2;
