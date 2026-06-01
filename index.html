@@ -530,34 +530,18 @@ document.addEventListener('DOMContentLoaded', carregarReviewsCarrossel);
       </div>
     </section>
 
-       <!-- Seção de Promoções -->
-    <section class="section promo-section" id="promocoes">
-      <div class="container">
-        <h2>Promoções do Dia</h2>
-        <div class="grid promo-grid">
-          <!-- PRODUTO 1 -->
-<article class="card promo-card">
-  <img src="/images/SMARTPHONES/samsunga56.jpg" alt="Samsung Galaxy A56 256GB Smartphone" loading="lazy">
-  <div class="card-content">
-    <h3>Samsung Galaxy A56 256GB</h3>
-    <p><strong>Opinião de quem já comprou: </strong>"Smartphone excelente! Tela Dynamic AMOLED 2X de 120Hz é muito fluida, as fotos ficam incríveis com a câmera de 50MP com estabilização óptica. A bateria dura o dia todo e o carregamento de 45W é super rápido. O desempenho do Exynos 1580 é surpreendente, roda tudo sem travar. Melhor custo-benefício da categoria!"</p>
-    <a href="https://meli.la/2W4wicE" target="_blank" rel="noopener noreferrer">Ver Oferta</a><br><br>
-    <a href="blog/posts/review-samsungA56.html" target="_blank" rel="noopener noreferrer">Ver Review/Análise</a>
+    <!-- Seção de Promoções -->
+<section class="section promo-section" id="promocoes">
+  <div class="container">
+    <h2>Promoções do Dia</h2>
+    <div id="promocoes-container" class="grid promo-grid">
+      <!-- Loading -->
+      <div style="text-align: center; grid-column: 1/-1; padding: 40px;">
+        🛍️ Carregando as melhores ofertas...
+      </div>
+    </div>
   </div>
-</article>
-          <!-- PRODUTO 2 -->
-<article class="card promo-card">
-  <img src="/images/SMARTPHONES/Soundcore P30i.jpg" alt="Soundcore P30i Anker Fone Bluetooth 5.4" loading="lazy">
-  <div class="card-content">
-    <h3>Soundcore P30i Anker</h3>
-    <p><strong>Opinião de quem já comprou: </strong>"Fone excelente! O cancelamento de ruído adaptativo funciona muito bem, os graves são potentes e encorpados. A bateria dura horas e o estojo 2-em-1 com suporte para celular é muito prático. O Bluetooth 5.4 conecta rápido e não falha. Melhor fone que já comprei pelo preço! Vale cada centavo."</p>
-    <a href="https://meli.la/1ha3TfF" target="_blank" rel="noopener noreferrer">Ver Oferta</a><br><br>
-    <a href="blog/posts/revies-foneSoundcoreP30i.html" target="_blank" rel="noopener noreferrer">Ver Review/Análise</a>
-  </div>
-</article>
-</div>
-
-    </section>
+</section>  
 
     <!-- Seção de Tutoriais - Carrossel -->
 <section class="section tutorial-section" id="tutoriais">
@@ -1482,6 +1466,121 @@ if (document.readyState === 'loading') {
   });
 </script>
   
+<!-- SCRIPT PROMOÇÕES SHOPEE (01.06.2026) -->
+<script>
+async function carregarPromocoesShopee() {
+  const container = document.getElementById('promocoes-container');
+  if (!container) return;
+  
+  container.innerHTML = '<div style="text-align: center; grid-column: 1/-1; padding: 40px;">🛍️ Carregando as melhores ofertas...</div>';
+  
+  try {
+    // Buscar artigos da Shopee API (sem cache)
+    const url = 'https://shopee-api.shoppingtododia.com.br/api/artigos?_=' + Date.now();
+    console.log('[Shopee] Buscando promoções:', url);
+    
+    const response = await fetch(url);
+    const data = await response.json();
+    
+    console.log('[Shopee] Resposta:', data);
+    
+    if (data.success && data.data && data.data.length > 0) {
+      // Pegar os 4 artigos mais recentes (ou todos se tiver menos)
+      const artigos = data.data.slice(0, 4);
+      
+      let html = '';
+      
+      artigos.forEach(artigo => {
+        // Limitar descrição para não ficar muito longa
+        let descricao = artigo.brief_description || `Confira o ${artigo.product_name} com preço especial!`;
+        if (descricao.length > 120) {
+          descricao = descricao.substring(0, 117) + '...';
+        }
+        
+        // Formatar preço
+        const precoFormatado = artigo.price ? `R$ ${artigo.price.toFixed(2).replace('.', ',')}` : 'Preço especial';
+        
+        // Link do artigo completo
+        const artigoUrl = `https://shopee-api.shoppingtododia.com.br/artigos/${artigo.slug}.html`;
+        
+        html += `
+          <article class="card promo-card">
+            <img src="/images/placeholder-produto.jpg" 
+                 alt="${escapeHtml(artigo.product_name)}" 
+                 loading="lazy"
+                 onerror="this.src='https://via.placeholder.com/300x250/4A90E2/FFFFFF?text=🛍️+OFERTA'">
+            <div class="card-content">
+              <h3>${escapeHtml(artigo.product_name)}</h3>
+              <p><strong>💰 Preço especial: </strong>${precoFormatado}</p>
+              <p>${escapeHtml(descricao)}</p>
+              <a href="${artigo.affiliate_link || '#'}" target="_blank" rel="sponsored noopener" class="btn-oferta">Ver Oferta</a><br><br>
+              <a href="${artigoUrl}" target="_blank" rel="noopener" class="btn-review">Ver Review/Análise</a>
+            </div>
+          </article>
+        `;
+      });
+      
+      container.innerHTML = html;
+      console.log(`[Shopee] ✅ ${artigos.length} promoções carregadas`);
+      
+    } else {
+      // Fallback: mostrar produtos estáticos
+      container.innerHTML = gerarPromocoesFallback();
+      console.log('[Shopee] ⚠️ Nenhum artigo encontrado, usando fallback');
+    }
+    
+  } catch (error) {
+    console.error('[Shopee] ❌ Erro ao carregar promoções:', error);
+    container.innerHTML = gerarPromocoesFallback();
+  }
+}
+
+// Função de fallback com produtos estáticos
+function gerarPromocoesFallback() {
+  return `
+    <article class="card promo-card">
+      <img src="/images/SMARTPHONES/samsunga56.jpg" alt="Samsung Galaxy A56 256GB Smartphone" loading="lazy">
+      <div class="card-content">
+        <h3>Samsung Galaxy A56 256GB</h3>
+        <p><strong>Opinião de quem já comprou: </strong>"Smartphone excelente! Tela Dynamic AMOLED 2X de 120Hz é muito fluida, as fotos ficam incríveis com a câmera de 50MP com estabilização óptica. A bateria dura o dia todo e o carregamento de 45W é super rápido."</p>
+        <a href="https://meli.la/2W4wicE" target="_blank" rel="sponsored noopener">Ver Oferta</a><br><br>
+        <a href="blog/posts/review-samsungA56.html" target="_blank">Ver Review/Análise</a>
+      </div>
+    </article>
+    <article class="card promo-card">
+      <img src="/images/SMARTPHONES/Soundcore P30i.jpg" alt="Soundcore P30i Anker Fone Bluetooth 5.4" loading="lazy">
+      <div class="card-content">
+        <h3>Soundcore P30i Anker</h3>
+        <p><strong>Opinião de quem já comprou: </strong>"Fone excelente! O cancelamento de ruído adaptativo funciona muito bem, os graves são potentes e encorpados. A bateria dura horas e o estojo 2-em-1 com suporte para celular é muito prático."</p>
+        <a href="https://meli.la/1ha3TfF" target="_blank" rel="sponsored noopener">Ver Oferta</a><br><br>
+        <a href="blog/posts/revies-foneSoundcoreP30i.html" target="_blank">Ver Review/Análise</a>
+      </div>
+    </article>
+  `;
+}
+
+// Função para escapar HTML e prevenir XSS
+function escapeHtml(text) {
+  if (!text) return '';
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// Inicializar quando a página carregar
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', carregarPromocoesShopee);
+} else {
+  carregarPromocoesShopee();
+}
+
+// Atualizar a cada 30 minutos (opcional)
+setInterval(carregarPromocoesShopee, 30 * 60 * 1000);
+</script>
+
 </body>
 
 </html>
