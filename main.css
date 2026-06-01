@@ -845,78 +845,218 @@ section[id],
 }
 
 /* ======================================== */
-/* CARROSSEL DE PROMOÇÕES SHOPEE            */
+/* CARROSSEL DE PROMOÇÕES SHOPEE - PADRÃO REVIEWS 01.06.2026 */
 /* ======================================== */
 
-/* Usar o mesmo estilo dos cards de review */
-.promo-card-shopee {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+.promo-carousel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+.promo-carousel {
   overflow: hidden;
+  width: 100%;
+}
+
+.promo-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 20px;
+}
+
+.promo-carousel-slide {
+  flex: 0 0 calc(33.333% - 14px);
+  min-width: calc(33.333% - 14px);
+}
+
+/* Card de Promoção Shopee - MESMO ESTILO DO REVIEW */
+.promo-card-shopee {
   background: #fff;
-  transition: transform 0.3s;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .promo-card-shopee:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .promo-card-shopee img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
-  display: block;
+  background: #f9f9f9;
 }
 
 .promo-card-shopee .card-content {
-  padding: 15px;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .promo-card-shopee .card-content h3 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-bottom: 8px;
+  color: #888;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.promo-card-shopee .card-content h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .promo-card-shopee .card-content p {
-  font-size: 0.85rem;
-  color: #666;
-  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .promo-card-shopee .preco {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #ee4d2d;
-  margin-bottom: 10px;
-}
-
-.promo-card-shopee .btn-oferta,
-.promo-card-shopee .btn-review {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.8rem;
-  transition: all 0.3s;
-  margin-right: 6px;
+  margin-bottom: 12px;
 }
 
 .promo-card-shopee .btn-oferta {
+  display: inline-block;
   background: #ee4d2d;
   color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+  text-align: center;
+  margin-bottom: 8px;
 }
 
 .promo-card-shopee .btn-oferta:hover {
   background: #c73e22;
+  transform: translateY(-2px);
 }
 
 .promo-card-shopee .btn-review {
+  display: inline-block;
   background: #4A90E2;
   color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+  text-align: center;
 }
 
 .promo-card-shopee .btn-review:hover {
   background: #357ABD;
+  transform: translateY(-2px);
+}
+
+/* Botões do Carrossel */
+.promo-carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.promo-carousel-control:hover {
+  background: #357ABD;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.promo-carousel-control.prev {
+  left: 0;
+}
+
+.promo-carousel-control.next {
+  right: 0;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .promo-carousel-slide {
+    flex: 0 0 calc(50% - 10px);
+    min-width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .promo-carousel-container {
+    padding: 0 40px;
+  }
+  
+  .promo-carousel-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+  
+  .promo-carousel-control {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+  
+  .promo-card-shopee .card-content h2 {
+    font-size: 1rem;
+  }
+  
+  .promo-card-shopee .card-content p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .promo-carousel-container {
+    padding: 0 30px;
+  }
+  
+  .promo-carousel-control {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  
+  .promo-carousel-control.prev {
+    left: -5px;
+  }
+  
+  .promo-carousel-control.next {
+    right: -5px;
+  }
 }

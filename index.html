@@ -1264,8 +1264,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // CARROSSEL DE PROMOÇÕES SHOPEE 01.06.2026
 // ========================================
 
-
 <script>
+
 let promoCurrentIndex = 0;
 let promoSlidesPerView = 3;
 let promoTotalSlides = 0;
@@ -1373,11 +1373,12 @@ async function carregarPromocoesShopee() {
                    loading="lazy"
                    onerror="this.src='https://placehold.co/300x200/4A90E2/white?text=Produto'">
               <div class="card-content">
-                <h3>${produto.product_name.substring(0, 60)}</h3>
-                ${temPrecoValido ? `<div class="preco">${precoFormatado}</div>` : ''}
+                <h3>SHOPEE</h3>
+                <h2>${produto.product_name.substring(0, 60)}</h2>
+                ${temPrecoValido ? `<div class="preco">💰 ${precoFormatado}</div>` : ''}
                 <p>${descricao}</p>
-                <a href="${linkAfiliado}" target="_blank" rel="sponsored noopener" class="btn-oferta">Ver Oferta na Shopee</a>
-                <a href="${artigoUrl}" target="_blank" class="btn-review">Ver Review Completo</a>
+                <a href="${linkAfiliado}" target="_blank" rel="sponsored noopener" class="btn-oferta">Ver Oferta →</a>
+                <a href="${artigoUrl}" target="_blank" class="btn-review">Ver Review Completo →</a>
               </div>
             </article>
           </div>
@@ -1403,6 +1404,7 @@ async function carregarPromocoesShopee() {
 
 // Inicializar quando a página carregar
 document.addEventListener('DOMContentLoaded', carregarPromocoesShopee);
+
 </script>
 
 
