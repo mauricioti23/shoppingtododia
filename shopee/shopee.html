@@ -306,13 +306,70 @@
     }
 
     // Função para renderizar produtos
-    function renderProducts() {
-      let filtered = filterProducts(allProducts, currentSearch);
-      filtered = sortProducts(filtered, currentSort);
+function renderProducts() {
+  let filtered = filterProducts(allProducts, currentSearch);
+  filtered = sortProducts(filtered, currentSort);
+  
+  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+  const start = (currentPage - 1) * itemsPerPage;
+  const paginatedProducts = filtered.slice(start, start + itemsPerPage);
+  
+  // Renderizar grid
+  const gridContainer = document.getElementById('shopeeGrid');
+  if (paginatedProducts.length === 0) {
+    gridContainer.innerHTML = '<div class="no-products">🔍 Nenhum produto encontrado</div>';
+  } else {
+    gridContainer.innerHTML = paginatedProducts.map(product => {
+      const descricao = (product.brief_description || `Confira ${product.product_name}`).substring(0, 100);
+      const imagem = product.image_url || '/images/logo/Shopping%20(3).png';
       
-      const totalPages = Math.ceil(filtered.length / itemsPerPage);
-      const start = (currentPage - 1) * itemsPerPage;
-      const paginatedProducts = filtered.slice(start, start + itemsPerPage);
+      // CORREÇÃO AQUI: Mostra preço ou "Ver preço" se for zero
+      let precoHtml = '';
+      if (product.price && parseFloat(product.price) > 0) {
+        precoHtml = `<div class="product-price">R$ ${parseFloat(product.price).toFixed(2)}</div>`;
+      } else {
+        precoHtml = `<div class="product-price">💰 Ver preço na Shopee</div>`;
+      }
+      
+      const artigoUrl = `https://shopee-api.shoppingtododia.com.br/artigos/${product.slug}.html`;
+      
+      return `
+        <div class="shopee-card" data-product-id="${product.id}">
+          <img src="${imagem}" alt="${escapeHtml(product.product_name)}" loading="lazy" onerror="this.src='/images/logo/Shopping%20(3).png'">
+          <div class="card-content">
+            <h3>SHOPEE</h3>
+            <h2>${escapeHtml(product.product_name.substring(0, 60))}</h2>
+            ${precoHtml}
+            <p>${escapeHtml(descricao)}...</p>
+            <a href="${product.affiliate_link || '#'}" target="_blank" rel="sponsored noopener" class="btn-oferta">🛒 Ver Oferta</a>
+            <a href="${artigoUrl}" target="_blank" class="btn-review">📖 Ver Review Completo</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+  
+  // Renderizar paginação
+  const paginationContainer = document.getElementById('pagination');
+  if (totalPages > 1) {
+    let paginationHtml = '<div class="pagination">';
+    for (let i = 1; i <= totalPages; i++) {
+      paginationHtml += `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+    }
+    paginationHtml += '</div>';
+    paginationContainer.innerHTML = paginationHtml;
+    
+    document.querySelectorAll('.page-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentPage = parseInt(btn.dataset.page);
+        renderProducts();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  } else {
+    paginationContainer.innerHTML = '';
+  }
+}
       
       // Renderizar grid
       const gridContainer = document.getElementById('shopeeGrid');
