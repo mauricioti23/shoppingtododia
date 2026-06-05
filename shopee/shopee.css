@@ -24,6 +24,7 @@
   font-size: 2.5rem;
   margin-bottom: 15px;
   font-weight: 700;
+  color: white;
 }
 
 .shopee-hero p {
@@ -31,6 +32,7 @@
   opacity: 0.95;
   max-width: 600px;
   margin: 0 auto;
+  color: white;
 }
 
 /* Filtros */
@@ -175,11 +177,11 @@
   overflow: hidden;
 }
 
-/* Botões */
+/* Botões - COR BRANCA GARANTIDA */
 .btn-oferta {
   display: inline-block;
   background: #ee4d2d;
-  color: white;
+  color: #ffffff !important;
   padding: 10px 16px;
   border-radius: 6px;
   text-decoration: none;
@@ -187,32 +189,43 @@
   text-align: center;
   transition: background 0.3s, transform 0.2s;
   margin-bottom: 10px;
+  border: none;
 }
 
 .btn-oferta:hover {
   background: #c73e22;
   transform: translateY(-2px);
-  color: white;
+  color: #ffffff !important;
   text-decoration: none;
 }
 
 .btn-review {
   display: inline-block;
   background: #4A90E2;
-  color: white;
+  color: #ffffff !important;
   padding: 10px 16px;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
   text-align: center;
   transition: background 0.3s, transform 0.2s;
+  border: none;
 }
 
 .btn-review:hover {
   background: #357ABD;
   transform: translateY(-2px);
-  color: white;
+  color: #ffffff !important;
   text-decoration: none;
+}
+
+/* Garantia adicional para links dentro dos cards */
+.shopee-card a {
+  color: #ffffff !important;
+}
+
+.shopee-card a:hover {
+  color: #ffffff !important;
 }
 
 /* Loading Spinner */
@@ -267,6 +280,7 @@
   font-weight: 600;
   transition: all 0.3s ease;
   font-family: 'Roboto', sans-serif;
+  color: #333;
 }
 
 .page-btn:hover {
