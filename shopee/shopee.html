@@ -316,7 +316,7 @@
       return div.innerHTML;
     }
 
-    // Função para renderizar produtos
+    // Função para renderizar produtos (SEM O PREÇO)
     function renderProducts() {
       console.log('🟡 Renderizando produtos...');
       
@@ -340,12 +340,8 @@
           const descricao = (product.brief_description || `Confira ${product.product_name}`).substring(0, 100);
           const imagem = product.image_url || '/images/logo/Shopping%20(3).png';
           
+          // PREÇO REMOVIDO - não exibe mais nada
           let precoHtml = '';
-          if (product.price && parseFloat(product.price) > 0) {
-            precoHtml = `<div class="product-price">R$ ${parseFloat(product.price).toFixed(2)}</div>`;
-          } else {
-            precoHtml = `<div class="product-price">💰 Ver preço na Shopee</div>`;
-          }
           
           const artigoUrl = `https://shopee-api.shoppingtododia.com.br/artigos/${product.slug}.html`;
           
